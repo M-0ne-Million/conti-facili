@@ -6,7 +6,7 @@
 
 nome = "Conti Facili"
 # Indirizzo del sito su GitHub Pages (o il tuo dominio). Deve finire con /
-url = "https://[utente-github].github.io/[nome-repository]/"
+url = "https://m-0ne-million.github.io/conti-facili/"
 # Titolare per la pagina privacy.
 titolare = "[NOME COGNOME]"
 email = "[EMAIL]"
