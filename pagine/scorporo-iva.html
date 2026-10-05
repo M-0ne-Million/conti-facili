@@ -1,0 +1,54 @@
+<h1>Scorporo IVA e calcolo IVA online</h1>
+<p>Dal prezzo con IVA ricavi imponibile e imposta (scorporo), oppure aggiungi l'IVA a un importo netto. Aliquote 22%, 10%, 5% e 4%.</p>
+
+<div class="strumento">
+  <form id="f" class="campi" onsubmit="return false">
+    <label>Importo in euro<input name="importo" inputmode="decimal" value="122"></label>
+    <label>Cosa vuoi fare
+      <select name="modo"><option value="scorpora">scorporare l'IVA (l'importo è IVA inclusa)</option><option value="aggiungi">aggiungere l'IVA (l'importo è senza IVA)</option></select>
+    </label>
+    <label>Aliquota
+      <select name="aliquota"><option>22</option><option>10</option><option>5</option><option>4</option></select>
+    </label>
+  </form>
+  <div class="risultato" aria-live="polite">
+    <table>
+      <tr><td>Imponibile (senza IVA)</td><td id="imp"></td></tr>
+      <tr><td>IVA</td><td id="iva"></td></tr>
+      <tr><td><strong>Totale IVA inclusa</strong></td><td class="grande" id="tot"></td></tr>
+    </table>
+  </div>
+</div>
+
+$box_piva
+
+<h2>Come si fa lo scorporo dell'IVA</h2>
+<p>Per togliere l'IVA da un prezzo che la comprende si <strong>divide</strong> per (1 + aliquota), non si sottrae la percentuale:</p>
+<ul>
+  <li>IVA al 22%: imponibile = prezzo ÷ 1,22. Esempio: 122 € → 100 € di imponibile e 22 € di IVA.</li>
+  <li>IVA al 10%: imponibile = prezzo ÷ 1,10. IVA al 4%: imponibile = prezzo ÷ 1,04.</li>
+</ul>
+<p>L'errore più comune è togliere il 22% dal totale: 122 € − 22% fa 95,16 €, non 100 €.</p>
+
+<h2>Quale aliquota usare</h2>
+<ul>
+  <li><strong>22%</strong>: aliquota ordinaria, la maggior parte di beni e servizi.</li>
+  <li><strong>10%</strong>: ad esempio alcuni alimenti, servizi turistici e ristorazione, alcuni lavori edilizi.</li>
+  <li><strong>5%</strong>: ad esempio alcuni prodotti per l'igiene femminile e alcune prestazioni socio-sanitarie.</li>
+  <li><strong>4%</strong>: beni di prima necessità come pane, latte, libri e giornali.</li>
+</ul>
+<p class="nota">Elenco indicativo: per i casi specifici verifica la normativa o chiedi a un commercialista.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+function aggiorna() {
+  const n = c.numero(f.importo.value), x = Number.isFinite(n) ? c.cent(n) : 0, a = Number(f.aliquota.value);
+  const r = f.modo.value === 'scorpora' ? c.scorporoIva(x, a) : c.aggiungiIva(x, a);
+  q('imp').textContent = c.euro(r.imponibile);
+  q('iva').textContent = c.euro(r.iva);
+  q('tot').textContent = c.euro(r.totale);
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

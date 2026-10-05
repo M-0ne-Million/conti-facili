@@ -1,0 +1,56 @@
+<h1>Calcolo ritenuta d'acconto: dal lordo al netto e dal netto al lordo</h1>
+<p>Scrivi un importo e scegli se è lordo o netto: il calcolatore ti dice subito ritenuta del 20%, netto da incassare e lordo da indicare in ricevuta.</p>
+
+<div class="strumento">
+  <form id="f" class="campi" onsubmit="return false">
+    <label>Importo in euro<input name="importo" inputmode="decimal" value="1000"></label>
+    <label>L'importo è
+      <select name="tipo"><option value="lordo">lordo</option><option value="netto">netto</option></select>
+    </label>
+    <label>Chi paga è
+      <select name="sostituto"><option value="1">un sostituto d'imposta (azienda, professionista)</option><option value="">un privato</option></select>
+    </label>
+  </form>
+  <div class="risultato" aria-live="polite">
+    <table>
+      <tr><td>Compenso lordo</td><td id="lordo"></td></tr>
+      <tr><td>Ritenuta d'acconto 20%</td><td id="rit"></td></tr>
+      <tr><td><strong>Netto</strong></td><td class="grande" id="netto"></td></tr>
+      <tr><td>Marca da bollo da 2 € sulla ricevuta</td><td id="bollo"></td></tr>
+    </table>
+  </div>
+  <p><a class="bottone" href="${base}ricevuta-prestazione-occasionale/">Crea la ricevuta con questi importi</a></p>
+</div>
+
+$box_prodotto
+$box_piva
+
+<h2>Come si calcola la ritenuta d'acconto</h2>
+<p>Sui compensi per lavoro autonomo, anche occasionale, il committente sostituto d'imposta trattiene il <strong>20% del lordo</strong>
+   e lo versa allo Stato come anticipo delle tue imposte.</p>
+<ul>
+  <li><strong>Dal lordo al netto</strong>: netto = lordo − 20% del lordo = lordo × 0,80. Esempio: 1.000 € lordi → 200 € di ritenuta → 800 € netti.</li>
+  <li><strong>Dal netto al lordo</strong>: lordo = netto ÷ 0,80. Esempio: per incassare 800 € netti il lordo è 1.000 €.</li>
+</ul>
+<p>La ritenuta non è un costo in più: è un acconto che recuperi nella dichiarazione dei redditi, dove il committente ti certifica
+   le somme trattenute con la Certificazione Unica.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Con un privato si applica la ritenuta?</summary><p>No. I privati non sono sostituti d'imposta: incassi il lordo per intero.</p></details>
+<details><summary>La ritenuta è sempre del 20%?</summary><p>Per il lavoro autonomo (professionale e occasionale) svolto da residenti in Italia sì, il 20%. Altri tipi di compenso, come le provvigioni, hanno regole diverse.</p></details>
+<details><summary>Devo pagare altre tasse oltre alla ritenuta?</summary><p>Dipende dal tuo reddito complessivo: in dichiarazione l'imposta finale può essere più alta o più bassa delle ritenute subite. È un'indicazione generale, non consulenza fiscale.</p></details>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+function aggiorna() {
+  const n = c.numero(f.importo.value);
+  const r = c.ricevuta(Number.isFinite(n) ? c.cent(n) : 0, !!f.sostituto.value, f.tipo.value === 'netto');
+  q('lordo').textContent = c.euro(r.lordo);
+  q('rit').textContent = c.euro(r.ritenuta);
+  q('netto').textContent = c.euro(r.netto);
+  q('bollo').textContent = r.bollo ? 'sì' : 'no';
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

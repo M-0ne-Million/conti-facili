@@ -1,0 +1,52 @@
+<h1>Calcolo sconto e percentuali</h1>
+<p>Tre calcoli che servono tutti i giorni: prezzo scontato, quanto vale una percentuale e di quanto è aumentato o diminuito un prezzo.</p>
+
+<div class="strumento">
+  <h2>Prezzo scontato</h2>
+  <form id="s" class="campi" onsubmit="return false">
+    <label>Prezzo pieno (€)<input name="prezzo" inputmode="decimal" value="80"></label>
+    <label>Sconto (%)<input name="perc" inputmode="decimal" value="25"></label>
+  </form>
+  <div class="risultato" aria-live="polite"><table>
+    <tr><td><strong>Prezzo scontato</strong></td><td class="grande" id="finale"></td></tr>
+    <tr><td>Risparmi</td><td id="risparmio"></td></tr></table></div>
+
+  <h2>Che percentuale è?</h2>
+  <form id="p" class="campi" onsubmit="return false">
+    <label>Parte<input name="parte" inputmode="decimal" value="30"></label>
+    <label>Totale<input name="totale" inputmode="decimal" value="120"></label>
+  </form>
+  <div class="risultato" aria-live="polite"><span class="grande" id="perc"></span></div>
+
+  <h2>Aumento o diminuzione percentuale</h2>
+  <form id="v" class="campi" onsubmit="return false">
+    <label>Valore iniziale<input name="da" inputmode="decimal" value="80"></label>
+    <label>Valore finale<input name="a" inputmode="decimal" value="100"></label>
+  </form>
+  <div class="risultato" aria-live="polite"><span class="grande" id="var"></span></div>
+</div>
+
+<h2>Le formule</h2>
+<ul>
+  <li><strong>Prezzo scontato</strong> = prezzo × (1 − sconto ÷ 100). Esempio: 80 € con il 25% di sconto = 60 €.</li>
+  <li><strong>Percentuale</strong> = parte ÷ totale × 100. Esempio: 30 su 120 è il 25%.</li>
+  <li><strong>Variazione percentuale</strong> = (finale − iniziale) ÷ iniziale × 100. Esempio: da 80 a 100 è +25%.</li>
+</ul>
+<p>Attenzione agli sconti in sequenza: un 20% più un altro 20% non fanno il 40%, ma il 36%, perché il secondo sconto si applica al prezzo già scontato.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const q = (id) => document.getElementById(id), n = (x) => c.numero(x);
+const fmt = (x) => Number.isFinite(x) ? x.toLocaleString('it-IT', { maximumFractionDigits: 2 }) : '—';
+const e = (x) => Number.isFinite(x) ? c.euro(Math.round(x * 100)) : '—';
+function aggiorna() {
+  const s = c.sconto(n(q('s').prezzo.value), n(q('s').perc.value));
+  q('finale').textContent = e(s.finale);
+  q('risparmio').textContent = e(s.risparmio);
+  q('perc').textContent = fmt(c.percentualeDi(n(q('p').parte.value), n(q('p').totale.value))) + '%';
+  const v = c.variazione(n(q('v').da.value), n(q('v').a.value));
+  q('var').textContent = (v > 0 ? '+' : '') + fmt(v) + '%';
+}
+document.addEventListener('input', aggiorna);
+aggiorna();
+</script>

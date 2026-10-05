@@ -1,0 +1,56 @@
+<h1>Calcolo rata del mutuo con piano di ammortamento</h1>
+<p>Inserisci importo, tasso e durata: vedi subito la rata mensile, quanto paghi di interessi e come scende il debito anno per anno.</p>
+
+<div class="strumento">
+  <form id="f" class="campi" onsubmit="return false">
+    <label>Importo del mutuo (€)<input name="capitale" inputmode="decimal" value="150.000"></label>
+    <label>Tasso annuo TAN (%)<input name="tan" inputmode="decimal" value="3"></label>
+    <label>Durata (anni)
+      <select name="anni"><option>10</option><option>15</option><option selected>20</option><option>25</option><option>30</option></select>
+    </label>
+  </form>
+  <div class="risultato" aria-live="polite">
+    <table>
+      <tr><td><strong>Rata mensile</strong></td><td class="grande" id="rata"></td></tr>
+      <tr><td>Totale interessi</td><td id="interessi"></td></tr>
+      <tr><td>Totale rimborsato</td><td id="totale"></td></tr>
+    </table>
+  </div>
+  <details><summary>Piano di ammortamento anno per anno</summary>
+    <div class="scorri"><table class="dati"><thead><tr><th>Anno</th><th>Quota capitale</th><th>Interessi</th><th>Debito residuo</th></tr></thead><tbody id="piano"></tbody></table></div>
+  </details>
+</div>
+
+$box_mutuo
+
+<h2>Come si calcola la rata del mutuo</h2>
+<p>In Italia quasi tutti i mutui usano l'<strong>ammortamento alla francese</strong>: la rata è sempre uguale, ma all'inizio è fatta
+   soprattutto di interessi e alla fine soprattutto di capitale. La formula è:</p>
+<p><strong>rata = C × i ÷ (1 − (1 + i)<sup>−n</sup>)</strong>, dove C è l'importo, i il tasso mensile (TAN ÷ 12) e n il numero di rate.</p>
+<p>Esempio: 150.000 € al 3% per 20 anni danno una rata di circa 832 € al mese e circa 49.700 € di interessi totali.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Che differenza c'è tra TAN e TAEG?</summary><p>Il TAN è il tasso puro degli interessi e serve a calcolare la rata. Il TAEG include anche spese di istruttoria, perizia e assicurazioni obbligatorie: è il numero da usare per confrontare offerte diverse.</p></details>
+<details><summary>Quanto posso chiedere di mutuo?</summary><p>Molte banche chiedono che la rata non superi circa un terzo del reddito netto mensile e finanziano di solito fino all'80% del valore dell'immobile.</p></details>
+<details><summary>Il calcolo vale per i mutui a tasso variabile?</summary><p>Vale per il tasso di partenza: con il variabile la rata cambia quando cambia l'indice di riferimento.</p></details>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+function aggiorna() {
+  const cap = c.numero(f.capitale.value), tan = c.numero(f.tan.value), anni = Number(f.anni.value);
+  if (!(cap > 0) || !(tan >= 0)) return;
+  const rata = c.rataMutuo(cap, tan, anni), tot = rata * anni * 12;
+  q('rata').textContent = e(rata);
+  q('interessi').textContent = e(tot - cap);
+  q('totale').textContent = e(tot);
+  q('piano').innerHTML = '';
+  for (const r of c.ammortamento(cap, tan, anni)) {
+    const tr = q('piano').insertRow();
+    for (const v of [r.anno, e(r.quota), e(r.interessi), e(r.residuo)]) tr.insertCell().textContent = v;
+  }
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

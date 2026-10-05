@@ -1,0 +1,10 @@
+# Generato dal workflow
+public/
+# Prodotti a pagamento e documenti privati: NON devono finire nel repository pubblico
+etsy/
+analisi-mercato.md
+archivio-assistenza-pc/
+# Ambiente locale
+.venv/
+__pycache__/
+.DS_Store

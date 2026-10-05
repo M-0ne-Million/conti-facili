@@ -1,0 +1,29 @@
+# ============================================================
+#  CONFIGURAZIONE DEL SITO. Questo file è pubblico (finisce su GitHub).
+#  Dopo una modifica: fai Commit e Push, il sito si aggiorna da solo.
+#  Per provarlo sul tuo computer: python3 build.py
+# ============================================================
+
+nome = "Conti Facili"
+# Indirizzo del sito su GitHub Pages (o il tuo dominio). Deve finire con /
+url = "https://[utente-github].github.io/[nome-repository]/"
+# Titolare per la pagina privacy.
+titolare = "[NOME COGNOME]"
+email = "[EMAIL]"
+# Codice di verifica di Google Search Console (metodo "Tag HTML": solo il valore di content="...").
+google_verifica = ""
+
+[guadagni]
+# Ogni riquadro compare sul sito solo quando il link è compilato.
+# Link al modello Excel "Registro prestazioni occasionali" (Etsy, Gumroad, Lemon Squeezy, Payhip...).
+link_prodotto = ""
+prezzo_prodotto = "12 €"
+# Link affiliato a un servizio di commercialisti online / apertura partita IVA.
+link_partita_iva = ""
+nome_partita_iva = ""
+# Link affiliato a un comparatore di mutui.
+link_mutuo = ""
+nome_mutuo = ""
+# Codice AdSense (es. "ca-pub-1234567890123456"). Vuoto = niente pubblicità.
+# Prima di attivarlo accendi il messaggio di consenso cookie di Google in AdSense (Privacy e messaggi).
+adsense = ""

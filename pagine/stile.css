@@ -1,0 +1,53 @@
+:root { --testo: #1d2733; --blu: #0b4f8a; --verde: #146c43; --chiaro: #eef4fa; --bordo: #c9d6e3; --giallo: #fff3cd; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--testo); background: #fff; }
+.contenuto { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
+.testata { background: var(--blu); padding: .75rem 0; }
+.testata a { color: #fff; font-weight: 800; font-size: 1.25rem; text-decoration: none; }
+main { padding-bottom: 2rem; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 1.5rem 0 .75rem; }
+h2 { font-size: 1.35rem; margin: 2rem 0 .75rem; color: var(--blu); }
+a { color: var(--blu); }
+.strumento { background: var(--chiaro); border: 1px solid var(--bordo); border-radius: .75rem; padding: 1rem; display: grid; gap: 1rem; }
+.campi { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+fieldset { border: 1px solid var(--bordo); border-radius: .5rem; padding: .75rem; margin: 0; display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+legend { font-weight: 700; padding: 0 .25rem; }
+label { display: flex; flex-direction: column; font-size: .95rem; font-weight: 600; gap: .25rem; }
+label.riga { flex-direction: row; align-items: center; font-weight: 400; }
+input, select, textarea { font: inherit; padding: .55rem .6rem; border: 1px solid #8a9bb0; border-radius: .4rem; background: #fff; min-height: 2.75rem; width: 100%; }
+label.riga input { width: auto; min-height: 0; }
+textarea { min-height: 5rem; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #f2b705; outline-offset: 1px; }
+button, .bottone { font: inherit; font-weight: 700; background: var(--blu); color: #fff; border: 0; border-radius: .5rem; padding: .7rem 1.2rem; cursor: pointer; text-decoration: none; display: inline-block; min-height: 2.75rem; }
+.risultato { background: #fff; border: 2px solid var(--blu); border-radius: .75rem; padding: 1rem; }
+.risultato table, table.dati { width: 100%; border-collapse: collapse; }
+.risultato td, table.dati td, table.dati th { padding: .4rem .25rem; border-bottom: 1px solid var(--bordo); text-align: left; }
+.risultato td:last-child, table.dati td:not(:first-child), table.dati th:not(:first-child) { text-align: right; }
+.grande { font-size: 1.6rem; font-weight: 800; color: var(--blu); }
+.scorri { overflow-x: auto; }
+.box { border-radius: .75rem; padding: 1rem; margin: 1.5rem 0; }
+.box.prodotto { background: #e3f3ea; border: 1px solid #9fd1b3; }
+.box.partner { background: var(--giallo); border: 1px solid #e6cf7a; }
+.box p { margin: .25rem 0 .75rem; }
+.nota { font-size: .9rem; color: #4a5868; }
+details { border: 1px solid var(--bordo); border-radius: .5rem; padding: .6rem .9rem; margin-bottom: .6rem; }
+summary { font-weight: 700; cursor: pointer; }
+.elenco { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.elenco a { display: block; height: 100%; border: 1px solid var(--bordo); border-radius: .75rem; padding: 1rem; text-decoration: none; color: var(--testo); }
+.elenco a:hover { border-color: var(--blu); }
+.elenco strong { color: var(--blu); font-size: 1.1rem; display: block; }
+footer { background: var(--testo); color: #fff; padding: 1.5rem 0; font-size: .95rem; }
+footer a { color: #fff; }
+footer ul { padding-left: 1.2rem; columns: 2; }
+/* Ricevuta */
+.foglio { background: #fff; border: 1px solid var(--bordo); padding: 1.5rem; font-size: .95rem; }
+.foglio h2 { margin: 0 0 .25rem; font-size: 1.2rem; color: var(--testo); }
+.foglio .parti { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+.foglio .note { font-size: .8rem; }
+.foglio .firma { margin-top: 2.5rem; }
+@media print {
+  body * { visibility: hidden; }
+  .foglio, .foglio * { visibility: visible; }
+  .foglio { position: absolute; inset: 0; border: 0; padding: 0; font-size: 11pt; }
+  @page { size: A4; margin: 2cm; }
+}

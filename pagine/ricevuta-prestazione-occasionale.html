@@ -1,0 +1,143 @@
+<h1>Ricevuta per prestazione occasionale: generatore gratuito</h1>
+<p>Compila i campi: la ricevuta si crea mentre scrivi, con ritenuta d'acconto e marca da bollo calcolate in automatico.
+   Poi premi <strong>Stampa o salva in PDF</strong>. Gratis, senza registrazione: i dati restano sul tuo dispositivo.</p>
+
+<div class="strumento">
+  <form id="f" class="campi" onsubmit="return false">
+    <fieldset>
+      <legend>Chi riceve il compenso (tu)</legend>
+      <label>Nome e cognome<input name="p_nome" autocomplete="name"></label>
+      <label>Codice fiscale<input name="p_cf" autocapitalize="characters"></label>
+      <label>Indirizzo<input name="p_indirizzo" autocomplete="street-address"></label>
+      <label>IBAN (facoltativo)<input name="p_iban"></label>
+      <label class="riga"><input type="checkbox" name="ricorda"> Ricorda i miei dati su questo dispositivo</label>
+    </fieldset>
+    <fieldset>
+      <legend>Chi paga (committente)</legend>
+      <label>Nome o ragione sociale<input name="c_nome"></label>
+      <label>Codice fiscale o partita IVA<input name="c_cf"></label>
+      <label>Indirizzo<input name="c_indirizzo"></label>
+      <label>Il committente è
+        <select name="c_tipo">
+          <option value="privato">un privato (niente ritenuta)</option>
+          <option value="sostituto">un'azienda o un professionista (ritenuta 20%)</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Prestazione</legend>
+      <label>Numero ricevuta<input name="numero" value="1" inputmode="numeric"></label>
+      <label>Data<input name="data" type="date"></label>
+      <label>Luogo<input name="luogo"></label>
+      <label>Descrizione<textarea name="descrizione">Prestazione di lavoro autonomo occasionale</textarea></label>
+      <label>Importo in euro<input name="importo" inputmode="decimal" value="100"></label>
+      <label>L'importo che hai scritto è
+        <select name="tipo_importo">
+          <option value="lordo">il compenso lordo</option>
+          <option value="netto">il netto che voglio incassare</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+
+  <div class="risultato" aria-live="polite">
+    <table>
+      <tr><td>Compenso lordo</td><td id="r_lordo"></td></tr>
+      <tr><td>Ritenuta d'acconto 20%</td><td id="r_rit"></td></tr>
+      <tr><td><strong>Netto da incassare</strong></td><td class="grande" id="r_netto"></td></tr>
+      <tr><td>Marca da bollo da 2 €</td><td id="r_bollo"></td></tr>
+    </table>
+  </div>
+
+  <div class="foglio" id="ricevuta">
+    <h2>Ricevuta per prestazione occasionale n. <span data-v="numero"></span></h2>
+    <div><span data-v="luogo"></span><span id="virgola"></span> <span id="data_it"></span></div>
+    <div class="parti">
+      <div><strong>Prestatore</strong><br><span data-v="p_nome"></span><br>C.F. <span data-v="p_cf"></span><br><span data-v="p_indirizzo"></span></div>
+      <div><strong>Committente</strong><br><span data-v="c_nome"></span><br><span data-v="c_cf"></span><br><span data-v="c_indirizzo"></span></div>
+    </div>
+    <p><strong>Descrizione:</strong> <span data-v="descrizione"></span></p>
+    <table>
+      <tr><td>Compenso lordo</td><td id="f_lordo"></td></tr>
+      <tr id="f_riga_rit"><td>Ritenuta d'acconto 20%</td><td id="f_rit"></td></tr>
+      <tr><td><strong>Netto a pagare</strong></td><td><strong id="f_netto"></strong></td></tr>
+    </table>
+    <p class="note">Prestazione di lavoro autonomo occasionale (art. 2222 c.c.), resa senza vincolo di subordinazione e senza carattere
+      di abitualità. Operazione fuori dal campo di applicazione dell'IVA (art. 5 D.P.R. 633/1972).
+      <span id="n_rit">Ritenuta d'acconto del 20% (art. 25 D.P.R. 600/1973) operata dal committente in qualità di sostituto d'imposta.</span>
+      <span id="n_bollo">Imposta di bollo da 2,00 € assolta sull'originale.</span>
+      <span id="n_iban">Pagamento tramite bonifico su IBAN <span data-v="p_iban"></span>.</span></p>
+    <p class="firma">Firma ______________________________</p>
+  </div>
+  <div><button type="button" onclick="print()">Stampa o salva in PDF</button></div>
+</div>
+
+$box_prodotto
+$box_piva
+
+<h2>Come funziona la ricevuta per prestazione occasionale</h2>
+<p>La prestazione occasionale è un lavoro autonomo svolto senza partita IVA, in modo saltuario e non abituale.
+   Per ogni pagamento si rilascia una ricevuta (non una fattura) con i dati delle due parti, la descrizione del lavoro e l'importo.</p>
+<ul>
+  <li><strong>Ritenuta d'acconto del 20%</strong>: si applica solo se chi paga è un sostituto d'imposta (aziende, professionisti, enti).
+      Il committente trattiene il 20% e lo versa allo Stato per conto tuo. Con un privato la ritenuta non si applica.</li>
+  <li><strong>Marca da bollo da 2 €</strong>: va applicata sull'originale quando l'importo supera 77,47 €.</li>
+  <li><strong>Niente IVA</strong>: la prestazione occasionale è fuori dal campo di applicazione dell'IVA.</li>
+  <li><strong>Soglia dei 5.000 €</strong>: oltre 5.000 € lordi annui sono dovuti i contributi INPS (Gestione Separata) sulla parte eccedente.
+      Non è un limite che rende l'attività automaticamente occasionale: conta che non sia abituale.</li>
+</ul>
+
+<h2>Domande frequenti</h2>
+<details><summary>Devo per forza applicare la ritenuta?</summary>
+  <p>Solo se il committente è un sostituto d'imposta, cioè di solito un'azienda o un professionista. Molti professionisti in regime
+     forfettario non sono tenuti a operarla: in quel caso scegli "privato". Nel dubbio chiedi al committente.</p></details>
+<details><summary>Voglio incassare una cifra precisa: quanto scrivo?</summary>
+  <p>Scegli "il netto che voglio incassare": il generatore calcola il lordo da scrivere in ricevuta. Per esempio, per incassare 100 €
+     da un'azienda il lordo è 125 €, perché la ritenuta è di 25 €.</p></details>
+<details><summary>Chi paga la marca da bollo?</summary>
+  <p>Va applicata da chi emette la ricevuta, ma le parti possono accordarsi perché il costo sia addebitato al committente.</p></details>
+<details><summary>I miei dati vengono salvati?</summary>
+  <p>No. Tutto avviene nel tuo browser. Se spunti "Ricorda i miei dati", nome, codice fiscale, indirizzo e IBAN vengono salvati
+     solo su questo dispositivo, per non doverli riscrivere la prossima volta.</p></details>
+<details><summary>Fino a quanto posso lavorare con la prestazione occasionale?</summary>
+  <p>Non c'è un tetto in euro: conta che il lavoro resti saltuario. Lavori continui o con clienti fissi possono richiedere la partita IVA.
+     Queste indicazioni sono generali: per il tuo caso chiedi a un commercialista.</p></details>
+
+<h2>Altri strumenti</h2>
+<p><a href="${base}calcolo-ritenuta-acconto/">Calcolo ritenuta d'acconto lordo e netto</a> ·
+   <a href="${base}scorporo-iva/">Scorporo IVA</a></p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f');
+const ricordati = ['p_nome', 'p_cf', 'p_indirizzo', 'p_iban'];
+const q = (id) => document.getElementById(id);
+try {
+  const salvati = JSON.parse(localStorage.getItem('prestatore') || 'null');
+  if (salvati) { for (const k of ricordati) f[k].value = salvati[k] || ''; f.ricorda.checked = true; }
+} catch {}
+if (!f.data.value) f.data.value = new Date().toISOString().slice(0, 10);
+
+function aggiorna() {
+  const sostituto = f.c_tipo.value === 'sostituto';
+  const n = c.numero(f.importo.value);
+  const r = c.ricevuta(Number.isFinite(n) ? c.cent(n) : 0, sostituto, f.tipo_importo.value === 'netto');
+  for (const el of document.querySelectorAll('[data-v]')) el.textContent = f[el.dataset.v].value;
+  const [a, m, g] = f.data.value.split('-');
+  q('data_it').textContent = g ? g + '/' + m + '/' + a : '';
+  q('virgola').textContent = f.luogo.value && g ? ',' : '';
+  q('r_lordo').textContent = q('f_lordo').textContent = c.euro(r.lordo);
+  q('r_rit').textContent = q('f_rit').textContent = '- ' + c.euro(r.ritenuta);
+  q('r_netto').textContent = q('f_netto').textContent = c.euro(r.netto);
+  q('r_bollo').textContent = r.bollo ? 'sì, sull\'originale' : 'no';
+  q('f_riga_rit').hidden = q('n_rit').hidden = !sostituto;
+  q('n_bollo').hidden = !r.bollo;
+  q('n_iban').hidden = !f.p_iban.value;
+  try {
+    if (f.ricorda.checked) localStorage.setItem('prestatore', JSON.stringify(Object.fromEntries(ricordati.map((k) => [k, f[k].value]))));
+    else localStorage.removeItem('prestatore');
+  } catch {}
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>
