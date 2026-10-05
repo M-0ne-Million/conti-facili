@@ -10,9 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# Gruppo proprio: non si scontra con il "pages build and deployment" automatico di GitHub.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pubblica-conti-facili
+  cancel-in-progress: false
 
 jobs:
   pubblica:
