@@ -17,7 +17,7 @@ google_verifica = ""
 # Ogni riquadro compare sul sito solo quando il link è compilato.
 # Link al modello Excel "Registro prestazioni occasionali" (Etsy, Gumroad, Lemon Squeezy, Payhip...).
 link_prodotto = ""
-prezzo_prodotto = "12 €"
+prezzo_prodotto = "9,90 €"
 # Link affiliato a un servizio di commercialisti online / apertura partita IVA.
 link_partita_iva = ""
 nome_partita_iva = ""
