@@ -1,0 +1,15 @@
+<h1>Metti i calcolatori sul tuo sito, gratis</h1>
+<p class="introduzione">Hai un blog, il sito di uno studio, di un'agenzia o di una struttura turistica? Copia il codice del calcolatore che ti serve
+   e incollalo in una pagina del tuo sito. È gratis e non devi registrarti.</p>
+<p>Il calcolatore si aggiorna da solo quando cambiano le regole. L'unica condizione è lasciare il link sotto il riquadro.
+   I dati che scrivono i tuoi visitatori restano sul loro dispositivo.</p>
+$codici
+<script>
+for (const b of document.querySelectorAll('.copia')) b.addEventListener('click', async () => {
+  const t = b.previousElementSibling;
+  t.select();
+  try { await navigator.clipboard.writeText(t.value); } catch { document.execCommand('copy'); }
+  b.textContent = 'Codice copiato';
+  setTimeout(() => { b.textContent = 'Copia il codice'; }, 2000);
+});
+</script>

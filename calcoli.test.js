@@ -89,3 +89,36 @@ test('forfettario 2026', () => {
   vicino(c.forfettario({ ricavi: 60000, coefficiente: 40, gestione: 'commercianti', riduzione: true }).contributi, 3826.32);
   vicino(c.forfettario({ ricavi: 20000, coefficiente: 67, gestione: 'artigiani' }).contributi, 4521.36);   // sotto il minimale: solo il fisso
 });
+
+test('codice fiscale', () => {
+  assert.equal(c.codiceFiscale({ cognome: 'Rossi', nome: 'Mario', data: '1985-12-10', sesso: 'M', comune: 'A562' }), 'RSSMRA85T10A562S');
+  assert.equal(c.codiceFiscale({ cognome: 'De Luca', nome: 'Gianfranco', data: '1990-03-05', sesso: 'M', comune: 'F205' }).slice(0, 6), 'DLCGFR');
+  assert.equal(c.codiceFiscale({ cognome: 'Fo', nome: 'Ida', data: '2001-01-31', sesso: 'F', comune: 'H501' }).slice(0, 11), 'FOXDIA01A71');
+  assert.equal(c.codiceFiscale({ cognome: "D'Amico", nome: 'Lucia', data: '1970-07-01', sesso: 'F', comune: 'L219' }).slice(0, 6), 'DMCLCU');
+  assert.ok(c.codiceFiscaleValido('RSSMRA85T10A562S'));
+  assert.ok(c.codiceFiscaleValido('rssmra85t10a562s'));
+  assert.ok(!c.codiceFiscaleValido('RSSMRA85T10A562T'));
+  assert.ok(!c.codiceFiscaleValido('RSSMRA85T10A56'));
+});
+
+test('IBAN', () => {
+  assert.ok(c.ibanValido('IT60 X054 2811 1010 0000 0123 456'));
+  assert.ok(c.ibanValido('DE89370400440532013000'));
+  assert.ok(!c.ibanValido('IT60X0542811101000000123457'));
+  assert.ok(!c.ibanValido('IT60X054281110100000012345'));   // corto per l'Italia
+});
+
+test('IMU', () => {
+  vicino(c.imu({ rendita: 1000, categoria: 'A/2', aliquota: 8.6 }).imposta, 1444.80);
+  vicino(c.imu({ rendita: 1000, categoria: 'A/2', aliquota: 8.6, quota: 50, mesi: 6 }).imposta, 361.20);
+  vicino(c.imu({ rendita: 300, categoria: 'C/1', aliquota: 10.6 }).imposta, 183.65);
+  vicino(c.imu({ rendita: 2000, categoria: 'A/1', aliquota: 5, detrazione: 200 }).imposta, 1480);   // abitazione principale di lusso
+});
+
+test('interesse composto', () => {
+  vicino(c.interesseComposto({ capitale: 10000, tasso: 5, anni: 10 }).versato + c.interesseComposto({ capitale: 10000, tasso: 5, anni: 10 }).guadagno, 16288.95);
+  const p = c.interesseComposto({ mensile: 100, tasso: 0, anni: 10 });
+  vicino(p.netto, 12000);
+  const t = c.interesseComposto({ capitale: 10000, tasso: 5, anni: 10, tasse: 26 });
+  vicino(t.imposte, 6288.95 * 0.26);
+});

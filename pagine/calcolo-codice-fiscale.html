@@ -1,0 +1,83 @@
+<h1>Calcolo del codice fiscale e verifica</h1>
+<p class="introduzione">Calcola il codice fiscale da nome, cognome, data e luogo di nascita, oppure controlla se un codice è scritto giusto.
+   Tutto avviene sul tuo dispositivo: i dati non vengono inviati a nessuno.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <legend>Calcola</legend>
+      <label>Cognome<input name="cognome" autocomplete="family-name" value="Rossi"></label>
+      <label>Nome<input name="nome" autocomplete="given-name" value="Mario"></label>
+      <label>Data di nascita<input name="data" type="date" value="1985-12-10"></label>
+      <label>Sesso<select name="sesso"><option value="M">maschio</option><option value="F">femmina</option></select></label>
+      <label>Comune di nascita<input name="comune" list="comuni" placeholder="Inizia a scrivere, es. Roma" autocomplete="off"></label>
+      <label>Nato all'estero? Codice dello Stato<input name="estero" placeholder="es. Z112 per la Germania" autocapitalize="characters"></label>
+      <datalist id="comuni"></datalist>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il codice fiscale</p>
+      <p class="grande-codice" id="cf">—</p>
+      <p class="nota" id="nota_cf">Scegli il comune di nascita dall'elenco.</p>
+    </div>
+  </div>
+</div>
+
+<div class="strumento">
+  <form id="v" class="modulo" onsubmit="return false">
+    <fieldset>
+      <legend>Verifica un codice fiscale</legend>
+      <label>Codice fiscale<input name="cf" autocapitalize="characters" maxlength="20" value="RSSMRA85T10A562S"></label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite"><table><tr class="totale"><td>Risultato</td><td id="esito"></td></tr></table></div>
+  </div>
+</div>
+
+<h2>Come si calcola il codice fiscale</h2>
+<ul>
+  <li><strong>Cognome</strong>: le prime tre consonanti; se non bastano, le vocali; se non bastano ancora, una X.</li>
+  <li><strong>Nome</strong>: se ha quattro o più consonanti si prendono la prima, la terza e la quarta, altrimenti come per il cognome.</li>
+  <li><strong>Anno, mese e giorno</strong>: le ultime due cifre dell'anno, una lettera per il mese (A gennaio, B febbraio, C marzo, D aprile, E maggio, H giugno, L luglio, M agosto, P settembre, R ottobre, S novembre, T dicembre) e il giorno; per le donne il giorno si aumenta di 40.</li>
+  <li><strong>Luogo</strong>: il codice catastale del comune (per esempio H501 per Roma) o, per chi è nato all'estero, il codice dello Stato che inizia con Z.</li>
+  <li><strong>Ultimo carattere</strong>: una lettera di controllo calcolata dai 15 caratteri precedenti, che serve a scoprire gli errori di battitura.</li>
+</ul>
+<p class="nota">L'unico codice fiscale valido è quello rilasciato dall'Agenzia delle Entrate: in rari casi (omocodia) può essere diverso da quello calcolato.
+   L'elenco usa i comuni attuali ISTAT; per i comuni soppressi o fusi serve il codice del vecchio comune. I codici degli Stati esteri sono pubblicati dall'ISTAT.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Il codice calcolato è valido per i documenti?</summary><p>Serve per controllare o ricordare il tuo codice. Per i documenti ufficiali fa fede quello indicato sulla tessera sanitaria o rilasciato dall'Agenzia delle Entrate.</p></details>
+<details><summary>Che cos'è l'omocodia?</summary><p>Quando due persone avrebbero lo stesso codice, l'Agenzia delle Entrate sostituisce alcune cifre con lettere. La verifica qui sopra riconosce anche questi codici.</p></details>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), v = document.getElementById('v'), q = (id) => document.getElementById(id);
+const codici = new Map(), nomi = [];
+fetch('${base}dati/comuni.json').then((r) => r.json()).then((elenco) => {
+  for (const voce of elenco) { const [nome, codice] = voce.split('|'); codici.set(nome.toLowerCase(), codice); nomi.push(nome); }
+  f.comune.value = 'San Giuliano Terme (PI)';
+  aggiorna();
+});
+// I suggerimenti (quasi 8.000 comuni) si aggiungono solo quando serve, per tenere leggera la pagina.
+f.comune.addEventListener('focus', () => { if (!q('comuni').options.length) q('comuni').append(...nomi.map((n) => new Option(n))); });
+function luogo() {
+  const estero = f.estero.value.trim().toUpperCase();
+  if (/^Z\d{3}$$/.test(estero)) return estero;
+  const testo = f.comune.value.trim().toLowerCase();
+  return codici.get(testo) || [...codici].find(([nome]) => nome.startsWith(testo + ' ('))?.[1];
+}
+function aggiorna() {
+  const comune = luogo(), pronto = f.cognome.value.trim() && f.nome.value.trim() && f.data.value && comune;
+  q('cf').textContent = pronto ? c.codiceFiscale({ cognome: f.cognome.value, nome: f.nome.value, data: f.data.value, sesso: f.sesso.value, comune }) : '—';
+  q('nota_cf').textContent = pronto ? 'Codice del luogo di nascita: ' + comune + '.' : 'Compila tutti i campi e scegli il comune dall\'elenco.';
+}
+function verifica() {
+  const cf = v.cf.value.trim();
+  q('esito').textContent = !cf ? '—' : c.codiceFiscaleValido(cf) ? 'corretto' : 'non valido';
+}
+f.addEventListener('input', aggiorna);
+v.addEventListener('input', verifica);
+verifica();
+</script>

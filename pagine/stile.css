@@ -140,3 +140,10 @@ table.dati th { font-weight: 700; font-size: .95rem; color: var(--grigio); }
   .scontrino .totale td:last-child { background: none; }
   @page { size: A4; margin: 2cm; }
 }
+.grande-codice { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 900; color: var(--carbone); letter-spacing: .06em; margin: .25rem 0; overflow-wrap: anywhere; }
+/* Pagina "incorpora" e versione incorporata nei siti di altri */
+main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; background: var(--carta); border: 1px solid #c3cad9; padding: .6rem; margin-bottom: .5rem; max-width: 42rem; display: block; }
+.incorporato { background: var(--carta); }
+.incorporato .testata, .incorporato footer, .incorporato main > :not(.strumento, .firma-widget, script) { display: none; }
+.incorporato .strumento { margin: .5rem 0; }
+.firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }

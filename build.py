@@ -32,12 +32,22 @@ STRUMENTI = [
      'Calcola quanto ti resta di un affitto breve su Airbnb o Booking: commissioni, pulizie e cedolare secca al 21% o 26% con le regole 2026.'),
     ('calcolo-tassa-di-soggiorno', 'Calcolo tassa di soggiorno per affitti brevi',
      'Calcola la tassa di soggiorno per gli ospiti: tariffa a persona per notte, esenzioni e notti massime, con esempi per Roma, Milano, Firenze, Venezia e Napoli.'),
+    ('calcolo-codice-fiscale', 'Calcolo codice fiscale online e verifica',
+     'Calcola il codice fiscale da nome, cognome, data e comune di nascita, oppure verifica se un codice fiscale è corretto. Gratis, senza inviare dati.'),
+    ('verifica-iban', 'Verifica IBAN online: controlla se è corretto',
+     'Controlla se un IBAN è scritto correttamente prima di un bonifico: cifre di controllo, lunghezza, ABI e CAB. Il controllo avviene sul tuo dispositivo.'),
+    ('calcolo-imu', 'Calcolo IMU: importo, acconto e saldo',
+     'Calcola l\'IMU dalla rendita catastale: coefficienti per categoria, aliquota del Comune, quota e mesi di possesso, acconto di giugno e saldo di dicembre.'),
+    ('calcolo-interesse-composto', 'Calcolo interesse composto e PAC',
+     'Calcola quanto può crescere un capitale con l\'interesse composto e un piano di accumulo mensile, con le tasse italiane sui guadagni (26% o 12,5%).'),
     ('calcolo-sconto-percentuale', 'Calcolo sconto e percentuali online',
      'Calcola il prezzo scontato, che percentuale è un numero rispetto a un altro e le variazioni percentuali. Con formule ed esempi.'),
 ]
 ALTRE = [
     ('index', f"{C['nome']}: calcolatori e ricevute gratis in italiano",
      'Strumenti gratuiti in italiano: ricevuta per prestazione occasionale, ritenuta d\'acconto, scorporo IVA, rata mutuo, sconti e percentuali.'),
+    ('incorpora', f"Metti i calcolatori sul tuo sito | {C['nome']}",
+     'Aggiungi gratis i calcolatori di Conti Facili al tuo sito o blog: ricevute, ritenuta, IVA, mutuo, stipendio, forfettario, affitti brevi e altri.'),
     ('privacy', f"Privacy | {C['nome']}", f"Informativa privacy di {C['nome']}."),
 ]
 
@@ -83,13 +93,21 @@ shutil.rmtree(OUT, ignore_errors=True)
 OUT.mkdir()
 shutil.copy(QUI / 'calcoli.js', OUT)
 shutil.copytree(PAGINE / 'font', OUT / 'font')
+shutil.copytree(PAGINE / 'dati', OUT / 'dati')
 
-indirizzi = []
-for nome, titolo, descrizione in STRUMENTI + ALTRE:
+# Codici da copiare per incorporare i calcolatori in altri siti (pagina /incorpora/).
+codici = ''.join(
+    f'<h2>{html.escape(t.split(":")[0])}</h2><textarea readonly rows="4" aria-label="Codice per {html.escape(t.split(":")[0])}">'
+    + html.escape(f'<iframe src="{URL}incorpora/{n}/" title="{t.split(":")[0]}" width="100%" height="720" style="border:0" loading="lazy"></iframe>\n'
+                  f'<p>Calcolatore gratuito: <a href="{URL}{n}/">{t.split(":")[0]}</a> di {C["nome"]}</p>')
+    + '</textarea><button type="button" class="copia">Copia il codice</button>' for n, t, _ in STRUMENTI)
+
+
+def genera(nome, titolo, descrizione, incorporato=False):
     radice = nome == 'index'
-    base, canonical = ('', URL) if radice else ('../', f'{URL}{nome}/')
+    base, canonical = ('', URL) if radice else ('../../' if incorporato else '../', f'{URL}{nome}/')
     comuni = {'base': base, 'titolare': html.escape(C['titolare']), 'email': html.escape(C['email']),
-              'privacy_pubblicita': privacy_pubblicita, **box}
+              'privacy_pubblicita': privacy_pubblicita, 'codici': codici, **box}
     corpo = Template((PAGINE / f'{nome}.html').read_text('utf-8')).substitute(comuni)
     jsonld = ({'@context': 'https://schema.org', '@type': 'WebSite', 'name': C['nome'], 'url': URL, 'inLanguage': 'it'} if radice else
               {'@context': 'https://schema.org', '@type': 'WebApplication', 'name': titolo, 'url': canonical, 'description': descrizione,
@@ -101,11 +119,19 @@ for nome, titolo, descrizione in STRUMENTI + ALTRE:
         adsense=adsense + (f'<meta name="google-site-verification" content="{html.escape(C["google_verifica"])}">' if C['google_verifica'] else ''),
         jsonld=json.dumps(jsonld, ensure_ascii=False).replace('</', '<\\/'), anno=date.today().year,
         menu=''.join(f'<li><a href="{base}{n}/">{html.escape(t.split(":")[0])}</a></li>' for n, t, _ in STRUMENTI),
-        nota_affiliati=' Alcuni link sono sponsorizzati: se acquisti tramite quei link il sito può ricevere una commissione.' if affiliati else '')
-    dest = OUT / 'index.html' if radice else OUT / nome / 'index.html'
-    dest.parent.mkdir(exist_ok=True)
+        nota_affiliati=' Alcuni link sono sponsorizzati: se acquisti tramite quei link il sito può ricevere una commissione.' if affiliati else '',
+        classe='incorporato' if incorporato else '',
+        robots='<meta name="robots" content="noindex">' if incorporato else '',
+        firma=f'<p class="firma-widget">Calcolatore gratuito di <a href="{html.escape(canonical)}" target="_blank" rel="noopener">{html.escape(C["nome"])}</a></p>' if incorporato else '')
+    dest = OUT / 'index.html' if radice else OUT / ('incorpora' if incorporato else '') / nome / 'index.html'
+    dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(pagina, 'utf-8')
-    indirizzi.append(canonical)
+    return canonical
+
+
+indirizzi = [genera(*p) for p in STRUMENTI + ALTRE]
+for p in STRUMENTI:
+    genera(*p, incorporato=True)   # fuori dalla sitemap e con noindex: contano i link verso le pagine vere
 
 (OUT / 'sitemap.xml').write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

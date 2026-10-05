@@ -1,0 +1,75 @@
+<h1>Calcolo IMU: quanto pagare e quando</h1>
+<p class="introduzione">Dalla rendita catastale all'importo da versare, con acconto di giugno e saldo di dicembre.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Rendita catastale in euro<input name="rendita" inputmode="decimal" value="800"></label>
+      <label>Categoria catastale
+        <select name="categoria">
+          <option value="A">A/2, A/3, A/4… (abitazioni)</option>
+          <option value="A/1">A/1, A/8, A/9 (abitazioni di lusso)</option>
+          <option value="A/10">A/10 (uffici)</option>
+          <option value="B">B (collegi, scuole…)</option>
+          <option value="C/1">C/1 (negozi)</option>
+          <option value="C/2">C/2, C/6, C/7 (cantine, box, tettoie)</option>
+          <option value="C/3">C/3, C/4, C/5 (laboratori)</option>
+          <option value="D">D (capannoni, alberghi…)</option>
+          <option value="D/5">D/5 (banche, assicurazioni)</option>
+        </select>
+      </label>
+      <label>Aliquota del Comune (per mille)<input name="aliquota" inputmode="decimal" value="8,6"></label>
+      <label>Quota di possesso in %<input name="quota" inputmode="decimal" value="100"></label>
+      <label>Mesi di possesso nell'anno<input name="mesi" inputmode="numeric" value="12"></label>
+      <label class="spunta"><input type="checkbox" name="principale"> È la mia abitazione principale (ci abito e ho la residenza) o una sua pertinenza</label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto dell'IMU</p>
+      <table>
+        <tr><td>Base imponibile</td><td id="base"></td></tr>
+        <tr><td>Acconto entro il 16 giugno</td><td id="acconto"></td></tr>
+        <tr><td>Saldo entro il 16 dicembre</td><td id="saldo"></td></tr>
+        <tr class="totale"><td>IMU dell'anno</td><td id="tot"></td></tr>
+      </table>
+      <p class="nota" id="nota"></p>
+    </div>
+  </div>
+</div>
+
+<h2>Come si calcola l'IMU</h2>
+<ul>
+  <li>Si parte dalla <strong>rendita catastale</strong> (la trovi nella visura catastale o nell'atto di acquisto) e la si aumenta del 5%.</li>
+  <li>Si moltiplica per un coefficiente che dipende dalla categoria: 160 per le abitazioni e per box e cantine, 80 per gli uffici, 55 per i negozi, 65 per la maggior parte dei capannoni.</li>
+  <li>Sul risultato si applica l'<strong>aliquota decisa dal Comune</strong>: quella di base è 8,6 per mille, ma i Comuni possono alzarla fino a 10,6 per mille o abbassarla.</li>
+  <li>L'<strong>abitazione principale</strong> non paga, a meno che sia di lusso (A/1, A/8, A/9): in quel caso aliquota ridotta (di base 5 per mille) e detrazione di 200 €.</li>
+  <li>Si paga in due rate: <strong>acconto entro il 16 giugno</strong> e <strong>saldo entro il 16 dicembre</strong>, con il modello F24.</li>
+</ul>
+<p class="nota">Le aliquote del tuo Comune sono pubblicate sul sito del Dipartimento delle Finanze. Il calcolo non considera riduzioni particolari (immobili inagibili, affitti a canone concordato, comodato ai figli). Indicazioni generali, non consulenza fiscale.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+let ultimaCategoria = f.categoria.value;
+function aggiorna() {
+  const lusso = f.categoria.value === 'A/1', principale = f.principale.checked;
+  if (f.categoria.value !== ultimaCategoria || principale !== aggiorna.principale) {
+    if (principale && lusso) f.aliquota.value = '5';
+    ultimaCategoria = f.categoria.value; aggiorna.principale = principale;
+  }
+  const rendita = c.numero(f.rendita.value), aliquota = c.numero(f.aliquota.value), quota = c.numero(f.quota.value), mesi = Math.min(12, Math.max(0, Math.floor(c.numero(f.mesi.value))));
+  if (!(rendita >= 0) || !(aliquota >= 0)) return;
+  const esente = principale && (f.categoria.value === 'A' || f.categoria.value === 'C/2');   // casa non di lusso e sue pertinenze
+  const r = c.imu({ rendita, categoria: f.categoria.value, aliquota: esente ? 0 : aliquota, quota: quota >= 0 ? quota : 100, mesi: mesi || 0, detrazione: principale && lusso ? 200 : 0 });
+  q('base').textContent = e(r.base);
+  q('acconto').textContent = e(r.acconto);
+  q('saldo').textContent = e(r.saldo);
+  q('tot').textContent = e(r.imposta);
+  q('nota').textContent = esente ? 'L\'abitazione principale non di lusso è esente da IMU (anche le pertinenze: un box, una cantina, una tettoia).'
+    : principale && lusso ? 'Abitazione principale di lusso: aliquota ridotta e detrazione di 200 €.' : '';
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

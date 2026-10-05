@@ -137,3 +137,58 @@ export function forfettario({ ricavi, coefficiente, gestione = 'separata', riduz
   const imponibile = Math.max(0, reddito - contributi), imposta = (imponibile * aliquota) / 100;
   return { reddito, contributi, imponibile, imposta, netto: ricavi - spese - contributi - imposta };
 }
+
+// ---------------------------------------------------------------------------
+// Codice fiscale (DM 23/12/1976). `comune` = codice catastale (es. H501 Roma, Z112 Germania).
+const lettere = (s) => s.normalize('NFD').toUpperCase().replace(/[^A-Z]/g, '');
+const consonanti = (s) => s.replace(/[AEIOU]/g, ''), vocali = (s) => s.replace(/[^AEIOU]/g, '');
+const DISPARI = [1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23];
+const valore = (ch) => (ch <= '9' ? ch.charCodeAt(0) - 48 : ch.charCodeAt(0) - 65);
+
+export function carattereControllo(primi15) {
+  let somma = 0;
+  [...primi15].forEach((ch, i) => { somma += i % 2 === 0 ? DISPARI[valore(ch)] : valore(ch); });
+  return String.fromCharCode(65 + (somma % 26));
+}
+
+export function codiceFiscale({ cognome, nome, data, sesso, comune }) {
+  const c = lettere(cognome), n = lettere(nome), cn = consonanti(n);
+  const parte = (s) => (consonanti(s) + vocali(s) + 'XXX').slice(0, 3);
+  const [anno, mese, giorno] = data.split('-').map(Number);
+  const cf = parte(c) + (cn.length >= 4 ? cn[0] + cn[2] + cn[3] : parte(n)) + String(anno % 100).padStart(2, '0')
+    + 'ABCDEHLMPRST'[mese - 1] + String(giorno + (sesso === 'F' ? 40 : 0)).padStart(2, '0') + comune.toUpperCase();
+  return cf + carattereControllo(cf);
+}
+
+// Controlla formato (anche con omocodia) e carattere di controllo.
+export function codiceFiscaleValido(cf) {
+  cf = String(cf).toUpperCase().replace(/\s/g, '');
+  return /^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]$/.test(cf)
+    && carattereControllo(cf.slice(0, 15)) === cf[15];
+}
+
+// IBAN: controllo internazionale modulo 97 (ISO 13616). Per l'Italia anche la lunghezza (27).
+export function ibanValido(iban) {
+  const s = String(iban).toUpperCase().replace(/\s/g, '');
+  if (!/^[A-Z]{2}[0-9]{2}[A-Z0-9]{10,30}$/.test(s) || (s.startsWith('IT') && s.length !== 27)) return false;
+  let resto = 0;
+  for (const ch of s.slice(4) + s.slice(0, 4)) for (const d of String(parseInt(ch, 36))) resto = (resto * 10 + Number(d)) % 97;
+  return resto === 1;
+}
+
+// IMU (L. 160/2019): rendita catastale rivalutata del 5% × moltiplicatore × aliquota del Comune (per mille).
+export const MOLTIPLICATORI_IMU = { A: 160, 'A/10': 80, B: 140, 'C/1': 55, 'C/2': 160, 'C/6': 160, 'C/7': 160, 'C/3': 140, 'C/4': 140, 'C/5': 140, D: 65, 'D/5': 80 };
+export function imu({ rendita, categoria, aliquota, quota = 100, mesi = 12, detrazione = 0 }) {
+  const m = MOLTIPLICATORI_IMU[categoria] ?? MOLTIPLICATORI_IMU[categoria[0]];
+  const base = rendita * 1.05 * m;
+  const imposta = Math.max(0, ((base * aliquota) / 1000 - detrazione) * (quota / 100) * (mesi / 12));
+  return { base, imposta, acconto: imposta / 2, saldo: imposta / 2 };
+}
+
+// Interesse composto con versamenti mensili (PAC). tasso = rendimento annuo % (lordo), tasse = % sui guadagni.
+export function interesseComposto({ capitale = 0, mensile = 0, tasso, anni, tasse = 0 }) {
+  const n = anni * 12, r = (1 + tasso / 100) ** (1 / 12) - 1;
+  const finale = capitale * (1 + r) ** n + (r === 0 ? mensile * n : (mensile * ((1 + r) ** n - 1)) / r);
+  const versato = capitale + mensile * n, guadagno = finale - versato, imposte = Math.max(0, guadagno) * tasse / 100;
+  return { versato, guadagno, imposte, netto: finale - imposte };
+}

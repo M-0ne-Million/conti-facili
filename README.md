@@ -4,8 +4,8 @@ Un piccolo "negozio" che lavora da solo:
 
 | Cosa | Dove sta | Come guadagna |
 |---|---|---|
-| **Sito gratuito**: generatore di ricevute per prestazione occasionale, ritenuta d'acconto, scorporo IVA, rata mutuo, sconti | Online, gratis, su GitHub Pages (cartelle `pagine/`, `calcoli.js`) | Porta visite da Google → vendite del modello Excel, link affiliati, pubblicità |
-| **Modelli Excel**: registro prestazioni occasionali, budget familiare, affitti brevi | Cartella `etsy/` (privata, mai su GitHub) | Vendita su Etsy, Gumroad, Payhip o Lemon Squeezy |
+| **Sito gratuito**: 14 strumenti (ricevute, ritenuta, IVA, mutuo, stipendio netto, forfettario, affitti brevi, tassa di soggiorno, codice fiscale, IBAN, IMU, interesse composto, sconti) | Online, gratis, su GitHub Pages (cartelle `pagine/`, `calcoli.js`) | Porta visite da Google → vendite del modello Excel, link affiliati, pubblicità |
+| **Prodotti digitali**: modelli Excel in italiano e inglese, kit per host di affitti brevi | Cartella `etsy/` (privata, mai su GitHub) | Vendita su Etsy, Payhip, Gumroad: istruzioni in `etsy/NEGOZI.md` |
 | **Analisi di mercato** | `analisi-mercato.md` (privata) | Chi sono i clienti, concorrenti, partner a cui iscriversi |
 
 Nessun server da gestire, nessun dato dei visitatori da custodire: i calcoli avvengono nel browser di chi usa il sito.
@@ -61,7 +61,17 @@ I file sono in `etsy/`, con titoli, descrizioni, tag e immagini già pronti in `
 
 Dopo la pubblicazione nessuna azione: il file viene consegnato in automatico a ogni acquisto.
 
-## 5. Lavorare sul sito dal tuo computer
+## 5. Calcolatori incorporabili in altri siti
+
+La pagina `/incorpora/` del sito offre a blog e siti di settore il codice per mostrare i calcolatori, con un link verso Conti Facili.
+Ogni sito che lo usa porta visite e "voti" su Google. Le versioni incorporate (`/incorpora/<strumento>/`) non vengono indicizzate.
+
+## 6. Ogni anno, dopo la legge di bilancio
+
+I parametri fiscali (IRPEF, INPS, forfettario) sono tutti nell'oggetto `FISCO` in `calcoli.js`: è l'unico punto da aggiornare,
+poi `node --test` controlla che i calcoli tornino. Chiedimi di farlo a gennaio.
+
+## 7. Lavorare sul sito dal tuo computer
 
 ```
 python3 build.py

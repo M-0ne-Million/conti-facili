@@ -1,0 +1,55 @@
+<h1>Interesse composto e piano di accumulo (PAC)</h1>
+<p class="introduzione">Quanto può diventare un capitale nel tempo, con o senza un versamento ogni mese. Utile per confrontare scenari, non per prevedere i mercati.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Capitale iniziale in euro<input name="capitale" inputmode="decimal" value="5.000"></label>
+      <label>Versamento ogni mese in euro<input name="mensile" inputmode="decimal" value="200"></label>
+      <label>Rendimento annuo ipotizzato in %<input name="tasso" inputmode="decimal" value="4"></label>
+      <label>Durata in anni<input name="anni" inputmode="numeric" value="20"></label>
+      <label>Tasse sui guadagni
+        <select name="tasse"><option value="26">26% (fondi, ETF, azioni)</option><option value="12.5">12,5% (titoli di Stato)</option><option value="0">nessuna</option></select>
+      </label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto</p>
+      <table>
+        <tr><td>Hai versato</td><td id="versato"></td></tr>
+        <tr><td>Guadagno lordo</td><td id="guadagno"></td></tr>
+        <tr><td>Tasse sul guadagno</td><td id="imposte"></td></tr>
+        <tr class="totale"><td>Alla fine</td><td id="netto"></td></tr>
+      </table>
+      <p class="nota">Rendimento costante ipotetico, senza costi di gestione e inflazione. I rendimenti reali cambiano ogni anno e possono essere negativi.</p>
+    </div>
+  </div>
+</div>
+
+<h2>Che cos'è l'interesse composto</h2>
+<p>Con l'interesse composto anche i guadagni producono altri guadagni: per questo, a parità di rendimento, il tempo conta più della cifra iniziale.
+   Con un rendimento del 4% l'anno un capitale raddoppia in circa 18 anni.</p>
+<ul>
+  <li><strong>Piano di accumulo (PAC)</strong>: versare una cifra fissa ogni mese. Riduce l'effetto del momento in cui si entra sul mercato.</li>
+  <li><strong>Costi</strong>: una commissione dell'1% l'anno, su 20 anni, si mangia una parte importante del risultato. Per vederne l'effetto, abbassa il rendimento di quella percentuale.</li>
+  <li><strong>Tasse</strong>: in Italia i guadagni finanziari si tassano al 26%, al 12,5% per i titoli di Stato.</li>
+</ul>
+<p class="nota">Strumento di calcolo a scopo illustrativo: non è un consiglio di investimento.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+function aggiorna() {
+  const capitale = c.numero(f.capitale.value), mensile = c.numero(f.mensile.value), tasso = c.numero(f.tasso.value), anni = Math.floor(c.numero(f.anni.value));
+  if (!(anni > 0) || !Number.isFinite(tasso)) return;
+  const r = c.interesseComposto({ capitale: capitale > 0 ? capitale : 0, mensile: mensile > 0 ? mensile : 0, tasso, anni: Math.min(anni, 80), tasse: Number(f.tasse.value) });
+  q('versato').textContent = e(r.versato);
+  q('guadagno').textContent = e(r.guadagno);
+  q('imposte').textContent = '− ' + e(r.imposte);
+  q('netto').textContent = e(r.netto);
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

@@ -1,0 +1,44 @@
+<h1>Verifica IBAN online</h1>
+<p class="introduzione">Controlla se un IBAN è scritto correttamente prima di fare un bonifico. Il controllo avviene sul tuo dispositivo: l'IBAN non viene inviato a nessuno.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>IBAN<input name="iban" autocapitalize="characters" autocomplete="off" spellcheck="false" value="IT60 X054 2811 1010 0000 0123 456"></label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il controllo</p>
+      <table>
+        <tr><td>Paese</td><td id="paese"></td></tr>
+        <tr><td>ABI (banca)</td><td id="abi"></td></tr>
+        <tr><td>CAB (filiale)</td><td id="cab"></td></tr>
+        <tr><td>Conto</td><td id="conto"></td></tr>
+        <tr class="totale"><td>IBAN</td><td id="esito"></td></tr>
+      </table>
+      <p class="nota" id="formattato"></p>
+    </div>
+  </div>
+</div>
+
+<h2>Come funziona il controllo</h2>
+<p>Ogni IBAN contiene due cifre di controllo, subito dopo la sigla del Paese. Con un calcolo standard (modulo 97) si scopre quasi ogni errore di battitura:
+   una cifra sbagliata o due cifre invertite. Un IBAN italiano ha sempre 27 caratteri: IT, due cifre di controllo, una lettera (CIN), 5 cifre ABI, 5 cifre CAB e 12 caratteri del conto.</p>
+<p class="nota">Il controllo dice se l'IBAN è scritto bene, non se il conto esiste o a chi appartiene. Prima di un bonifico importante conferma i dati con chi deve ricevere il pagamento.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+function aggiorna() {
+  const s = f.iban.value.toUpperCase().replace(/\s/g, ''), it = s.startsWith('IT') && s.length === 27;
+  q('paese').textContent = s.slice(0, 2) || '—';
+  q('abi').textContent = it ? s.slice(5, 10) : '—';
+  q('cab').textContent = it ? s.slice(10, 15) : '—';
+  q('conto').textContent = it ? s.slice(15) : '—';
+  q('esito').textContent = !s ? '—' : c.ibanValido(s) ? 'corretto' : 'non valido';
+  q('formattato').textContent = s ? s.replace(/(.{4})/g, '$$1 ').trim() : '';
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>
