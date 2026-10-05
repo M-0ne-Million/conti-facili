@@ -43,6 +43,14 @@ STRUMENTI = [
     ('calcolo-sconto-percentuale', 'Calcolo sconto e percentuali online',
      'Calcola il prezzo scontato, che percentuale è un numero rispetto a un altro e le variazioni percentuali. Con formule ed esempi.'),
 ]
+GUIDE = [
+    ('guida-prestazione-occasionale', 'Prestazione occasionale 2026: guida completa',
+     'Ricevuta, ritenuta del 20%, marca da bollo, soglia dei 5.000 € e contributi INPS: come funziona la prestazione occasionale nel 2026 e come si dichiara.'),
+    ('guida-partita-iva-forfettaria', 'Partita IVA forfettaria 2026: costi, tasse e come aprirla',
+     'Requisiti, soglie, contributi INPS, imposta al 15% o 5% e costi: come aprire la partita IVA forfettaria nel 2026, con un esempio completo.'),
+    ('guida-affitti-brevi-2026', 'Affitti brevi 2026: tasse, cedolare secca e obblighi',
+     'Cedolare secca al 21% o 26%, ritenuta dei portali, CIN, Alloggiati Web e tassa di soggiorno: le regole 2026 degli affitti brevi, con un esempio.'),
+]
 ALTRE = [
     ('index', f"{C['nome']}: calcolatori e ricevute gratis in italiano",
      'Strumenti gratuiti in italiano: ricevuta per prestazione occasionale, ritenuta d\'acconto, scorporo IVA, rata mutuo, sconti e percentuali.'),
@@ -110,6 +118,9 @@ def genera(nome, titolo, descrizione, incorporato=False):
               'privacy_pubblicita': privacy_pubblicita, 'codici': codici, **box}
     corpo = Template((PAGINE / f'{nome}.html').read_text('utf-8')).substitute(comuni)
     jsonld = ({'@context': 'https://schema.org', '@type': 'WebSite', 'name': C['nome'], 'url': URL, 'inLanguage': 'it'} if radice else
+              {'@context': 'https://schema.org', '@type': 'Article', 'headline': titolo, 'description': descrizione, 'url': canonical,
+               'inLanguage': 'it', 'dateModified': date.today().isoformat(), 'publisher': {'@type': 'Organization', 'name': C['nome']}}
+              if nome.startswith('guida-') else
               {'@context': 'https://schema.org', '@type': 'WebApplication', 'name': titolo, 'url': canonical, 'description': descrizione,
                'applicationCategory': 'FinanceApplication', 'operatingSystem': 'Any', 'inLanguage': 'it',
                'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'}})
@@ -118,7 +129,7 @@ def genera(nome, titolo, descrizione, incorporato=False):
         nome_sito=html.escape(C['nome']), base=base or './', corpo=corpo, css=css,
         adsense=adsense + (f'<meta name="google-site-verification" content="{html.escape(C["google_verifica"])}">' if C['google_verifica'] else ''),
         jsonld=json.dumps(jsonld, ensure_ascii=False).replace('</', '<\\/'), anno=date.today().year,
-        menu=''.join(f'<li><a href="{base}{n}/">{html.escape(t.split(":")[0])}</a></li>' for n, t, _ in STRUMENTI),
+        menu=''.join(f'<li><a href="{base}{n}/">{html.escape(t.split(":")[0])}</a></li>' for n, t, _ in STRUMENTI + GUIDE),
         nota_affiliati=' Alcuni link sono sponsorizzati: se acquisti tramite quei link il sito può ricevere una commissione.' if affiliati else '',
         classe='incorporato' if incorporato else '',
         robots='<meta name="robots" content="noindex">' if incorporato else '',
@@ -129,7 +140,7 @@ def genera(nome, titolo, descrizione, incorporato=False):
     return canonical
 
 
-indirizzi = [genera(*p) for p in STRUMENTI + ALTRE]
+indirizzi = [genera(*p) for p in STRUMENTI + GUIDE + ALTRE]
 for p in STRUMENTI:
     genera(*p, incorporato=True)   # fuori dalla sitemap e con noindex: contano i link verso le pagine vere
 
