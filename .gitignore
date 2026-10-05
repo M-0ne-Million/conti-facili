@@ -3,6 +3,7 @@ public/
 # Prodotti a pagamento e documenti privati: NON devono finire nel repository pubblico
 etsy/
 analisi-mercato.md
+ricerca-fiscale-2026.md
 archivio-assistenza-pc/
 # Ambiente locale
 .venv/

@@ -54,3 +54,38 @@ test('sconti e percentuali', () => {
   assert.equal(c.percentualeDi(30, 120), 25);
   assert.equal(c.variazione(80, 100), 25);
 });
+
+test('affitti brevi', () => {
+  // 1.000 € incassati, 15% di commissione, 60 € di pulizie, cedolare 21%
+  assert.deepEqual(c.affittoBreve({ lordo: 100000, commissionePerc: 15, pulizie: 6000, aliquota: 21 }),
+    { commissione: 15000, cedolare: 21000, netto: 58000 });
+  assert.equal(c.affittoBreve({ lordo: 100000, commissionePerc: 0, aliquota: 26 }).cedolare, 26000);
+  // 2,50 € × (3 ospiti − 1 bambino esente) × 7 notti, massimo 5 notti tassabili
+  assert.equal(c.tassaSoggiorno(250, 3, 1, 7, 5), 2500);
+  assert.equal(c.tassaSoggiorno(250, 3, 1, 7), 3500);
+  assert.equal(c.tassaSoggiorno(250, 1, 2, 7), 0);
+});
+
+const vicino = (a, b) => assert.ok(Math.abs(a - b) < 0.02, `${a} invece di ${b}`);
+
+test('stipendio netto 2026: casi della ricerca fiscale (senza addizionali)', () => {
+  vicino(c.stipendioNetto(25000).netto, 20875.85);
+  vicino(c.stipendioNetto(25000).irpef, 1826.65);
+  vicino(c.stipendioNetto(40000).netto, 28783.91);
+  vicino(c.stipendioNetto(40000).irpef, 7540.09);
+  vicino(c.stipendioNetto(12000).netto, 12123.40);   // somma esente 5,3% + trattamento integrativo
+  vicino(c.stipendioNetto(18000).netto, 16347.67);   // somma esente 4,8%
+  vicino(c.stipendioNetto(30000).netto, 24021.40);   // maggiorazione 65 €
+  vicino(c.stipendioNetto(60000).netto, 38835.50);   // +1% INPS oltre 56.224
+  vicino(c.stipendioNetto(25000, 2.53).netto, 20301.48);   // con addizionali 1,73% + 0,8%
+});
+
+test('forfettario 2026', () => {
+  const p = c.forfettario({ ricavi: 50000, coefficiente: 78 });
+  vicino(p.contributi, 10167.30);
+  vicino(p.imposta, 4324.91);
+  vicino(c.forfettario({ ricavi: 50000, coefficiente: 78, aliquota: 5 }).imposta, 1441.64);
+  vicino(c.forfettario({ ricavi: 60000, coefficiente: 40, gestione: 'commercianti' }).contributi, 5882.64);
+  vicino(c.forfettario({ ricavi: 60000, coefficiente: 40, gestione: 'commercianti', riduzione: true }).contributi, 3826.32);
+  vicino(c.forfettario({ ricavi: 20000, coefficiente: 67, gestione: 'artigiani' }).contributi, 4521.36);   // sotto il minimale: solo il fisso
+});

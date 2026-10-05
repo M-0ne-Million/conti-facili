@@ -24,6 +24,14 @@ STRUMENTI = [
      'Scorpora l\'IVA da un prezzo o aggiungila a un importo netto. Calcolatore gratuito con aliquote 22%, 10%, 5% e 4% e formula spiegata.'),
     ('calcolo-rata-mutuo', 'Calcolo rata mutuo con piano di ammortamento',
      'Calcola la rata mensile del mutuo, gli interessi totali e il piano di ammortamento alla francese anno per anno. Gratis e immediato.'),
+    ('calcolo-stipendio-netto', 'Calcolo stipendio netto 2026: dalla RAL al netto mensile',
+     'Calcola lo stipendio netto 2026 dalla RAL: IRPEF con il nuovo scaglione al 33%, contributi INPS, taglio del cuneo fiscale e netto al mese su 13 o 14 mensilità.'),
+    ('calcolo-tasse-forfettario', 'Calcolo tasse regime forfettario 2026',
+     'Calcola contributi INPS e imposta sostitutiva del regime forfettario 2026 (15% o 5%), con coefficienti di redditività e riduzione del 35%. Vedi quanto ti resta.'),
+    ('calcolo-affitti-brevi', 'Affitti brevi 2026: calcolo cedolare secca e guadagno netto',
+     'Calcola quanto ti resta di un affitto breve su Airbnb o Booking: commissioni, pulizie e cedolare secca al 21% o 26% con le regole 2026.'),
+    ('calcolo-tassa-di-soggiorno', 'Calcolo tassa di soggiorno per affitti brevi',
+     'Calcola la tassa di soggiorno per gli ospiti: tariffa a persona per notte, esenzioni e notti massime, con esempi per Roma, Milano, Firenze, Venezia e Napoli.'),
     ('calcolo-sconto-percentuale', 'Calcolo sconto e percentuali online',
      'Calcola il prezzo scontato, che percentuale è un numero rispetto a un altro e le variazioni percentuali. Con formule ed esempi.'),
 ]
@@ -54,8 +62,13 @@ box = {
         '<p>Confronta le offerte di mutuo di più banche gratis, con il TAEG già calcolato.</p>'
         f"{link(G['link_mutuo'], 'Confronta i mutui' + (' su ' + G['nome_mutuo'] if G['nome_mutuo'] else ''))}"
         '<p class="nota">Link sponsorizzato.</p></div>'),
+    'box_host': G['link_host'] and (
+        '<div class="box partner"><strong>Gestisci più di un alloggio?</strong>'
+        '<p>Un software per host sincronizza i calendari dei portali, evita le doppie prenotazioni e invia i messaggi agli ospiti in automatico.</p>'
+        f"{link(G['link_host'], 'Prova ' + (G['nome_host'] or 'un software per host'))}"
+        '<p class="nota">Link sponsorizzato.</p></div>'),
 }
-affiliati = any([G['link_prodotto'], G['link_partita_iva'], G['link_mutuo']])
+affiliati = any([G['link_prodotto'], G['link_partita_iva'], G['link_mutuo'], G['link_host']])
 adsense = G['adsense'] and (
     f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={html.escape(G["adsense"])}" crossorigin="anonymous"></script>')
 privacy_pubblicita = (

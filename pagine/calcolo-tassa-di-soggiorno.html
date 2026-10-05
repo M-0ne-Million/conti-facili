@@ -1,0 +1,66 @@
+<h1>Calcolo tassa di soggiorno per affitti brevi</h1>
+<p class="introduzione">Quanto devi far pagare agli ospiti e versare al Comune: tariffa a persona per notte, esenzioni e numero massimo di notti.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Città
+        <select name="citta">
+          <option value="">Altro Comune: scrivo io la tariffa</option>
+          <option value="6|10|10">Roma</option>
+          <option value="9,5|0|">Milano</option>
+          <option value="6|7|12">Firenze</option>
+          <option value="4|5|10">Venezia</option>
+          <option value="6|14|14">Napoli</option>
+        </select>
+      </label>
+      <label>Tariffa a persona per notte in euro<input name="tariffa" inputmode="decimal" value="3"></label>
+      <label>Ospiti<input name="ospiti" inputmode="numeric" value="2"></label>
+      <label>Di cui esenti (es. bambini)<input name="esenti" inputmode="numeric" value="0"></label>
+      <label>Notti<input name="notti" inputmode="numeric" value="4"></label>
+      <label>Notti massime tassabili (0 = nessun limite)<input name="max" inputmode="numeric" value="0"></label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto del soggiorno</p>
+      <table>
+        <tr><td>Ospiti tassabili</td><td id="osp"></td></tr>
+        <tr><td>Notti tassabili</td><td id="notti"></td></tr>
+        <tr class="totale"><td>Tassa di soggiorno</td><td id="tot"></td></tr>
+      </table>
+      <p class="nota" id="nota"></p>
+    </div>
+  </div>
+</div>
+
+$box_host
+
+<h2>Come funziona la tassa di soggiorno</h2>
+<ul>
+  <li>La decide ogni <strong>Comune</strong>: si paga per persona e per notte, spesso con un numero massimo di notti consecutive.</li>
+  <li>Di solito sono <strong>esenti i bambini</strong> sotto una certa età (10, 12 o 14 anni a seconda del Comune) e alcune categorie, come chi accompagna un malato.</li>
+  <li>Il limite ordinario è 5 € a notte, 10 € per Roma e le città più turistiche; nel 2026 i Comuni possono aumentarla ancora fino a 2 €.</li>
+  <li>Se l'ospite paga tramite un portale che incassa il canone, è il portale a dover versare l'imposta.</li>
+</ul>
+<p class="nota">Le tariffe delle città sono indicative, aggiornate a ottobre 2026 per case e appartamenti per vacanze: verifica sempre sul sito del Comune.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const intero = (v) => { const n = Math.floor(c.numero(v)); return n > 0 ? n : 0; };
+f.citta.addEventListener('change', () => {
+  if (!f.citta.value) return;
+  const [tariffa, max, eta] = f.citta.value.split('|');
+  f.tariffa.value = tariffa; f.max.value = max;
+  q('nota').textContent = eta ? 'Esenti di solito i minori fino a ' + eta + ' anni.' : '';
+});
+function aggiorna() {
+  const t = c.numero(f.tariffa.value), ospiti = intero(f.ospiti.value), esenti = intero(f.esenti.value), notti = intero(f.notti.value), max = intero(f.max.value);
+  q('osp').textContent = Math.max(ospiti - esenti, 0);
+  q('notti').textContent = max ? Math.min(notti, max) : notti;
+  q('tot').textContent = c.euro(c.tassaSoggiorno(Number.isFinite(t) ? c.cent(t) : 0, ospiti, esenti, notti, max));
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

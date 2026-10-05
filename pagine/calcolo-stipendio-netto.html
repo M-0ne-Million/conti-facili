@@ -1,0 +1,71 @@
+<h1>Stipendio netto 2026: dal lordo (RAL) al netto in busta paga</h1>
+<p class="introduzione">Scrivi la retribuzione annua lorda: vedi il netto all'anno e al mese con le regole 2026, compreso il nuovo
+   secondo scaglione IRPEF al 33% e il taglio del cuneo fiscale.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Retribuzione annua lorda (RAL) in euro<input name="ral" inputmode="decimal" value="30.000"></label>
+      <label>Mensilità
+        <select name="mesi"><option value="13">13 (tredicesima)</option><option value="14">14 (anche quattordicesima)</option></select>
+      </label>
+      <label>Addizionali regionale + comunale in %<input name="addiz" inputmode="decimal" value="2,53"></label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto del <span id="anno"></span></p>
+      <table>
+        <tr><td>Contributi INPS</td><td id="inps"></td></tr>
+        <tr><td>IRPEF</td><td id="irpef"></td></tr>
+        <tr><td>Addizionali</td><td id="addiz"></td></tr>
+        <tr id="riga_esente"><td>Bonus cuneo fiscale</td><td id="esente"></td></tr>
+        <tr id="riga_integr"><td>Trattamento integrativo</td><td id="integr"></td></tr>
+        <tr><td>Netto all'anno</td><td id="annuo"></td></tr>
+        <tr class="totale"><td>Netto al mese</td><td id="mese"></td></tr>
+      </table>
+      <p class="nota">Dipendente privato a tempo indeterminato, anno intero, senza familiari a carico.</p>
+    </div>
+  </div>
+</div>
+
+$box_piva
+
+<h2>Come si calcola il netto nel 2026</h2>
+<ul>
+  <li><strong>Contributi INPS</strong>: il 9,19% della RAL, più l'1% sulla parte oltre 56.224 €.</li>
+  <li><strong>IRPEF</strong> sul resto: 23% fino a 28.000 €, <strong>33%</strong> da 28.000 a 50.000 € (era 35% fino al 2025), 43% oltre.</li>
+  <li><strong>Detrazioni</strong>: quella per lavoro dipendente e, tra 20.000 e 40.000 € di reddito, l'ulteriore detrazione fino a 1.000 € del taglio del cuneo fiscale.</li>
+  <li><strong>Sotto 20.000 €</strong> di reddito il taglio del cuneo arriva invece come somma esentasse in busta paga (7,1%, 5,3% o 4,8%), e fino a 15.000 € spetta il trattamento integrativo di 1.200 € l'anno.</li>
+  <li><strong>Addizionali</strong>: le decidono Regione e Comune; 2,53% è un valore tipico, puoi cambiarlo.</li>
+</ul>
+<p>Il netto al mese è il netto annuo diviso per le mensilità: in busta paga la tredicesima e la quattordicesima sono di solito un po' più basse
+   e gli altri mesi un po' più alti.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Perché il mio netto in busta paga è diverso?</summary><p>Contano i familiari a carico, gli straordinari, i premi, il contratto (alcuni settori hanno contributi diversi) e le addizionali del tuo Comune, che in busta paga si pagano l'anno dopo. Il calcolo è indicativo.</p></details>
+<details><summary>Cosa cambia nel 2026?</summary><p>Il secondo scaglione IRPEF scende dal 35% al 33%: chi ha un reddito sopra 28.000 € paga meno tasse, fino a 440 € l'anno in meno.</p></details>
+<details><summary>Che cos'è la RAL?</summary><p>La retribuzione annua lorda: tutto quello che ti paga l'azienda in un anno, prima di contributi e tasse. La trovi nel contratto o nella lettera di assunzione.</p></details>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+q('anno').textContent = c.FISCO.anno;
+function aggiorna() {
+  const ral = c.numero(f.ral.value), add = c.numero(f.addiz.value);
+  if (!(ral > 0)) return;
+  const s = c.stipendioNetto(ral, add >= 0 ? add : 0);
+  q('inps').textContent = '− ' + e(s.inps);
+  q('irpef').textContent = '− ' + e(s.irpef);
+  q('addiz').textContent = '− ' + e(s.addizionali);
+  q('esente').textContent = '+ ' + e(s.sommaEsente);
+  q('integr').textContent = '+ ' + e(s.integrativo);
+  q('riga_esente').hidden = !s.sommaEsente;
+  q('riga_integr').hidden = !s.integrativo;
+  q('annuo').textContent = e(s.netto);
+  q('mese').textContent = e(s.netto / Number(f.mesi.value));
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

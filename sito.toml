@@ -24,6 +24,9 @@ nome_partita_iva = ""
 # Link affiliato a un comparatore di mutui.
 link_mutuo = ""
 nome_mutuo = ""
+# Link affiliato a un software per host di affitti brevi (es. Lodgify, Smoobu, Hostaway).
+link_host = ""
+nome_host = ""
 # Codice AdSense (es. "ca-pub-1234567890123456"). Vuoto = niente pubblicità.
 # Prima di attivarlo accendi il messaggio di consenso cookie di Google in AdSense (Privacy e messaggi).
 adsense = ""

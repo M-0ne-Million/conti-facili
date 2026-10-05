@@ -1,0 +1,60 @@
+<h1>Affitti brevi 2026: cedolare secca e guadagno netto</h1>
+<p class="introduzione">Quanto ti resta davvero di una prenotazione su Airbnb, Booking o diretta, dopo commissioni, pulizie e cedolare secca.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Pagato dall'ospite in euro (senza tassa di soggiorno)<input name="lordo" inputmode="decimal" value="1.000"></label>
+      <label>Commissione del portale in %<input name="comm" inputmode="decimal" value="15"></label>
+      <label>Costo delle pulizie in euro<input name="pulizie" inputmode="decimal" value="60"></label>
+      <label>Altre spese in euro<input name="spese" inputmode="decimal" value="0"></label>
+      <label>Appartamento
+        <select name="aliquota"><option value="21">il primo (cedolare 21%)</option><option value="26">il secondo (cedolare 26%)</option></select>
+      </label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto della prenotazione</p>
+      <table>
+        <tr><td>Incasso</td><td id="lordo"></td></tr>
+        <tr><td>Commissione portale</td><td id="comm"></td></tr>
+        <tr><td>Pulizie e altre spese</td><td id="spese"></td></tr>
+        <tr><td>Cedolare secca</td><td id="ced"></td></tr>
+        <tr class="totale"><td>Ti resta</td><td id="netto"></td></tr>
+      </table>
+      <p class="nota">Se incassa il portale, trattiene già il 21% come acconto: con il 26% la differenza si paga in dichiarazione.</p>
+    </div>
+  </div>
+</div>
+
+$box_host
+
+<h2>Come si tassano gli affitti brevi nel 2026</h2>
+<ul>
+  <li><strong>Cedolare secca al 21%</strong> sul primo appartamento che scegli, <strong>al 26%</strong> sul secondo.</li>
+  <li>Si calcola sull'<strong>intero importo pagato dall'ospite</strong>, comprese pulizie e biancheria, senza togliere commissioni e spese.</li>
+  <li><strong>Dal 2026</strong>, con più di due appartamenti in affitto breve l'attività si considera d'impresa: dal terzo serve la partita IVA (prima il limite era quattro).</li>
+  <li>Ogni alloggio deve avere il <strong>CIN</strong>, il codice identificativo nazionale, da esporre fuori dall'immobile e in ogni annuncio.</li>
+  <li>La <strong>tassa di soggiorno</strong> non è un tuo incasso: la riscuoti per conto del Comune.
+      <a href="${base}calcolo-tassa-di-soggiorno/">Calcolala qui</a>.</li>
+</ul>
+<p class="nota">Indicazioni generali, non consulenza fiscale.</p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const cent = (v) => { const n = c.numero(v); return Number.isFinite(n) && n > 0 ? c.cent(n) : 0; };
+function aggiorna() {
+  const lordo = cent(f.lordo.value), pulizie = cent(f.pulizie.value), spese = cent(f.spese.value);
+  const comm = c.numero(f.comm.value);
+  const r = c.affittoBreve({ lordo, commissionePerc: comm > 0 ? comm : 0, pulizie, spese, aliquota: Number(f.aliquota.value) });
+  q('lordo').textContent = c.euro(lordo);
+  q('comm').textContent = '− ' + c.euro(r.commissione);
+  q('spese').textContent = '− ' + c.euro(pulizie + spese);
+  q('ced').textContent = '− ' + c.euro(r.cedolare);
+  q('netto').textContent = c.euro(r.netto);
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>
