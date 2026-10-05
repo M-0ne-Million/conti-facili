@@ -11,7 +11,7 @@ url = "https://m-0ne-million.github.io/conti-facili/"
 titolare = "[NOME COGNOME]"
 email = "[EMAIL]"
 # Codice di verifica di Google Search Console (metodo "Tag HTML": solo il valore di content="...").
-google_verifica = ""
+google_verifica = "mYpD_GNiX8-CuIm7IoCFDpJmgcL2ufV5ZjtpCCkXyWE"
 
 [guadagni]
 # Ogni riquadro compare sul sito solo quando il link è compilato.
