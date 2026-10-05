@@ -13,6 +13,7 @@ test('lettura numeri all\'italiana', () => {
   assert.equal(c.numero('0.125'), 0.125);
   assert.ok(Number.isNaN(c.numero('')));
   assert.ok(Number.isNaN(c.numero('abc')));
+  assert.equal(c.euro(555878).replace(/\s/g, ' '), '5.558,78 €');   // punto delle migliaia anche sotto 10.000
 });
 
 test('ricevuta: ritenuta solo per sostituti d\'imposta, bollo oltre 77,47', () => {

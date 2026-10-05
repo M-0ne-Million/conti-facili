@@ -1,29 +1,42 @@
-<h1>Calcolo sconto e percentuali</h1>
-<p>Tre calcoli che servono tutti i giorni: prezzo scontato, quanto vale una percentuale e di quanto è aumentato o diminuito un prezzo.</p>
+<h1>Sconti e percentuali senza fare conti a mente</h1>
+<p class="introduzione">Tre calcoli che servono ogni giorno: il prezzo scontato, quanto vale una percentuale e di quanto è cambiato un prezzo.</p>
 
 <div class="strumento">
-  <h2>Prezzo scontato</h2>
-  <form id="s" class="campi" onsubmit="return false">
-    <label>Prezzo pieno (€)<input name="prezzo" inputmode="decimal" value="80"></label>
-    <label>Sconto (%)<input name="perc" inputmode="decimal" value="25"></label>
+  <form id="s" class="modulo" onsubmit="return false">
+    <fieldset>
+      <legend>Prezzo scontato</legend>
+      <label>Prezzo pieno in euro<input name="prezzo" inputmode="decimal" value="80"></label>
+      <label>Sconto in %<input name="perc" inputmode="decimal" value="25"></label>
+    </fieldset>
   </form>
-  <div class="risultato" aria-live="polite"><table>
-    <tr><td><strong>Prezzo scontato</strong></td><td class="grande" id="finale"></td></tr>
-    <tr><td>Risparmi</td><td id="risparmio"></td></tr></table></div>
-
-  <h2>Che percentuale è?</h2>
-  <form id="p" class="campi" onsubmit="return false">
-    <label>Parte<input name="parte" inputmode="decimal" value="30"></label>
-    <label>Totale<input name="totale" inputmode="decimal" value="120"></label>
+  <div class="scontrino-wrap"><div class="scontrino" aria-live="polite"><table>
+    <tr><td>Risparmi</td><td id="risparmio"></td></tr>
+    <tr class="totale"><td>Paghi</td><td id="finale"></td></tr>
+  </table></div></div>
+</div>
+<div class="strumento">
+  <form id="p" class="modulo" onsubmit="return false">
+    <fieldset>
+      <legend>Che percentuale è?</legend>
+      <label>Parte<input name="parte" inputmode="decimal" value="30"></label>
+      <label>Totale<input name="totale" inputmode="decimal" value="120"></label>
+    </fieldset>
   </form>
-  <div class="risultato" aria-live="polite"><span class="grande" id="perc"></span></div>
-
-  <h2>Aumento o diminuzione percentuale</h2>
-  <form id="v" class="campi" onsubmit="return false">
-    <label>Valore iniziale<input name="da" inputmode="decimal" value="80"></label>
-    <label>Valore finale<input name="a" inputmode="decimal" value="100"></label>
+  <div class="scontrino-wrap"><div class="scontrino" aria-live="polite"><table>
+    <tr class="totale"><td>È il</td><td id="perc"></td></tr>
+  </table></div></div>
+</div>
+<div class="strumento">
+  <form id="v" class="modulo" onsubmit="return false">
+    <fieldset>
+      <legend>Aumento o diminuzione</legend>
+      <label>Valore iniziale<input name="da" inputmode="decimal" value="80"></label>
+      <label>Valore finale<input name="a" inputmode="decimal" value="100"></label>
+    </fieldset>
   </form>
-  <div class="risultato" aria-live="polite"><span class="grande" id="var"></span></div>
+  <div class="scontrino-wrap"><div class="scontrino" aria-live="polite"><table>
+    <tr class="totale"><td>Variazione</td><td id="var"></td></tr>
+  </table></div></div>
 </div>
 
 <h2>Le formule</h2>

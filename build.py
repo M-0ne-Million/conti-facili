@@ -69,6 +69,7 @@ layout = Template((PAGINE / 'layout.html').read_text('utf-8'))
 shutil.rmtree(OUT, ignore_errors=True)
 OUT.mkdir()
 shutil.copy(QUI / 'calcoli.js', OUT)
+shutil.copytree(PAGINE / 'font', OUT / 'font')
 
 indirizzi = []
 for nome, titolo, descrizione in STRUMENTI + ALTRE:

@@ -1,25 +1,31 @@
-<h1>Calcolo rata del mutuo con piano di ammortamento</h1>
-<p>Inserisci importo, tasso e durata: vedi subito la rata mensile, quanto paghi di interessi e come scende il debito anno per anno.</p>
+<h1>Rata del mutuo e piano di ammortamento</h1>
+<p class="introduzione">Importo, tasso e durata: vedi la rata mensile, quanto paghi di interessi e come scende il debito anno per anno.</p>
 
 <div class="strumento">
-  <form id="f" class="campi" onsubmit="return false">
-    <label>Importo del mutuo (€)<input name="capitale" inputmode="decimal" value="150.000"></label>
-    <label>Tasso annuo TAN (%)<input name="tan" inputmode="decimal" value="3"></label>
-    <label>Durata (anni)
-      <select name="anni"><option>10</option><option>15</option><option selected>20</option><option>25</option><option>30</option></select>
-    </label>
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Importo del mutuo in euro<input name="capitale" inputmode="decimal" value="150.000"></label>
+      <label>Tasso annuo (TAN) in %<input name="tan" inputmode="decimal" value="3"></label>
+      <label>Durata
+        <select name="anni"><option value="10">10 anni</option><option value="15">15 anni</option><option value="20" selected>20 anni</option><option value="25">25 anni</option><option value="30">30 anni</option></select>
+      </label>
+    </fieldset>
   </form>
-  <div class="risultato" aria-live="polite">
-    <table>
-      <tr><td><strong>Rata mensile</strong></td><td class="grande" id="rata"></td></tr>
-      <tr><td>Totale interessi</td><td id="interessi"></td></tr>
-      <tr><td>Totale rimborsato</td><td id="totale"></td></tr>
-    </table>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto</p>
+      <table>
+        <tr><td>Totale interessi</td><td id="interessi"></td></tr>
+        <tr><td>Totale rimborsato</td><td id="totale"></td></tr>
+        <tr class="totale"><td>Rata al mese</td><td id="rata"></td></tr>
+      </table>
+    </div>
   </div>
-  <details><summary>Piano di ammortamento anno per anno</summary>
-    <div class="scorri"><table class="dati"><thead><tr><th>Anno</th><th>Quota capitale</th><th>Interessi</th><th>Debito residuo</th></tr></thead><tbody id="piano"></tbody></table></div>
-  </details>
 </div>
+
+<h2>Il piano anno per anno</h2>
+<p class="legenda">Ogni barra è un anno di rate:<i style="background:var(--carbone)"></i>capitale restituito<i style="background:#e9a19b"></i>interessi</p>
+<div class="scorri"><table class="dati"><thead><tr><th>Anno</th><th>Rate dell'anno</th><th>Capitale</th><th>Interessi</th><th>Debito residuo</th></tr></thead><tbody id="piano"></tbody></table></div>
 
 $box_mutuo
 
@@ -48,7 +54,11 @@ function aggiorna() {
   q('piano').innerHTML = '';
   for (const r of c.ammortamento(cap, tan, anni)) {
     const tr = q('piano').insertRow();
-    for (const v of [r.anno, e(r.quota), e(r.interessi), e(r.residuo)]) tr.insertCell().textContent = v;
+    tr.insertCell().textContent = r.anno;
+    const barra = tr.insertCell().appendChild(document.createElement('span'));
+    barra.className = 'barra';
+    barra.style.setProperty('--q', (r.quota / (r.quota + r.interessi) * 100).toFixed(1) + '%');
+    for (const v of [e(r.quota), e(r.interessi), e(r.residuo)]) tr.insertCell().textContent = v;
   }
 }
 f.addEventListener('input', aggiorna);

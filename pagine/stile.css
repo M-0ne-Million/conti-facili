@@ -1,53 +1,142 @@
-:root { --testo: #1d2733; --blu: #0b4f8a; --verde: #146c43; --chiaro: #eef4fa; --bordo: #c9d6e3; --giallo: #fff3cd; }
+:root {
+  --scrivania: #edf0f7;   /* il piano su cui stanno i fogli */
+  --carta: #fff;
+  --carbone: #2b36a0;     /* blu della carta carbone */
+  --inchiostro: #1c2233;
+  --rigatura: #cfe3d8;    /* righe verdi del registro */
+  --margine: #2f7a5b;     /* linea di margine della carta uso bollo */
+  --timbro: #c8302a;      /* solo per la marca da bollo */
+  --evidenziatore: #fff07a;
+  --grigio: #5a6178;
+}
 * { box-sizing: border-box; }
-body { margin: 0; font: 18px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--testo); background: #fff; }
-.contenuto { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
-.testata { background: var(--blu); padding: .75rem 0; }
-.testata a { color: #fff; font-weight: 800; font-size: 1.25rem; text-decoration: none; }
-main { padding-bottom: 2rem; }
-h1 { font-size: 1.9rem; line-height: 1.2; margin: 1.5rem 0 .75rem; }
-h2 { font-size: 1.35rem; margin: 2rem 0 .75rem; color: var(--blu); }
-a { color: var(--blu); }
-.strumento { background: var(--chiaro); border: 1px solid var(--bordo); border-radius: .75rem; padding: 1rem; display: grid; gap: 1rem; }
-.campi { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
-fieldset { border: 1px solid var(--bordo); border-radius: .5rem; padding: .75rem; margin: 0; display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
-legend { font-weight: 700; padding: 0 .25rem; }
-label { display: flex; flex-direction: column; font-size: .95rem; font-weight: 600; gap: .25rem; }
-label.riga { flex-direction: row; align-items: center; font-weight: 400; }
-input, select, textarea { font: inherit; padding: .55rem .6rem; border: 1px solid #8a9bb0; border-radius: .4rem; background: #fff; min-height: 2.75rem; width: 100%; }
-label.riga input { width: auto; min-height: 0; }
-textarea { min-height: 5rem; }
-input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #f2b705; outline-offset: 1px; }
-button, .bottone { font: inherit; font-weight: 700; background: var(--blu); color: #fff; border: 0; border-radius: .5rem; padding: .7rem 1.2rem; cursor: pointer; text-decoration: none; display: inline-block; min-height: 2.75rem; }
-.risultato { background: #fff; border: 2px solid var(--blu); border-radius: .75rem; padding: 1rem; }
-.risultato table, table.dati { width: 100%; border-collapse: collapse; }
-.risultato td, table.dati td, table.dati th { padding: .4rem .25rem; border-bottom: 1px solid var(--bordo); text-align: left; }
-.risultato td:last-child, table.dati td:not(:first-child), table.dati th:not(:first-child) { text-align: right; }
-.grande { font-size: 1.6rem; font-weight: 800; color: var(--blu); }
-.scorri { overflow-x: auto; }
-.box { border-radius: .75rem; padding: 1rem; margin: 1.5rem 0; }
-.box.prodotto { background: #e3f3ea; border: 1px solid #9fd1b3; }
-.box.partner { background: var(--giallo); border: 1px solid #e6cf7a; }
-.box p { margin: .25rem 0 .75rem; }
-.nota { font-size: .9rem; color: #4a5868; }
-details { border: 1px solid var(--bordo); border-radius: .5rem; padding: .6rem .9rem; margin-bottom: .6rem; }
-summary { font-weight: 700; cursor: pointer; }
-.elenco { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
-.elenco a { display: block; height: 100%; border: 1px solid var(--bordo); border-radius: .75rem; padding: 1rem; text-decoration: none; color: var(--testo); }
-.elenco a:hover { border-color: var(--blu); }
-.elenco strong { color: var(--blu); font-size: 1.1rem; display: block; }
-footer { background: var(--testo); color: #fff; padding: 1.5rem 0; font-size: .95rem; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 400 1.125rem/1.55 "Titillium Web", system-ui, sans-serif; color: var(--inchiostro); background: var(--scrivania); }
+.contenuto { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+main { padding-bottom: 3rem; }
+main > p, main > ul, main > h2, main > details, main > .box { max-width: 42rem; }
+a { color: var(--carbone); text-underline-offset: .15em; }
+:focus-visible { outline: 3px solid var(--carbone); outline-offset: 2px; }
+
+/* Tipografia */
+h1 { font-weight: 900; font-size: clamp(2.2rem, 5.5vw, 3.75rem); line-height: 1; letter-spacing: -.015em; color: var(--carbone); margin: 2rem 0 1rem; max-width: 22ch; }
+h2 { font-weight: 700; font-size: 1.6rem; line-height: 1.15; margin: 2.75rem 0 .75rem; }
+.introduzione { font-size: 1.25rem; color: var(--grigio); max-width: 38rem; margin: 0 0 2rem; }
+
+/* Testata e piè di pagina */
+.testata { padding: 1rem 0 0; }
+.marchio { font-weight: 900; font-size: 1.35rem; color: var(--carbone); text-decoration: none; letter-spacing: -.01em; }
+footer { background: var(--carbone); color: #fff; padding: 2rem 0; font-size: 1rem; }
 footer a { color: #fff; }
-footer ul { padding-left: 1.2rem; columns: 2; }
-/* Ricevuta */
-.foglio { background: #fff; border: 1px solid var(--bordo); padding: 1.5rem; font-size: .95rem; }
-.foglio h2 { margin: 0 0 .25rem; font-size: 1.2rem; color: var(--testo); }
-.foglio .parti { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
-.foglio .note { font-size: .8rem; }
-.foglio .firma { margin-top: 2.5rem; }
+footer ul { padding-left: 1.2rem; columns: 2 14rem; margin: .5rem 0 1rem; }
+footer p { max-width: 42rem; }
+
+/* Strumento: modulo a sinistra, scontrino a destra */
+.strumento { display: grid; gap: 2rem; align-items: start; margin: 1rem 0 2rem; }
+@media (min-width: 56rem) { .strumento { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } .strumento > .scontrino-wrap { position: sticky; top: 1rem; } }
+
+/* Il modulo è un foglio di carta uso bollo: bianco con la linea di margine */
+.modulo { background: var(--carta) linear-gradient(to right, transparent 1.75rem, var(--margine) 1.75rem, var(--margine) 1.85rem, transparent 1.85rem);
+  border-radius: 3px; padding: 1.25rem 1.25rem 1.5rem 2.75rem; box-shadow: 0 1px 0 #cdd3e0, 0 12px 28px -18px rgba(43, 54, 160, .45); display: grid; gap: 1.25rem; margin: 0; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 1rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+fieldset + fieldset { border-top: 1px solid var(--rigatura); padding-top: 1.25rem; }
+legend { font-weight: 700; font-size: 1.15rem; color: var(--carbone); padding: 0; grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: .15rem; font-size: .95rem; font-weight: 600; color: var(--grigio); }
+label.spunta { flex-direction: row; align-items: center; gap: .5rem; font-weight: 400; color: var(--inchiostro); grid-column: 1 / -1; }
+input, select, textarea { font: inherit; font-size: 1.15rem; color: var(--inchiostro); background: transparent; border: 0; border-bottom: 2px solid #8c94b8;
+  border-radius: 0; padding: .35rem .15rem; min-height: 2.75rem; width: 100%; }
+textarea { min-height: 4.5rem; resize: vertical; }
+label.spunta input { width: 1.4rem; min-height: 1.4rem; accent-color: var(--carbone); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-bottom-color: var(--carbone); background: #fffbd6; }
+
+/* Lo scontrino: bordo strappato sopra e sotto, righe del registro, netto evidenziato */
+.scontrino-wrap { filter: drop-shadow(0 14px 20px rgba(43, 54, 160, .22)); }
+.scontrino { position: relative; background: var(--carta); padding: 1.75rem 1.25rem; font-variant-numeric: tabular-nums;
+  --dente: 14px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x; }
+.scontrino h2, .scontrino .titolo { font-size: 1.15rem; font-weight: 700; margin: 0 0 .75rem; color: var(--carbone); }
+.scontrino table { width: 100%; border-collapse: collapse; }
+.scontrino td { padding: .45rem 0; border-bottom: 1px solid var(--rigatura); }
+.scontrino td:last-child { text-align: right; white-space: nowrap; }
+.scontrino .totale td { border-bottom: 0; padding-top: .9rem; font-weight: 700; }
+.scontrino .totale td:last-child { font-size: 1.9rem; font-weight: 900; color: var(--carbone);
+  background: linear-gradient(transparent 58%, var(--evidenziatore) 58%, var(--evidenziatore) 92%, transparent 92%); }
+.scontrino .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+.sotto-scontrino { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* La marca da bollo: compare (timbrata) quando l'importo supera 77,47 € */
+.marca { position: absolute; top: 1.1rem; right: 1rem; width: 5.6rem; padding: 5px; transform: rotate(7deg);
+  background: radial-gradient(circle, var(--carta) 2.4px, #f3c9c5 2.9px) -4px -4px / 9px 9px; }
+.marca > span { display: block; background: #fdeeec; border: 1.5px solid var(--timbro); color: var(--timbro); text-align: center; padding: .35rem .2rem; line-height: 1.05; }
+.marca b { display: block; font-size: 1.35rem; font-weight: 900; }
+.marca small { font-size: .7rem; font-weight: 600; }
+.marca:not([hidden]) { animation: timbra .32s cubic-bezier(.2, .9, .3, 1.35); }
+@keyframes timbra { from { transform: scale(1.7) rotate(-6deg); opacity: 0; } to { transform: scale(1) rotate(7deg); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .marca:not([hidden]) { animation: none; } }
+
+/* Pulsanti */
+.bottone, button { font: inherit; font-weight: 700; font-size: 1.1rem; background: var(--carbone); color: #fff; border: 0; border-radius: 4px;
+  padding: .7rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.bottone:active, button:active { transform: translateY(1px); }
+.bottone.secondario { background: transparent; color: var(--carbone); box-shadow: inset 0 0 0 2px var(--carbone); }
+
+/* Home: apertura con lo scontrino di esempio */
+.apertura { display: grid; gap: 2.5rem; align-items: center; padding: 1rem 0 1.5rem; }
+@media (min-width: 56rem) { .apertura { grid-template-columns: 1.2fr 1fr; } }
+.apertura .scontrino-wrap { transform: rotate(-1.5deg); max-width: 24rem; justify-self: center; width: 100%; }
+
+/* Indice degli strumenti come un registro: nome, puntini di guida, descrizione */
+.registro { list-style: none; padding: 0; margin: 0; max-width: none; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.registro a { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--inchiostro); border-bottom: 1px solid var(--rigatura); }
+.registro li:last-child a { border-bottom: 0; }
+.registro strong { font-size: 1.25rem; color: var(--carbone); }
+.registro span { grid-column: 1 / -1; color: var(--grigio); }
+@media (min-width: 48rem) {
+  .registro a { grid-template-columns: auto 1fr auto; align-items: baseline; }
+  .registro a::after { content: ""; order: 0; border-bottom: 2px dotted #9aa3c4; transform: translateY(-.3em); }
+  .registro strong { order: -1; }
+  .registro span { grid-column: auto; order: 1; }
+}
+.registro a:hover strong, .registro a:focus-visible strong { background: linear-gradient(transparent 60%, var(--evidenziatore) 60%); }
+
+/* Riquadri: il modello Excel come un buono da ritagliare, i partner come nota a margine */
+.box { margin: 2rem 0; padding: 1.25rem; background: var(--carta); position: relative; }
+.box p { margin: .25rem 0 1rem; }
+.box.prodotto { border: 2px dashed var(--carbone); border-radius: 6px; }
+.box.prodotto::before { content: "✂"; position: absolute; top: -.85rem; left: 1rem; background: var(--scrivania); color: var(--carbone); padding: 0 .3rem; font-size: 1.1rem; }
+.box.partner { border-left: 4px solid var(--margine); }
+.box .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+
+/* Domande frequenti come righe del registro */
+details { border-bottom: 1px solid #c3cad9; padding: .9rem 0; }
+summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 900; color: var(--carbone); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { margin: .5rem 0 0; }
+
+/* Tabelle di dati (piano di ammortamento) */
+.scorri { overflow-x: auto; }
+table.dati { width: 100%; border-collapse: collapse; background: var(--carta); font-variant-numeric: tabular-nums; }
+table.dati th, table.dati td { padding: .5rem .6rem; border-bottom: 1px solid var(--rigatura); text-align: right; white-space: nowrap; }
+table.dati th:first-child, table.dati td:first-child { text-align: left; }
+table.dati th { font-weight: 700; font-size: .95rem; color: var(--grigio); }
+.barra { display: inline-block; width: 8rem; height: .7rem; vertical-align: middle;
+  background: linear-gradient(to right, var(--carbone) var(--q), #e9a19b var(--q)); }
+.legenda { font-size: .95rem; color: var(--grigio); }
+.legenda i { display: inline-block; width: .8rem; height: .8rem; vertical-align: -.05rem; margin: 0 .25rem 0 .5rem; }
+
+/* Stampa: solo la ricevuta, senza decorazioni */
 @media print {
+  body { background: #fff; }
   body * { visibility: hidden; }
-  .foglio, .foglio * { visibility: visible; }
-  .foglio { position: absolute; inset: 0; border: 0; padding: 0; font-size: 11pt; }
+  #ricevuta, #ricevuta * { visibility: visible; }
+  #ricevuta { position: absolute; inset: 0; -webkit-mask: none; mask: none; padding: 0; font-size: 11pt; }
+  .scontrino-wrap { filter: none; }
+  .marca { display: none; }
+  .scontrino .totale td:last-child { background: none; }
   @page { size: A4; margin: 2cm; }
 }

@@ -1,22 +1,27 @@
-<h1>Scorporo IVA e calcolo IVA online</h1>
-<p>Dal prezzo con IVA ricavi imponibile e imposta (scorporo), oppure aggiungi l'IVA a un importo netto. Aliquote 22%, 10%, 5% e 4%.</p>
+<h1>Scorporo IVA: togli o aggiungi l'IVA</h1>
+<p class="introduzione">Dal prezzo con IVA ricavi imponibile e imposta, oppure aggiungi l'IVA a un importo netto. Aliquote 22%, 10%, 5% e 4%.</p>
 
 <div class="strumento">
-  <form id="f" class="campi" onsubmit="return false">
-    <label>Importo in euro<input name="importo" inputmode="decimal" value="122"></label>
-    <label>Cosa vuoi fare
-      <select name="modo"><option value="scorpora">scorporare l'IVA (l'importo è IVA inclusa)</option><option value="aggiungi">aggiungere l'IVA (l'importo è senza IVA)</option></select>
-    </label>
-    <label>Aliquota
-      <select name="aliquota"><option>22</option><option>10</option><option>5</option><option>4</option></select>
-    </label>
+  <form id="f" class="modulo" onsubmit="return false">
+    <fieldset>
+      <label>Importo in euro<input name="importo" inputmode="decimal" value="122"></label>
+      <label>Cosa vuoi fare
+        <select name="modo"><option value="scorpora">togliere l'IVA (l'importo la comprende)</option><option value="aggiungi">aggiungere l'IVA (l'importo è senza)</option></select>
+      </label>
+      <label>Aliquota
+        <select name="aliquota"><option value="22">22%</option><option value="10">10%</option><option value="5">5%</option><option value="4">4%</option></select>
+      </label>
+    </fieldset>
   </form>
-  <div class="risultato" aria-live="polite">
-    <table>
-      <tr><td>Imponibile (senza IVA)</td><td id="imp"></td></tr>
-      <tr><td>IVA</td><td id="iva"></td></tr>
-      <tr><td><strong>Totale IVA inclusa</strong></td><td class="grande" id="tot"></td></tr>
-    </table>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto</p>
+      <table>
+        <tr><td>Imponibile</td><td id="imp"></td></tr>
+        <tr><td>IVA</td><td id="iva"></td></tr>
+        <tr class="totale"><td>Totale con IVA</td><td id="tot"></td></tr>
+      </table>
+    </div>
   </div>
 </div>
 

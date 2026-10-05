@@ -1,16 +1,16 @@
-<h1>Ricevuta per prestazione occasionale: generatore gratuito</h1>
-<p>Compila i campi: la ricevuta si crea mentre scrivi, con ritenuta d'acconto e marca da bollo calcolate in automatico.
-   Poi premi <strong>Stampa o salva in PDF</strong>. Gratis, senza registrazione: i dati restano sul tuo dispositivo.</p>
+<h1>Ricevuta per prestazione occasionale, pronta in un minuto</h1>
+<p class="introduzione">Scrivi i dati a sinistra: la ricevuta si compila a destra mentre scrivi, con ritenuta d'acconto e marca da bollo
+   già calcolate. Poi stampala o salvala in PDF. Gratis e senza registrazione.</p>
 
 <div class="strumento">
-  <form id="f" class="campi" onsubmit="return false">
+  <form id="f" class="modulo" onsubmit="return false">
     <fieldset>
       <legend>Chi riceve il compenso (tu)</legend>
       <label>Nome e cognome<input name="p_nome" autocomplete="name"></label>
       <label>Codice fiscale<input name="p_cf" autocapitalize="characters"></label>
       <label>Indirizzo<input name="p_indirizzo" autocomplete="street-address"></label>
       <label>IBAN (facoltativo)<input name="p_iban"></label>
-      <label class="riga"><input type="checkbox" name="ricorda"> Ricorda i miei dati su questo dispositivo</label>
+      <label class="spunta"><input type="checkbox" name="ricorda"> Ricorda i miei dati su questo dispositivo</label>
     </fieldset>
     <fieldset>
       <legend>Chi paga (committente)</legend>
@@ -19,57 +19,49 @@
       <label>Indirizzo<input name="c_indirizzo"></label>
       <label>Il committente è
         <select name="c_tipo">
-          <option value="privato">un privato (niente ritenuta)</option>
-          <option value="sostituto">un'azienda o un professionista (ritenuta 20%)</option>
+          <option value="privato">un privato: niente ritenuta</option>
+          <option value="sostituto">un'azienda: ritenuta 20%</option>
         </select>
       </label>
     </fieldset>
     <fieldset>
-      <legend>Prestazione</legend>
-      <label>Numero ricevuta<input name="numero" value="1" inputmode="numeric"></label>
-      <label>Data<input name="data" type="date"></label>
-      <label>Luogo<input name="luogo"></label>
+      <legend>Il lavoro</legend>
       <label>Descrizione<textarea name="descrizione">Prestazione di lavoro autonomo occasionale</textarea></label>
       <label>Importo in euro<input name="importo" inputmode="decimal" value="100"></label>
       <label>L'importo che hai scritto è
         <select name="tipo_importo">
           <option value="lordo">il compenso lordo</option>
-          <option value="netto">il netto che voglio incassare</option>
+          <option value="netto">il netto che vuoi incassare</option>
         </select>
       </label>
+      <label>Numero ricevuta<input name="numero" value="1" inputmode="numeric"></label>
+      <label>Data<input name="data" type="date"></label>
+      <label>Luogo<input name="luogo"></label>
     </fieldset>
   </form>
 
-  <div class="risultato" aria-live="polite">
-    <table>
-      <tr><td>Compenso lordo</td><td id="r_lordo"></td></tr>
-      <tr><td>Ritenuta d'acconto 20%</td><td id="r_rit"></td></tr>
-      <tr><td><strong>Netto da incassare</strong></td><td class="grande" id="r_netto"></td></tr>
-      <tr><td>Marca da bollo da 2 €</td><td id="r_bollo"></td></tr>
-    </table>
-  </div>
-
-  <div class="foglio" id="ricevuta">
-    <h2>Ricevuta per prestazione occasionale n. <span data-v="numero"></span></h2>
-    <div><span data-v="luogo"></span><span id="virgola"></span> <span id="data_it"></span></div>
-    <div class="parti">
-      <div><strong>Prestatore</strong><br><span data-v="p_nome"></span><br>C.F. <span data-v="p_cf"></span><br><span data-v="p_indirizzo"></span></div>
-      <div><strong>Committente</strong><br><span data-v="c_nome"></span><br><span data-v="c_cf"></span><br><span data-v="c_indirizzo"></span></div>
+  <div class="scontrino-wrap">
+    <div class="scontrino" id="ricevuta" aria-live="polite">
+      <div class="marca" id="marca" hidden><span><b>2,00 €</b><small>marca da bollo</small></span></div>
+      <h2>Ricevuta n. <span data-v="numero"></span></h2>
+      <p><span data-v="luogo"></span><span id="virgola"></span> <span id="data_it"></span></p>
+      <p><strong>Prestatore</strong><br><span data-v="p_nome"></span><br>C.F. <span data-v="p_cf"></span><br><span data-v="p_indirizzo"></span></p>
+      <p><strong>Committente</strong><br><span data-v="c_nome"></span><br><span data-v="c_cf"></span><br><span data-v="c_indirizzo"></span></p>
+      <p><strong>Per:</strong> <span data-v="descrizione"></span></p>
+      <table>
+        <tr><td>Compenso lordo</td><td id="f_lordo"></td></tr>
+        <tr id="f_riga_rit"><td>Ritenuta d'acconto 20%</td><td id="f_rit"></td></tr>
+        <tr class="totale"><td>Netto a pagare</td><td id="f_netto"></td></tr>
+      </table>
+      <p class="nota">Prestazione di lavoro autonomo occasionale (art. 2222 c.c.), resa senza vincolo di subordinazione e senza carattere
+        di abitualità. Operazione fuori dal campo di applicazione dell'IVA (art. 5 D.P.R. 633/1972).
+        <span id="n_rit">Ritenuta d'acconto del 20% (art. 25 D.P.R. 600/1973) operata dal committente in qualità di sostituto d'imposta.</span>
+        <span id="n_bollo">Imposta di bollo da 2,00 € assolta sull'originale.</span>
+        <span id="n_iban">Pagamento tramite bonifico su IBAN <span data-v="p_iban"></span>.</span></p>
+      <p class="nota">Firma ______________________________</p>
     </div>
-    <p><strong>Descrizione:</strong> <span data-v="descrizione"></span></p>
-    <table>
-      <tr><td>Compenso lordo</td><td id="f_lordo"></td></tr>
-      <tr id="f_riga_rit"><td>Ritenuta d'acconto 20%</td><td id="f_rit"></td></tr>
-      <tr><td><strong>Netto a pagare</strong></td><td><strong id="f_netto"></strong></td></tr>
-    </table>
-    <p class="note">Prestazione di lavoro autonomo occasionale (art. 2222 c.c.), resa senza vincolo di subordinazione e senza carattere
-      di abitualità. Operazione fuori dal campo di applicazione dell'IVA (art. 5 D.P.R. 633/1972).
-      <span id="n_rit">Ritenuta d'acconto del 20% (art. 25 D.P.R. 600/1973) operata dal committente in qualità di sostituto d'imposta.</span>
-      <span id="n_bollo">Imposta di bollo da 2,00 € assolta sull'originale.</span>
-      <span id="n_iban">Pagamento tramite bonifico su IBAN <span data-v="p_iban"></span>.</span></p>
-    <p class="firma">Firma ______________________________</p>
+    <div class="sotto-scontrino"><button type="button" onclick="print()">Stampa o salva in PDF</button></div>
   </div>
-  <div><button type="button" onclick="print()">Stampa o salva in PDF</button></div>
 </div>
 
 $box_prodotto
@@ -126,10 +118,10 @@ function aggiorna() {
   const [a, m, g] = f.data.value.split('-');
   q('data_it').textContent = g ? g + '/' + m + '/' + a : '';
   q('virgola').textContent = f.luogo.value && g ? ',' : '';
-  q('r_lordo').textContent = q('f_lordo').textContent = c.euro(r.lordo);
-  q('r_rit').textContent = q('f_rit').textContent = '- ' + c.euro(r.ritenuta);
-  q('r_netto').textContent = q('f_netto').textContent = c.euro(r.netto);
-  q('r_bollo').textContent = r.bollo ? 'sì, sull\'originale' : 'no';
+  q('f_lordo').textContent = c.euro(r.lordo);
+  q('f_rit').textContent = '− ' + c.euro(r.ritenuta);
+  q('f_netto').textContent = c.euro(r.netto);
+  if (q('marca').hidden === r.bollo) q('marca').hidden = !r.bollo;
   q('f_riga_rit').hidden = q('n_rit').hidden = !sostituto;
   q('n_bollo').hidden = !r.bollo;
   q('n_iban').hidden = !f.p_iban.value;

@@ -11,7 +11,7 @@ export function numero(testo) {
 }
 
 export const cent = (x) => Math.round(x * 100);
-export const euro = (c) => (c / 100).toLocaleString('it-IT', { style: 'currency', currency: 'EUR' });
+export const euro = (c) => (c / 100).toLocaleString('it-IT', { style: 'currency', currency: 'EUR', useGrouping: 'always' });
 
 export const ritenuta = (lordo, sostituto) => (sostituto ? Math.round(lordo * RITENUTA) : 0);
 export const serveBollo = (lordo) => lordo > SOGLIA_BOLLO;
