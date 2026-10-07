@@ -1,0 +1,56 @@
+<p class="briciole"><a href="${base}tassa-di-soggiorno/">Tassa di soggiorno</a> › $regione</p>
+<h1>Tassa di soggiorno a $nome 2026</h1>
+<p class="introduzione">Quanto si paga a $nome per case vacanza e affitti brevi, chi è esente e quante notti si pagano. Calcola subito il totale per i tuoi ospiti.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" autocomplete="off" onsubmit="return false">
+    <fieldset>
+      <label>Tariffa a persona per notte in euro<input name="tariffa" inputmode="decimal" value="$tariffa_it"></label>
+      <label>Ospiti<input name="ospiti" inputmode="numeric" value="2"></label>
+      <label>Di cui esenti (es. bambini)<input name="esenti" inputmode="numeric" value="0"></label>
+      <label>Notti<input name="notti" inputmode="numeric" value="3"></label>
+      <label>Notti massime tassabili (0 = nessun limite)<input name="max" inputmode="numeric" value="$notti_max"></label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto a $nome</p>
+      <table>
+        <tr><td>Ospiti tassabili</td><td id="osp"></td></tr>
+        <tr><td>Notti tassabili</td><td id="notti"></td></tr>
+        <tr class="totale"><td>Tassa di soggiorno</td><td id="tot"></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<h2>Le regole a $nome</h2>
+<table class="dati regole">
+  <tr><td>Tariffa per case vacanza e affitti brevi</td><td>$tariffa_testo a persona per notte</td></tr>
+  <tr><td>Notti massime tassabili</td><td>$notti_testo</td></tr>
+  <tr><td>Esenzione per età</td><td>$eta_testo</td></tr>
+  <tr><td>Fonte</td><td><a href="$fonte" rel="noopener">$tipo_fonte_testo</a>, verificata il $verificato_it</td></tr>
+</table>
+<p>$note</p>
+<p class="nota">Tariffa indicativa: i Comuni possono cambiarla durante l'anno, per stagione o per zona. Prima di comunicarla agli ospiti verifica sul sito del Comune di $nome.</p>
+
+$box_host
+
+<h2>Altre città: $regione</h2>
+<p>$altre</p>
+<p><a href="${base}tassa-di-soggiorno/">Tutte le città</a></p>
+<p><a href="${base}guida-affitti-brevi-2026/">Guida agli affitti brevi 2026: tasse, CIN e ospiti</a></p>
+
+<script type="module">
+import * as c from '${base}calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const intero = (v) => { const n = Math.floor(c.numero(v)); return n > 0 ? n : 0; };
+function aggiorna() {
+  const t = c.numero(f.tariffa.value), ospiti = intero(f.ospiti.value), esenti = intero(f.esenti.value), notti = intero(f.notti.value), max = intero(f.max.value);
+  q('osp').textContent = Math.max(ospiti - esenti, 0);
+  q('notti').textContent = max ? Math.min(notti, max) : notti;
+  q('tot').textContent = c.euro(c.tassaSoggiorno(Number.isFinite(t) ? c.cent(t) : 0, ospiti, esenti, notti, max));
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>

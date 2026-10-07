@@ -7,11 +7,7 @@
       <label>Città
         <select name="citta">
           <option value="">Altro Comune: scrivo io la tariffa</option>
-          <option value="6|10|10">Roma</option>
-          <option value="9,5|0|">Milano</option>
-          <option value="6|7|12">Firenze</option>
-          <option value="4|5|10">Venezia</option>
-          <option value="6|14|14">Napoli</option>
+$opzioni_citta
         </select>
       </label>
       <label>Tariffa a persona per notte in euro<input name="tariffa" inputmode="decimal" value="3"></label>
@@ -43,7 +39,8 @@ $box_host
   <li>Il limite ordinario è 5 € a notte, 10 € per Roma e le città più turistiche; nel 2026 i Comuni possono aumentarla ancora fino a 2 €.</li>
   <li>Se l'ospite paga tramite un portale che incassa il canone, è il portale a dover versare l'imposta.</li>
 </ul>
-<p class="nota">Le tariffe delle città sono indicative, aggiornate a ottobre 2026 per case e appartamenti per vacanze: verifica sempre sul sito del Comune.</p>
+<p class="nota">Le tariffe delle città sono indicative, aggiornate a ottobre 2026 per case e appartamenti per vacanze: verifica sempre sul sito del Comune.
+   Regole, esenzioni e fonti città per città: <a href="${base}tassa-di-soggiorno/">tassa di soggiorno nelle città italiane</a>.</p>
 
 <script type="module">
 import * as c from '${base}calcoli.js';

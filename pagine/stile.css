@@ -153,3 +153,5 @@ main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; backg
 .incorporato .testata, .incorporato footer, .incorporato main > :not(.strumento, .firma-widget, script) { display: none; }
 .incorporato .strumento { margin: .5rem 0; }
 .firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }
+.briciole { font-size: .95rem; color: var(--grigio); margin: 1.5rem 0 -1rem; }
+table.dati.regole td { white-space: normal; text-align: left; }

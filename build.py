@@ -111,12 +111,23 @@ codici = ''.join(
     + '</textarea><button type="button" class="copia">Copia il codice</button>' for n, t, _ in STRUMENTI)
 
 
-def genera(nome, titolo, descrizione, incorporato=False):
+# Tassa di soggiorno città per città: un file di dati, una pagina per città, un indice per regione.
+# I dati sono controllati da sito.test.js, che nel workflow gira prima della pubblicazione.
+testo = lambda x: html.escape(x, quote=False)   # nei nodi di testo l'apostrofo non va trasformato
+CITTA = json.loads((PAGINE / 'dati' / 'tassa-soggiorno.json').read_text('utf-8'))
+virgola = lambda x: f'{x:.2f}'.replace('.', ',')
+importo = lambda c: ('fino a ' if c.get('tetto') else '') + f'{virgola(c["tariffa"])} €'   # tetto: si paga una % del prezzo, con un massimo
+opzioni_citta = ''.join(f'          <option value="{c["tariffa"]}|{c["notti_max"]}|{c["eta_esenzione"] or ""}">{testo(c["nome"])}</option>\n'
+                        for c in sorted(CITTA, key=lambda c: c['nome']))
+
+
+def genera(nome, titolo, descrizione, incorporato=False, modello=None, extra=None):
     radice = nome == 'index'
-    base, canonical = ('', URL) if radice else ('../../' if incorporato else '../', f'{URL}{nome}/')
+    base = '' if radice else '../' * (nome.count('/') + 1 + incorporato)
+    canonical = URL if radice else f'{URL}{nome}/'
     comuni = {'base': base, 'titolare': html.escape(C['titolare']), 'email': html.escape(C['email']),
-              'privacy_pubblicita': privacy_pubblicita, 'codici': codici, **box}
-    corpo = Template((PAGINE / f'{nome}.html').read_text('utf-8')).substitute(comuni)
+              'privacy_pubblicita': privacy_pubblicita, 'codici': codici, 'opzioni_citta': opzioni_citta, **box, **(extra or {})}
+    corpo = Template((PAGINE / f'{modello or nome}.html').read_text('utf-8')).substitute(comuni)
     jsonld = ({'@context': 'https://schema.org', '@type': 'WebSite', 'name': C['nome'], 'url': URL, 'inLanguage': 'it'} if radice else
               {'@context': 'https://schema.org', '@type': 'Article', 'headline': titolo, 'description': descrizione, 'url': canonical,
                'inLanguage': 'it', 'dateModified': date.today().isoformat(), 'publisher': {'@type': 'Organization', 'name': C['nome']}}
@@ -141,6 +152,28 @@ def genera(nome, titolo, descrizione, incorporato=False):
 
 
 indirizzi = [genera(*p) for p in STRUMENTI + GUIDE + ALTRE]
+
+regioni = sorted({c['regione'] for c in CITTA})
+indirizzi.append(genera('tassa-di-soggiorno', 'Tassa di soggiorno 2026: tariffe nelle città italiane',
+    f'Tariffe 2026 della tassa di soggiorno per case vacanza e affitti brevi in {len(CITTA)} città italiane, con esenzioni, notti massime e calcolatore.',
+    extra={'numero': len(CITTA), 'elenco': ''.join(
+        f'<h2>{testo(r)}</h2><ul class="registro">' + ''.join(
+            f'<li><a href="{c["slug"]}/"><strong>{testo(c["nome"])}</strong><span>{importo(c)} a persona per notte</span></a></li>'
+            for c in CITTA if c['regione'] == r) + '</ul>' for r in regioni)}))
+for c in CITTA:
+    vicine = [v for v in CITTA if v['regione'] == c['regione'] and v is not c]
+    indirizzi.append(genera(
+        f'tassa-di-soggiorno/{c["slug"]}', f'Tassa di soggiorno {c["nome"]} 2026: tariffa e calcolo',
+        f'Tassa di soggiorno a {c["nome"]} per case vacanza e affitti brevi: {importo(c)} a persona per notte, '
+        f'esenzioni e notti massime. Calcola il totale per i tuoi ospiti.',
+        modello='tassa-citta', extra={
+            'nome': testo(c['nome']), 'regione': testo(c['regione']), 'tariffa_it': virgola(c['tariffa']), 'tariffa_testo': importo(c),
+            'notti_max': c['notti_max'], 'note': testo(c['note']), 'fonte': html.escape(c['fonte']),
+            'notti_testo': f'fino a {c["notti_max"]} notti (dettagli nelle note)' if c['notti_max'] else 'nessun limite trovato',
+            'eta_testo': f'fino a {c["eta_esenzione"]} anni (vedi note)' if c['eta_esenzione'] else 'non indicata',
+            'tipo_fonte_testo': 'sito del Comune' if c['tipo_fonte'] == 'comune' else 'fonte di settore',
+            'verificato_it': '/'.join(reversed(c['verificato'].split('-'))),
+            'altre': ' '.join(f'<a href="../{v["slug"]}/">{testo(v["nome"])}</a>' for v in vicine) or 'Nessun\'altra città della regione in elenco.'}))
 for p in STRUMENTI:
     genera(*p, incorporato=True)   # fuori dalla sitemap e con noindex: contano i link verso le pagine vere
 
