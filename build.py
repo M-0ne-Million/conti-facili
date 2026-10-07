@@ -1,12 +1,14 @@
 """Genera il sito statico in public/ dalle pagine in pagine/ e dalla configurazione in sito.toml.
 Solo libreria standard: python3 build.py"""
 import html
+import re
 import json
 import shutil
 import tomllib
 from datetime import date
 from pathlib import Path
 from string import Template
+from urllib.parse import quote
 
 QUI = Path(__file__).parent
 PAGINE, OUT = QUI / 'pagine', QUI / 'public'
@@ -95,6 +97,27 @@ privacy_pubblicita = (
     '<a href="https://policies.google.com/technologies/ads?hl=it">come Google usa i cookie nella pubblicità</a>.</p>'
     if G['adsense'] else '<p>Il sito non usa cookie né strumenti di statistica o pubblicità.</p>')
 
+# Newsletter (MailerLite): il modulo compare solo se newsletter_form è compilato in sito.toml.
+NEWSLETTER = C.get('newsletter_form', '')
+
+
+def blocco_newsletter(base):
+    return NEWSLETTER and (
+        f'<form class="newsletter modulo" action="{html.escape(NEWSLETTER)}" method="post" target="_blank">'
+        '<fieldset><legend>Le scadenze nella tua email, una volta al mese</legend>'
+        '<label>Email<input type="email" name="fields[email]" autocomplete="email" required></label>'
+        '<label class="spunta"><input type="checkbox" name="consenso" value="1" required> '
+        f'Voglio ricevere la newsletter di Conti Facili. Ho letto l\'<a href="{base}privacy/">informativa privacy</a>.</label>'
+        '<input type="hidden" name="ml-submit" value="1"></fieldset><button>Iscriviti</button>'
+        '<p class="nota">Ti arriverà un\'email per confermare l\'iscrizione. Puoi cancellarti quando vuoi con il link in fondo a ogni email.</p></form>')
+
+
+privacy_newsletter = NEWSLETTER and (
+    '<h2>Newsletter</h2><p>Se ti iscrivi alla newsletter, il tuo indirizzo email viene conservato da MailerLite (UAB MailerLite, con server '
+    'nell\'Unione europea), che invia le email per conto del sito. Lo usiamo solo per mandarti le scadenze e i consigli del mese. '
+    'La base è il tuo consenso, che puoi ritirare in ogni momento con il link in fondo a ogni email: il tuo indirizzo viene allora cancellato. '
+    'Non usiamo l\'indirizzo per altri scopi e non lo cediamo a nessuno.</p>')
+
 css = (PAGINE / 'stile.css').read_text('utf-8')
 layout = Template((PAGINE / 'layout.html').read_text('utf-8'))
 shutil.rmtree(OUT, ignore_errors=True)
@@ -126,7 +149,7 @@ def genera(nome, titolo, descrizione, incorporato=False, modello=None, extra=Non
     base = '' if radice else '../' * (nome.count('/') + 1 + incorporato)
     canonical = URL if radice else f'{URL}{nome}/'
     comuni = {'base': base, 'titolare': html.escape(C['titolare']), 'email': html.escape(C['email']),
-              'privacy_pubblicita': privacy_pubblicita, 'codici': codici, 'opzioni_citta': opzioni_citta, **box, **(extra or {})}
+              'privacy_pubblicita': privacy_pubblicita, 'privacy_newsletter': privacy_newsletter, 'newsletter': blocco_newsletter(base), 'codici': codici, 'opzioni_citta': opzioni_citta, **box, **(extra or {})}
     corpo = Template((PAGINE / f'{modello or nome}.html').read_text('utf-8')).substitute(comuni)
     jsonld = ({'@context': 'https://schema.org', '@type': 'WebSite', 'name': C['nome'], 'url': URL, 'inLanguage': 'it'} if radice else
               {'@context': 'https://schema.org', '@type': 'Article', 'headline': titolo, 'description': descrizione, 'url': canonical,
@@ -212,6 +235,72 @@ indirizzi.append(genera('confronti', 'Confronti 2026: servizi per freelance, par
     'Commercialisti online, fattura elettronica, conti per partita IVA e software per host a confronto: prezzi, punti forti e limiti.',
     extra={'elenco_confronti': ''.join(f'<li><a href="../confronto/{c["slug"]}/"><strong>{testo(c["titolo"])}</strong>'
                                        f'<span>{testo(c["intro"])}</span></a></li>' for c in CONFRONTI)}))
+
+# Calendario delle scadenze: tre file .ics a cui iscriversi e una pagina mese per mese.
+SCADENZE = json.loads((PAGINE / 'dati' / 'scadenze.json').read_text('utf-8'))
+CALENDARI = {'tutte': ('Tutte le scadenze', lambda x: True),
+             'forfettari': ('Partita IVA forfettaria', lambda x: 'forfettari' in x['per']),
+             'host': ('Host di affitti brevi', lambda x: 'host' in x['per'])}
+MESI = 'gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre'.split()
+PER = {'forfettari': 'partita IVA forfettaria', 'occasionali': 'prestazione occasionale', 'host': 'host',
+       'proprietari': 'proprietari di casa', 'dipendenti': 'dipendenti'}
+PAGINA_CALENDARIO = f'{URL}calendario-scadenze-fiscali/'
+
+
+def ics_testo(x):
+    return x.replace('\\', '\\\\').replace(';', '\\;').replace(',', '\\,').replace('\n', '\\n')
+
+
+def piega(riga):   # RFC 5545: righe di massimo 75 byte, le successive iniziano con uno spazio
+    b, parti, limite = riga.encode(), [], 75
+    while len(b) > limite:
+        taglio = limite
+        while b[taglio] & 0xC0 == 0x80:   # non spezzare un carattere UTF-8 a metà
+            taglio -= 1
+        parti.append(b[:taglio]); b = b[taglio:]; limite = 74
+    return '\r\n '.join(p.decode() for p in parti + [b])
+
+
+(OUT / 'calendario').mkdir()
+oggi = date.today().strftime('%Y%m%d')
+for nome, (titolo_cal, filtro) in CALENDARI.items():
+    righe = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Conti Facili//Scadenze fiscali//IT', 'CALSCALE:GREGORIAN',
+             'METHOD:PUBLISH', f'X-WR-CALNAME:{ics_testo("Scadenze fiscali – " + titolo_cal)}', 'X-WR-TIMEZONE:Europe/Rome',
+             'REFRESH-INTERVAL;VALUE=DURATION:P1D', 'X-PUBLISHED-TTL:P1D']
+    for x in filter(filtro, SCADENZE):
+        giorno = x['data'].replace('-', '')
+        fine = date.fromisoformat(x['data']).toordinal() + 1
+        dettagli = x['descrizione'] + (f"\nDettagli: {URL}{x['link']}" if x['link'] else '') + f"\nFonte: {x['fonte']}"
+        righe += ['BEGIN:VEVENT', f"UID:{giorno}-{re.sub(r'[^a-z0-9]+', '-', x['titolo'].lower()).strip('-')}@conti-facili",
+                  f'DTSTAMP:{oggi}T000000Z', f'DTSTART;VALUE=DATE:{giorno}',
+                  f'DTEND;VALUE=DATE:{date.fromordinal(fine).strftime("%Y%m%d")}',
+                  f"SUMMARY:{ics_testo(x['titolo'])}", f'DESCRIPTION:{ics_testo(dettagli)}',
+                  f"URL:{URL + x['link'] if x['link'] else PAGINA_CALENDARIO}",
+                  'BEGIN:VALARM', 'ACTION:DISPLAY', 'TRIGGER:-P3D', f"DESCRIPTION:{ics_testo(x['titolo'])}", 'END:VALARM', 'END:VEVENT']
+    righe.append('END:VCALENDAR')
+    (OUT / 'calendario' / f'{nome}.ics').write_bytes(('\r\n'.join(piega(r) for r in righe) + '\r\n').encode())
+
+webcal = 'webcal://' + URL.split('://', 1)[1]
+iscrizioni = '<div class="iscrizioni">' + ''.join(
+    f'<div><p><strong>{testo(t)}</strong></p>'
+    f'<a class="bottone secondario" href="https://calendar.google.com/calendar/render?cid={quote(webcal + "calendario/" + n + ".ics", safe="")}" rel="noopener">Google Calendar</a>'
+    f'<a class="bottone secondario" href="{webcal}calendario/{n}.ics">iPhone e Mac</a>'
+    f'<a class="bottone secondario" href="https://outlook.live.com/calendar/0/addfromweb?url={quote(URL + "calendario/" + n + ".ics", safe="")}&amp;name={quote("Scadenze fiscali")}" rel="noopener">Outlook</a>'
+    f'<a class="bottone secondario" href="../calendario/{n}.ics" download>Scarica</a></div>'
+    for n, (t, _) in CALENDARI.items()) + '</div>'
+mesi = ''
+for chiave in sorted({x['data'][:7] for x in SCADENZE}):
+    anno, mese = chiave.split('-')
+    mesi += f'<section class="mese-scadenze"><h2>{MESI[int(mese) - 1].capitalize()} {anno}</h2><ul class="scadenze">' + ''.join(
+        f'<li data-data="{x["data"]}"><span class="giorno">{int(x["data"][8:])} {MESI[int(mese) - 1]}</span>'
+        f'<strong>{testo(x["titolo"])}</strong><br>{testo(x["descrizione"])} '
+        + (f'<a href="../{x["link"]}">Approfondisci</a> ' if x['link'] else '')
+        + f'<a href="{html.escape(x["fonte"])}" rel="noopener">Fonte</a><br>'
+        f'<span class="per">Per: {", ".join(PER[p] for p in x["per"])}</span></li>'
+        for x in SCADENZE if x['data'].startswith(chiave)) + '</ul></section>'
+indirizzi.append(genera('calendario-scadenze-fiscali', 'Calendario scadenze fiscali 2026-2027 da aggiungere al tuo calendario',
+    'Scadenze fiscali per partita IVA forfettaria, prestazione occasionale, host e IMU: aggiungile a Google Calendar, iPhone o Outlook e si aggiornano da sole.',
+    extra={'iscrizioni': iscrizioni, 'mesi': mesi, 'aggiornato': date.today().strftime('%d/%m/%Y')}))
 
 (OUT / 'sitemap.xml').write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

@@ -1,0 +1,19 @@
+<h1>Calendario delle scadenze fiscali 2026-2027</h1>
+<p class="introduzione">Le date che contano per chi ha la partita IVA forfettaria, lavora con la prestazione occasionale, affitta casa ai turisti o paga l'IMU.
+   Mettile nel tuo calendario: si aggiornano da sole quando cambiano.</p>
+
+<h2 id="iscriviti">Aggiungi al tuo calendario</h2>
+$iscrizioni
+
+$newsletter
+
+<h2 id="scadenze">Le prossime scadenze</h2>
+<p class="nota">Le date possono cambiare per proroghe decise durante l'anno. Ogni scadenza ha la sua fonte: in caso di dubbio verifica sul sito dell'Agenzia delle Entrate o dell'INPS. Aggiornato a $aggiornato.</p>
+$mesi
+
+<script>
+// Nasconde le scadenze già passate e i mesi rimasti vuoti.
+const oggi = new Date().toISOString().slice(0, 10);
+for (const li of document.querySelectorAll('[data-data]')) if (li.dataset.data < oggi) li.hidden = true;
+for (const mese of document.querySelectorAll('.mese-scadenze')) if (!mese.querySelector('li:not([hidden])')) mese.hidden = true;
+</script>

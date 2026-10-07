@@ -114,3 +114,54 @@ test('indice dei confronti, sitemap e collegamenti dalle guide', () => {
   assert.ok(pagina('guida-affitti-brevi-2026').includes('confronto/software-host/'));
   assert.ok(pagina('tassa-di-soggiorno/firenze').includes('confronto/software-host/'));
 });
+
+// ---------------------------------------------------------------------------
+// Calendario delle scadenze (.ics) e newsletter
+const scadenze = JSON.parse(readFileSync('pagine/dati/scadenze.json', 'utf8'));
+const newsletterForm = (readFileSync('sito.toml', 'utf8').match(/^newsletter_form\s*=\s*"([^"]*)"/m) ?? [])[1] ?? '';
+const CALENDARI = { forfettari: (s) => s.per.includes('forfettari'), host: (s) => s.per.includes('host'), tutte: () => true };
+
+test('dati delle scadenze completi e ordinati', () => {
+  const gruppi = ['forfettari', 'occasionali', 'host', 'proprietari', 'dipendenti'];
+  for (const s of scadenze) {
+    assert.match(s.data, /^\d{4}-\d{2}-\d{2}$/, s.titolo);
+    assert.ok(s.titolo && s.descrizione && s.per.length, s.data);
+    assert.ok(s.per.every((p) => gruppi.includes(p)), `${s.titolo}: gruppo sconosciuto`);
+    assert.match(s.fonte, /^https:\/\//, s.titolo);
+    if (s.link) assert.ok(existsSync(`public/${s.link}index.html`), `${s.titolo}: link ${s.link} inesistente`);
+  }
+  assert.deepEqual(scadenze.map((s) => s.data), scadenze.map((s) => s.data).sort(), 'non ordinate');
+});
+
+test('file .ics validi: una voce per scadenza del gruppo, righe standard', () => {
+  for (const [nome, filtro] of Object.entries(CALENDARI)) {
+    const ics = readFileSync(`public/calendario/${nome}.ics`, 'utf8');
+    assert.ok(ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.endsWith('END:VCALENDAR\r\n'), nome);
+    assert.ok(!/[^\r]\n/.test(ics), `${nome}: righe senza CRLF`);
+    for (const riga of ics.split('\r\n')) assert.ok(Buffer.byteLength(riga) <= 75, `${nome}: riga troppo lunga: ${riga}`);
+    const attese = scadenze.filter(filtro);
+    assert.equal(ics.match(/BEGIN:VEVENT/g)?.length ?? 0, attese.length, nome);
+    for (const s of attese) assert.ok(ics.includes(`DTSTART;VALUE=DATE:${s.data.replaceAll('-', '')}`), `${nome}: ${s.titolo}`);
+  }
+});
+
+test('pagina del calendario: tutte le scadenze e i pulsanti per iscriversi', () => {
+  const html = pagina('calendario-scadenze-fiscali');
+  for (const s of scadenze) assert.ok(html.includes(s.titolo), s.titolo);
+  for (const segno of ['webcal://', 'calendar.google.com/calendar/render?cid=', 'outlook.live.com/calendar/0/addfromweb', 'calendario/tutte.ics'])
+    assert.ok(html.includes(segno), `manca ${segno}`);
+  assert.ok(readFileSync('public/sitemap.xml', 'utf8').includes('calendario-scadenze-fiscali/'));
+});
+
+test('modulo newsletter e privacy solo se il modulo MailerLite è configurato', () => {
+  const html = pagina('calendario-scadenze-fiscali'), privacy = pagina('privacy');
+  if (!newsletterForm) {
+    assert.ok(!html.includes('class="newsletter"'), 'modulo presente senza configurazione');
+    assert.ok(!privacy.includes('MailerLite'), 'privacy parla di newsletter senza configurazione');
+  } else {
+    assert.ok(html.includes(`action="${newsletterForm}"`));
+    assert.ok(/type="checkbox"[^>]*required/.test(html), 'consenso obbligatorio');
+    assert.ok(!/type="checkbox"[^>]*checked/.test(html), 'consenso preselezionato');
+    assert.ok(privacy.includes('MailerLite'));
+  }
+});

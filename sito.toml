@@ -11,6 +11,9 @@ url = "https://m-0ne-million.github.io/conti-facili/"
 titolare = "[NOME COGNOME]"
 email = "[EMAIL]"
 # Codice di verifica di Google Search Console (metodo "Tag HTML": solo il valore di content="...").
+# Indirizzo "action" del modulo di iscrizione MailerLite (Moduli → Incorporato → HTML).
+# Vuoto = nessun modulo sul sito e nessun dato raccolto.
+newsletter_form = ""
 google_verifica = "mYpD_GNiX8-CuIm7IoCFDpJmgcL2ufV5ZjtpCCkXyWE"
 
 [guadagni]
