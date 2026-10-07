@@ -1,4 +1,6 @@
-# A ogni push su main: test dei calcoli, generazione del sito, pubblicazione gratuita su GitHub Pages.
+# A ogni push su main: test dei calcoli, generazione del sito, copia del sito generato nel ramo gh-pages.
+# GitHub Pages pubblica il ramo gh-pages (Settings → Pages → Deploy from a branch → gh-pages, /root):
+# un solo editore, quindi niente più README pubblicato al posto del sito.
 name: Pubblica sito
 on:
   push:
@@ -6,12 +8,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read
+  contents: write
 
-# Gruppo proprio: non si scontra con il "pages build and deployment" automatico di GitHub.
 concurrency:
   group: pubblica-conti-facili
   cancel-in-progress: false
@@ -19,9 +17,6 @@ concurrency:
 jobs:
   pubblica:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -34,23 +29,15 @@ jobs:
           python-version: '3.12'
       - name: Genera il sito
         run: python build.py
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: public
-      # A ogni push GitHub lancia anche il suo "pages build and deployment", che pubblicherebbe il README sopra il sito.
-      # Aspettiamo che finisca, così la nostra pubblicazione arriva per ultima (come quando si lancia il workflow a mano).
-      # ponytail: aggiramento; si toglie quando GitHub smette di lanciare quel workflow con Source = GitHub Actions.
-      - name: Aspetta la pubblicazione automatica di GitHub
+      - name: Copia il sito nel ramo gh-pages
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for i in $(seq 1 60); do
-            attivi=$(gh run list -R "$GITHUB_REPOSITORY" --commit "$GITHUB_SHA" --json name,status \
-              --jq '[.[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
-            [ "$attivi" = "0" ] && exit 0
-            echo "In attesa del workflow automatico di GitHub ($i)..."
-            sleep 10
-          done
-      - id: deploy
-        uses: actions/deploy-pages@v4
+          cd public
+          touch .nojekyll
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Sito generato da ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages

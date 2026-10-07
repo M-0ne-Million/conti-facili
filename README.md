@@ -20,7 +20,7 @@ Nessun server da gestire, nessun dato dei visitatori da custodire: i calcoli avv
    Quando dice che non è un repository clicca **create a repository**, poi **Create repository**.
 4. Controlla nella colonna a sinistra che **non** compaiano file della cartella `etsy/`: sono esclusi apposta (sono il prodotto che vendi).
 5. Clicca **Publish repository** e **togli la spunta** a "Keep this code private" (GitHub Pages gratis vuole un repository pubblico).
-6. Su github.com apri il repository → **Settings → Pages** → *Source*: **GitHub Actions**.
+6. Fai un primo push (punto 7): il workflow crea il ramo `gh-pages` con il sito già pronto. Poi su github.com apri il repository → **Settings → Pages** → *Source*: **Deploy from a branch**, ramo **gh-pages**, cartella **/ (root)** → **Save**.
 7. In GitHub Desktop fai **Commit to main** e **Push origin**. Nella scheda **Actions** del sito di GitHub vedi la pubblicazione: in un paio di minuti il sito è su `https://TUO-UTENTE.github.io/NOME-REPOSITORY/`.
 8. Scrivi quell'indirizzo in `sito.toml` alla voce `url` (deve finire con `/`), poi di nuovo Commit e Push.
 
