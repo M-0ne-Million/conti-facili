@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 # Gruppo proprio: non si scontra con il "pages build and deployment" automatico di GitHub.
 concurrency:
@@ -37,5 +38,19 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           path: public
+      # A ogni push GitHub lancia anche il suo "pages build and deployment", che pubblicherebbe il README sopra il sito.
+      # Aspettiamo che finisca, così la nostra pubblicazione arriva per ultima (come quando si lancia il workflow a mano).
+      # ponytail: aggiramento; si toglie quando GitHub smette di lanciare quel workflow con Source = GitHub Actions.
+      - name: Aspetta la pubblicazione automatica di GitHub
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 60); do
+            attivi=$(gh run list -R "$GITHUB_REPOSITORY" --commit "$GITHUB_SHA" --json name,status \
+              --jq '[.[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+            [ "$attivi" = "0" ] && exit 0
+            echo "In attesa del workflow automatico di GitHub ($i)..."
+            sleep 10
+          done
       - id: deploy
         uses: actions/deploy-pages@v4
