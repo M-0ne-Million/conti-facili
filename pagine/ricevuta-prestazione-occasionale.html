@@ -3,19 +3,19 @@
    già calcolate. Poi stampala o salvala in PDF. Gratis e senza registrazione.</p>
 
 <div class="strumento">
-  <form id="f" class="modulo" onsubmit="return false">
+  <form id="f" class="modulo" autocomplete="off" onsubmit="return false">
     <fieldset>
       <legend>Chi riceve il compenso (tu)</legend>
       <label>Nome e cognome<input name="p_nome" autocomplete="name"></label>
-      <label>Codice fiscale<input name="p_cf" autocapitalize="characters"></label>
+      <label>Codice fiscale<input name="p_cf" autocapitalize="characters" spellcheck="false"></label>
       <label>Indirizzo<input name="p_indirizzo" autocomplete="street-address"></label>
-      <label>IBAN (facoltativo)<input name="p_iban"></label>
+      <label>IBAN (facoltativo)<input name="p_iban" spellcheck="false" autocomplete="off"></label>
       <label class="spunta"><input type="checkbox" name="ricorda"> Ricorda i miei dati su questo dispositivo</label>
     </fieldset>
     <fieldset>
       <legend>Chi paga (committente)</legend>
       <label>Nome o ragione sociale<input name="c_nome"></label>
-      <label>Codice fiscale o partita IVA<input name="c_cf"></label>
+      <label>Codice fiscale o partita IVA<input name="c_cf" spellcheck="false"></label>
       <label>Indirizzo<input name="c_indirizzo"></label>
       <label>Il committente è
         <select name="c_tipo">

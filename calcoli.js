@@ -90,7 +90,7 @@ export const FISCO = {
       ['Commercio, alimentari, alloggio e ristorazione', 40],
       ['Commercio ambulante di prodotti non alimentari', 54],
       ['Intermediari del commercio', 62],
-      ['Altre attività (servizi, informatica, artigianato...)', 67],
+      ['Altre attività (servizi, informatica, artigianato…)', 67],
       ['Professioni, consulenza, sanità, istruzione', 78],
       ['Costruzioni e attività immobiliari', 86],
     ],

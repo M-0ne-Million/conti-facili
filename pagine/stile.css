@@ -10,7 +10,11 @@
   --grigio: #5a6178;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+.salta { position: absolute; left: -999px; }
+.salta:focus { left: 1rem; top: 1rem; z-index: 1; background: var(--carta); padding: .5rem 1rem; }
+h1, h2 { text-wrap: balance; }
+h2[id] { scroll-margin-top: 1rem; }
 body { margin: 0; font: 400 1.125rem/1.55 "Titillium Web", system-ui, sans-serif; color: var(--inchiostro); background: var(--scrivania); }
 .contenuto { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
 main { padding-bottom: 3rem; }
@@ -80,6 +84,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: non
 /* Pulsanti */
 .bottone, button { font: inherit; font-weight: 700; font-size: 1.1rem; background: var(--carbone); color: #fff; border: 0; border-radius: 4px;
   padding: .7rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.bottone:hover, button:hover { background: #1f2878; }
+.bottone.secondario:hover { background: var(--carta); }
 .bottone:active, button:active { transform: translateY(1px); }
 .bottone.secondario { background: transparent; color: var(--carbone); box-shadow: inset 0 0 0 2px var(--carbone); }
 

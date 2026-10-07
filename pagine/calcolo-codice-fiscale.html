@@ -3,15 +3,15 @@
    Tutto avviene sul tuo dispositivo: i dati non vengono inviati a nessuno.</p>
 
 <div class="strumento">
-  <form id="f" class="modulo" onsubmit="return false">
+  <form id="f" class="modulo" autocomplete="off" onsubmit="return false">
     <fieldset>
       <legend>Calcola</legend>
       <label>Cognome<input name="cognome" autocomplete="family-name" value="Rossi"></label>
       <label>Nome<input name="nome" autocomplete="given-name" value="Mario"></label>
       <label>Data di nascita<input name="data" type="date" value="1985-12-10"></label>
       <label>Sesso<select name="sesso"><option value="M">maschio</option><option value="F">femmina</option></select></label>
-      <label>Comune di nascita<input name="comune" list="comuni" placeholder="Inizia a scrivere, es. Roma" autocomplete="off"></label>
-      <label>Nato all'estero? Codice dello Stato<input name="estero" placeholder="es. Z112 per la Germania" autocapitalize="characters"></label>
+      <label>Comune di nascita<input name="comune" list="comuni" placeholder="Inizia a scrivere, es. Roma…" autocomplete="off"></label>
+      <label>Nato all'estero? Codice dello Stato<input name="estero" placeholder="es. Z112 per la Germania…" autocapitalize="characters" spellcheck="false"></label>
       <datalist id="comuni"></datalist>
     </fieldset>
   </form>
@@ -25,10 +25,10 @@
 </div>
 
 <div class="strumento">
-  <form id="v" class="modulo" onsubmit="return false">
+  <form id="v" class="modulo" autocomplete="off" onsubmit="return false">
     <fieldset>
       <legend>Verifica un codice fiscale</legend>
-      <label>Codice fiscale<input name="cf" autocapitalize="characters" maxlength="20" value="RSSMRA85T10A562S"></label>
+      <label>Codice fiscale<input name="cf" autocapitalize="characters" spellcheck="false" maxlength="20" value="RSSMRA85T10A562S"></label>
     </fieldset>
   </form>
   <div class="scontrino-wrap">
