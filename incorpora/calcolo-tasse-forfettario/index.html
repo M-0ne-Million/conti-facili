@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcolo tasse regime forfettario 2026</title>
+<meta name="description" content="Calcola contributi INPS e imposta sostitutiva del regime forfettario 2026 (15% o 5%), con coefficienti di redditività e riduzione del 35%. Vedi quanto ti resta.">
+<link rel="canonical" href="https://m-0ne-million.github.io/conti-facili/calcolo-tasse-forfettario/">
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#edf0f7">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Conti Facili">
+<meta property="og:title" content="Calcolo tasse regime forfettario 2026">
+<meta property="og:description" content="Calcola contributi INPS e imposta sostitutiva del regime forfettario 2026 (15% o 5%), con coefficienti di redditività e riduzione del 35%. Vedi quanto ti resta.">
+<meta property="og:url" content="https://m-0ne-million.github.io/conti-facili/calcolo-tasse-forfettario/">
+<link rel="preload" href="../../font/titillium-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../font/titillium-900.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calcolo tasse regime forfettario 2026", "url": "https://m-0ne-million.github.io/conti-facili/calcolo-tasse-forfettario/", "description": "Calcola contributi INPS e imposta sostitutiva del regime forfettario 2026 (15% o 5%), con coefficienti di redditività e riduzione del 35%. Vedi quanto ti resta.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "it", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script>
+<meta name="google-site-verification" content="mYpD_GNiX8-CuIm7IoCFDpJmgcL2ufV5ZjtpCCkXyWE">
+<style>
+@font-face { font-family: "Titillium Web"; font-weight: 400; font-display: swap; src: url("../../font/titillium-400.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 600; font-display: swap; src: url("../../font/titillium-600.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 700; font-display: swap; src: url("../../font/titillium-700.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 900; font-display: swap; src: url("../../font/titillium-900.woff2") format("woff2"); }
+:root {
+  --scrivania: #edf0f7;   /* il piano su cui stanno i fogli */
+  --carta: #fff;
+  --carbone: #2b36a0;     /* blu della carta carbone */
+  --inchiostro: #1c2233;
+  --rigatura: #cfe3d8;    /* righe verdi del registro */
+  --margine: #2f7a5b;     /* linea di margine della carta uso bollo */
+  --timbro: #c8302a;      /* solo per la marca da bollo */
+  --evidenziatore: #fff07a;
+  --grigio: #5a6178;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+.salta { position: absolute; left: -999px; }
+.salta:focus { left: 1rem; top: 1rem; z-index: 1; background: var(--carta); padding: .5rem 1rem; }
+h1, h2 { text-wrap: balance; }
+h2[id] { scroll-margin-top: 1rem; }
+body { margin: 0; font: 400 1.125rem/1.55 "Titillium Web", system-ui, sans-serif; color: var(--inchiostro); background: var(--scrivania); }
+.contenuto { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+main { padding-bottom: 3rem; }
+main > p, main > ul, main > h2, main > details, main > .box { max-width: 42rem; }
+a { color: var(--carbone); text-underline-offset: .15em; }
+:focus-visible { outline: 3px solid var(--carbone); outline-offset: 2px; }
+
+/* Tipografia */
+h1 { font-weight: 900; font-size: clamp(2.2rem, 5.5vw, 3.75rem); line-height: 1; letter-spacing: -.015em; color: var(--carbone); margin: 2rem 0 1rem; max-width: 22ch; }
+h2 { font-weight: 700; font-size: 1.6rem; line-height: 1.15; margin: 2.75rem 0 .75rem; }
+.introduzione { font-size: 1.25rem; color: var(--grigio); max-width: 38rem; margin: 0 0 2rem; }
+
+/* Testata e piè di pagina */
+.testata { padding: 1rem 0 0; }
+.marchio { font-weight: 900; font-size: 1.35rem; color: var(--carbone); text-decoration: none; letter-spacing: -.01em; }
+footer { background: var(--carbone); color: #fff; padding: 2rem 0; font-size: 1rem; }
+footer a { color: #fff; }
+footer ul { padding-left: 1.2rem; columns: 2 14rem; margin: .5rem 0 1rem; }
+footer p { max-width: 42rem; }
+
+/* Strumento: modulo a sinistra, scontrino a destra */
+.strumento { display: grid; gap: 2rem; align-items: start; margin: 1rem 0 2rem; }
+@media (min-width: 56rem) { .strumento { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } .strumento > .scontrino-wrap { position: sticky; top: 1rem; } }
+
+/* Il modulo è un foglio di carta uso bollo: bianco con la linea di margine */
+.modulo { background: var(--carta) linear-gradient(to right, transparent 1.75rem, var(--margine) 1.75rem, var(--margine) 1.85rem, transparent 1.85rem);
+  border-radius: 3px; padding: 1.25rem 1.25rem 1.5rem 2.75rem; box-shadow: 0 1px 0 #cdd3e0, 0 12px 28px -18px rgba(43, 54, 160, .45); display: grid; gap: 1.25rem; margin: 0; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 1rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+fieldset + fieldset { border-top: 1px solid var(--rigatura); padding-top: 1.25rem; }
+legend { font-weight: 700; font-size: 1.15rem; color: var(--carbone); padding: 0; grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: .15rem; font-size: .95rem; font-weight: 600; color: var(--grigio); }
+label.spunta { flex-direction: row; align-items: center; gap: .5rem; font-weight: 400; color: var(--inchiostro); grid-column: 1 / -1; }
+input, select, textarea { font: inherit; font-size: 1.15rem; color: var(--inchiostro); background: transparent; border: 0; border-bottom: 2px solid #8c94b8;
+  border-radius: 0; padding: .35rem .15rem; min-height: 2.75rem; width: 100%; }
+textarea { min-height: 4.5rem; resize: vertical; }
+label.spunta input { width: 1.4rem; min-height: 1.4rem; accent-color: var(--carbone); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-bottom-color: var(--carbone); background: #fffbd6; }
+
+/* Lo scontrino: bordo strappato sopra e sotto, righe del registro, netto evidenziato */
+.scontrino-wrap { filter: drop-shadow(0 14px 20px rgba(43, 54, 160, .22)); }
+.scontrino { position: relative; background: var(--carta); padding: 1.75rem 1.25rem; font-variant-numeric: tabular-nums;
+  --dente: 14px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x; }
+.scontrino h2, .scontrino .titolo { font-size: 1.15rem; font-weight: 700; margin: 0 0 .75rem; color: var(--carbone); }
+.scontrino table { width: 100%; border-collapse: collapse; }
+.scontrino td { padding: .45rem 0; border-bottom: 1px solid var(--rigatura); }
+.scontrino td:last-child { text-align: right; white-space: nowrap; }
+.scontrino .totale td { border-bottom: 0; padding-top: .9rem; font-weight: 700; }
+.scontrino .totale td:last-child { font-size: 1.9rem; font-weight: 900; color: var(--carbone);
+  background: linear-gradient(transparent 58%, var(--evidenziatore) 58%, var(--evidenziatore) 92%, transparent 92%); }
+.scontrino .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+.sotto-scontrino { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* La marca da bollo: compare (timbrata) quando l'importo supera 77,47 € */
+.marca { position: absolute; top: 1.1rem; right: 1rem; width: 5.6rem; padding: 5px; transform: rotate(7deg);
+  background: radial-gradient(circle, var(--carta) 2.4px, #f3c9c5 2.9px) -4px -4px / 9px 9px; }
+.marca > span { display: block; background: #fdeeec; border: 1.5px solid var(--timbro); color: var(--timbro); text-align: center; padding: .35rem .2rem; line-height: 1.05; }
+.marca b { display: block; font-size: 1.35rem; font-weight: 900; }
+.marca small { font-size: .7rem; font-weight: 600; }
+.marca:not([hidden]) { animation: timbra .32s cubic-bezier(.2, .9, .3, 1.35); }
+@keyframes timbra { from { transform: scale(1.7) rotate(-6deg); opacity: 0; } to { transform: scale(1) rotate(7deg); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .marca:not([hidden]) { animation: none; } }
+
+/* Pulsanti */
+.bottone, button { font: inherit; font-weight: 700; font-size: 1.1rem; background: var(--carbone); color: #fff; border: 0; border-radius: 4px;
+  padding: .7rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.bottone:hover, button:hover { background: #1f2878; }
+.bottone.secondario:hover { background: var(--carta); }
+.bottone:active, button:active { transform: translateY(1px); }
+.bottone.secondario { background: transparent; color: var(--carbone); box-shadow: inset 0 0 0 2px var(--carbone); }
+
+/* Home: apertura con lo scontrino di esempio */
+.apertura { display: grid; gap: 2.5rem; align-items: center; padding: 1rem 0 1.5rem; }
+@media (min-width: 56rem) { .apertura { grid-template-columns: 1.2fr 1fr; } }
+.apertura .scontrino-wrap { transform: rotate(-1.5deg); max-width: 24rem; justify-self: center; width: 100%; }
+
+/* Indice degli strumenti come un registro: nome, puntini di guida, descrizione */
+.registro { list-style: none; padding: 0; margin: 0; max-width: none; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.registro a { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--inchiostro); border-bottom: 1px solid var(--rigatura); }
+.registro li:last-child a { border-bottom: 0; }
+.registro strong { font-size: 1.25rem; color: var(--carbone); }
+.registro span { grid-column: 1 / -1; color: var(--grigio); }
+@media (min-width: 48rem) {
+  .registro a { grid-template-columns: auto 1fr auto; align-items: baseline; }
+  .registro a::after { content: ""; order: 0; border-bottom: 2px dotted #9aa3c4; transform: translateY(-.3em); }
+  .registro strong { order: -1; }
+  .registro span { grid-column: auto; order: 1; }
+}
+.registro a:hover strong, .registro a:focus-visible strong { background: linear-gradient(transparent 60%, var(--evidenziatore) 60%); }
+
+/* Riquadri: il modello Excel come un buono da ritagliare, i partner come nota a margine */
+.box { margin: 2rem 0; padding: 1.25rem; background: var(--carta); position: relative; }
+.box p { margin: .25rem 0 1rem; }
+.box.prodotto { border: 2px dashed var(--carbone); border-radius: 6px; }
+.box.prodotto::before { content: "✂"; position: absolute; top: -.85rem; left: 1rem; background: var(--scrivania); color: var(--carbone); padding: 0 .3rem; font-size: 1.1rem; }
+.box.partner { border-left: 4px solid var(--margine); }
+.box .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+
+/* Domande frequenti come righe del registro */
+details { border-bottom: 1px solid #c3cad9; padding: .9rem 0; }
+summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 900; color: var(--carbone); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { margin: .5rem 0 0; }
+
+/* Tabelle di dati (piano di ammortamento) */
+.scorri { overflow-x: auto; }
+table.dati { width: 100%; border-collapse: collapse; background: var(--carta); font-variant-numeric: tabular-nums; }
+table.dati th, table.dati td { padding: .5rem .6rem; border-bottom: 1px solid var(--rigatura); text-align: right; white-space: nowrap; }
+table.dati th:first-child, table.dati td:first-child { text-align: left; }
+table.dati th { font-weight: 700; font-size: .95rem; color: var(--grigio); }
+.barra { display: inline-block; width: 8rem; height: .7rem; vertical-align: middle;
+  background: linear-gradient(to right, var(--carbone) var(--q), #e9a19b var(--q)); }
+.legenda { font-size: .95rem; color: var(--grigio); }
+.legenda i { display: inline-block; width: .8rem; height: .8rem; vertical-align: -.05rem; margin: 0 .25rem 0 .5rem; }
+
+/* Stampa: solo la ricevuta, senza decorazioni */
+@media print {
+  body { background: #fff; }
+  body * { visibility: hidden; }
+  #ricevuta, #ricevuta * { visibility: visible; }
+  #ricevuta { position: absolute; inset: 0; -webkit-mask: none; mask: none; padding: 0; font-size: 11pt; }
+  .scontrino-wrap { filter: none; }
+  .marca { display: none; }
+  .scontrino .totale td:last-child { background: none; }
+  @page { size: A4; margin: 2cm; }
+}
+.grande-codice { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 900; color: var(--carbone); letter-spacing: .06em; margin: .25rem 0; overflow-wrap: anywhere; }
+/* Pagina "incorpora" e versione incorporata nei siti di altri */
+main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; background: var(--carta); border: 1px solid #c3cad9; padding: .6rem; margin-bottom: .5rem; max-width: 42rem; display: block; }
+.incorporato { background: var(--carta); }
+.incorporato .testata, .incorporato footer, .incorporato main > :not(.strumento, .firma-widget, script) { display: none; }
+.incorporato .strumento { margin: .5rem 0; }
+.firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }
+.briciole { font-size: .95rem; color: var(--grigio); margin: 1.5rem 0 -1rem; }
+table.dati.regole td, table.dati.regole th { white-space: normal; text-align: left; }
+/* Calendario delle scadenze */
+.iscrizioni { display: grid; gap: 1rem; margin-bottom: 1rem; max-width: 42rem; }
+.iscrizioni > div { background: var(--carta); padding: 1rem; border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.iscrizioni p { margin: 0 0 .5rem; }
+.iscrizioni .bottone { margin: .25rem .25rem 0 0; font-size: 1rem; min-height: 2.5rem; padding: .45rem .9rem; }
+.scadenze { list-style: none; padding: 0; margin: 0 0 1rem; max-width: 42rem; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.scadenze li { padding: .9rem 1.25rem; border-bottom: 1px solid var(--rigatura); }
+.scadenze li:last-child { border-bottom: 0; }
+.scadenze .giorno { display: block; font-weight: 900; color: var(--carbone); }
+.scadenze .per { font-size: .9rem; color: var(--grigio); }
+
+</style>
+</head>
+<body class="incorporato">
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header class="testata"><div class="contenuto"><a class="marchio" href="../../" translate="no">Conti Facili</a></div></header>
+<main class="contenuto" id="contenuto">
+<h1>Tasse nel regime forfettario 2026: quanto ti resta</h1>
+<p class="introduzione">Scrivi quanto incassi in un anno e che lavoro fai: vedi contributi INPS, imposta sostitutiva e quanto ti resta in tasca.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" autocomplete="off" onsubmit="return false">
+    <fieldset>
+      <label>Incassi dell'anno in euro<input name="ricavi" inputmode="decimal" value="30.000"></label>
+      <label>Che lavoro fai<select name="coeff" id="coeff"></select></label>
+      <label>Contributi INPS
+        <select name="gestione">
+          <option value="separata">Gestione Separata (professionisti senza cassa)</option>
+          <option value="artigiani">Artigiani</option>
+          <option value="commercianti">Commercianti</option>
+        </select>
+      </label>
+      <label>Imposta sostitutiva
+        <select name="aliquota"><option value="15">15%</option><option value="5">5% (primi 5 anni, con i requisiti)</option></select>
+      </label>
+      <label>Spese reali dell'anno in euro (facoltativo)<input name="spese" inputmode="decimal" value="0"></label>
+      <label class="spunta" id="lab_rid"><input type="checkbox" name="riduzione"> Ho chiesto la riduzione del 35% dei contributi</label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto del <span id="anno"></span></p>
+      <table>
+        <tr><td>Reddito forfettario</td><td id="reddito"></td></tr>
+        <tr><td>Contributi INPS</td><td id="contributi"></td></tr>
+        <tr><td>Imposta sostitutiva</td><td id="imposta"></td></tr>
+        <tr><td>Spese</td><td id="spese"></td></tr>
+        <tr class="totale"><td>Ti resta</td><td id="netto"></td></tr>
+      </table>
+      <p class="nota" id="avviso"></p>
+    </div>
+  </div>
+</div>
+
+
+<p>Servizi a confronto: <a href="../../confronto/commercialisti-online/">commercialisti online</a>, <a href="../../confronto/fatturazione-elettronica/">fattura elettronica</a>, <a href="../../confronto/conti-partita-iva/">conti per partita IVA</a>.</p>
+
+<h2>Come funziona il forfettario</h2>
+<ul>
+  <li>Non si deducono le spese reali: il reddito è una percentuale fissa degli incassi, il <strong>coefficiente di redditività</strong>, che dipende dall'attività (dal 40% per il commercio al 86% per l'edilizia).</li>
+  <li>Sul reddito si pagano i <strong>contributi INPS</strong>: 26,07% in Gestione Separata; per artigiani e commercianti un contributo fisso di circa 4.500 € l'anno più una percentuale sulla parte oltre 18.808 € (riducibile del 35% su domanda).</li>
+  <li>Dal reddito si tolgono i contributi versati e sul resto si paga l'<strong>imposta sostitutiva</strong>: 15%, oppure 5% per i primi cinque anni di una nuova attività.</li>
+  <li>Si può restare nel forfettario fino a <strong>85.000 €</strong> di incassi; oltre 100.000 € si esce subito. Nel 2026 è escluso anche chi ha avuto più di 35.000 € di reddito da lavoro dipendente l'anno prima.</li>
+</ul>
+<p class="nota">Il calcolo considera i contributi pagati nello stesso anno (situazione "a regime"): nel primo anno di attività i versamenti sono diversi.
+   Indicazioni generali, non consulenza fiscale.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Mi conviene aprire la partita IVA forfettaria?</summary><p>Dipende da quanto incassi, dalle spese reali e dal lavoro che fai. Con poche spese e incassi sotto 85.000 € il forfettario è spesso il regime più leggero, ma è una scelta da fare con un commercialista.</p></details>
+<details><summary>Quando ho diritto al 5%?</summary><p>Per i primi cinque anni, se nei tre anni prima non hai svolto attività d'impresa o professionale e la nuova attività non è la continuazione di un tuo lavoro precedente.</p></details>
+
+<script type="module">
+import * as c from '../../calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+q('anno').textContent = c.FISCO.anno;
+for (const [nome, perc] of c.FISCO.forfettario.gruppi) q('coeff').add(new Option(nome + ' (' + perc + '%)', perc, false, perc === 78));
+function aggiorna() {
+  const ricavi = c.numero(f.ricavi.value), spese = c.numero(f.spese.value);
+  if (!(ricavi >= 0)) return;
+  q('lab_rid').hidden = f.gestione.value === 'separata';
+  const r = c.forfettario({ ricavi, coefficiente: Number(f.coeff.value), gestione: f.gestione.value,
+    riduzione: f.riduzione.checked && f.gestione.value !== 'separata', aliquota: Number(f.aliquota.value), spese: spese > 0 ? spese : 0 });
+  q('reddito').textContent = e(r.reddito);
+  q('contributi').textContent = '− ' + e(r.contributi);
+  q('imposta').textContent = '− ' + e(r.imposta);
+  q('spese').textContent = '− ' + e(spese > 0 ? spese : 0);
+  q('netto').textContent = e(r.netto);
+  q('avviso').textContent = ricavi > 100000 ? 'Oltre 100.000 € si esce subito dal forfettario.'
+    : ricavi > c.FISCO.forfettario.soglia ? 'Oltre 85.000 € si esce dal forfettario dall\'anno successivo.' : '';
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>
+
+<p class="firma-widget">Calcolatore gratuito di <a href="https://m-0ne-million.github.io/conti-facili/calcolo-tasse-forfettario/" target="_blank" rel="noopener">Conti Facili</a></p>
+</main>
+<footer>
+  <div class="contenuto">
+    <p><strong>Tutti gli strumenti, gratis</strong></p>
+    <ul><li><a href="../../ricevuta-prestazione-occasionale/">Ricevuta prestazione occasionale</a></li><li><a href="../../calcolo-ritenuta-acconto/">Calcolo ritenuta d&#x27;acconto 20%</a></li><li><a href="../../scorporo-iva/">Scorporo IVA online</a></li><li><a href="../../calcolo-rata-mutuo/">Calcolo rata mutuo con piano di ammortamento</a></li><li><a href="../../calcolo-stipendio-netto/">Calcolo stipendio netto 2026</a></li><li><a href="../../calcolo-tasse-forfettario/">Calcolo tasse regime forfettario 2026</a></li><li><a href="../../calcolo-affitti-brevi/">Affitti brevi 2026</a></li><li><a href="../../calcolo-tassa-di-soggiorno/">Calcolo tassa di soggiorno per affitti brevi</a></li><li><a href="../../calcolo-codice-fiscale/">Calcolo codice fiscale online e verifica</a></li><li><a href="../../verifica-iban/">Verifica IBAN online</a></li><li><a href="../../calcolo-imu/">Calcolo IMU</a></li><li><a href="../../calcolo-interesse-composto/">Calcolo interesse composto e PAC</a></li><li><a href="../../calcolo-sconto-percentuale/">Calcolo sconto e percentuali online</a></li><li><a href="../../guida-prestazione-occasionale/">Prestazione occasionale 2026</a></li><li><a href="../../guida-partita-iva-forfettaria/">Partita IVA forfettaria 2026</a></li><li><a href="../../guida-affitti-brevi-2026/">Affitti brevi 2026</a></li></ul>
+    <p>I calcoli sono indicativi e non sostituiscono un commercialista.
+       Quello che scrivi resta sul tuo dispositivo: non viene inviato a nessuno.</p>
+    <p><a href="../../calendario-scadenze-fiscali/">Calendario delle scadenze fiscali</a></p>
+    <p><a href="../../incorpora/">Metti i calcolatori sul tuo sito</a></p>
+    <p><a href="../../privacy/">Privacy</a></p>
+    <p>© 2026 Conti Facili</p>
+  </div>
+</footer>
+</body>
+</html>

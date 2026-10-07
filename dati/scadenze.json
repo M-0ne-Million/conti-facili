@@ -1,0 +1,339 @@
+[
+  {
+    "data": "2026-11-02",
+    "titolo": "Dichiarazione Redditi PF 2026 (redditi 2025): invio online",
+    "descrizione": "Ultimo giorno per trasmettere il modello Redditi Persone fisiche 2026, da soli con SPID/CIE o tramite intermediario. Il termine del 31 ottobre cade di sabato e il 1° novembre è festivo, quindi slitta a lunedì 2 novembre.",
+    "per": [
+      "forfettari",
+      "occasionali",
+      "host",
+      "proprietari",
+      "dipendenti"
+    ],
+    "link": "confronto/commercialisti-online/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/modello-redditi-persone-fisiche-2026/quando-e-come-presentare-il-modello-redditi-persone-fisiche"
+  },
+  {
+    "data": "2026-11-16",
+    "titolo": "Rata fissa INPS artigiani e commercianti (3ª rata 2026)",
+    "descrizione": "Terza delle quattro rate dei contributi fissi sul reddito minimale 2026 (18.808 euro), con F24 precompilato nel Cassetto previdenziale INPS. Chi ha la riduzione del 35% per forfettari paga l'importo ridotto.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf"
+  },
+  {
+    "data": "2026-11-16",
+    "titolo": "Ogni mese il 16: contributi e ritenute sui compensi occasionali",
+    "descrizione": "Voce ricorrente: entro il 16 del mese successivo al pagamento, il committente sostituto d'imposta versa con F24 la ritenuta d'acconto del 20% e, se nell'anno hai superato 5.000 euro di compensi occasionali, i contributi Gestione Separata sulla parte eccedente (1/3 a tuo carico). Se il 16 cade di sabato, domenica o festivo si paga il primo giorno lavorativo successivo.",
+    "per": [
+      "occasionali"
+    ],
+    "link": "guida-prestazione-occasionale/",
+    "fonte": "https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50016.contributi-per-collaboratori-e-figure-assimilate.html"
+  },
+  {
+    "data": "2026-11-16",
+    "titolo": "Imposta di soggiorno: versamenti al Comune",
+    "descrizione": "Voce ricorrente: se incassi l'imposta di soggiorno dagli ospiti devi riversarla al Comune con la cadenza (mensile, trimestrale o semestrale) e le modalità fissate dal regolamento comunale. Verifica le scadenze del tuo Comune; se l'imposta la incassa il portale, il versamento spetta al portale.",
+    "per": [
+      "host"
+    ],
+    "link": "calcolo-tassa-di-soggiorno/",
+    "fonte": "https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/TARI-Imposta-di-soggiorno-e-altri-tributi-comunali/imposta-di-soggiorno/Disciplina-del-tributo/"
+  },
+  {
+    "data": "2026-11-30",
+    "titolo": "Secondo acconto 2026 imposta sostitutiva e contributi forfettari",
+    "descrizione": "Versamento con F24 del secondo acconto 2026 dell'imposta sostitutiva (per i forfettari, di norma, il 50% dell'acconto totale) e dei contributi INPS: Gestione Separata per i professionisti, quota eccedente il minimale per artigiani e commercianti. Il secondo acconto non è rateizzabile.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/come-si-paga-l-irpef6"
+  },
+  {
+    "data": "2026-11-30",
+    "titolo": "Secondo acconto 2026 cedolare secca e IRPEF",
+    "descrizione": "Chi affitta con cedolare secca (anche affitti brevi) versa con F24 il secondo acconto 2026, pari al 60% dell'acconto dovuto (codice tributo 1841); lo stesso vale per l'IRPEF di chi presenta il modello Redditi. Con il 730 e un sostituto d'imposta l'acconto è trattenuto in busta paga o sulla pensione.",
+    "per": [
+      "host",
+      "proprietari"
+    ],
+    "link": "calcolo-affitti-brevi/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/cedolare-secca/cedolare-secca-come-si-paga"
+  },
+  {
+    "data": "2026-11-30",
+    "titolo": "Imposta di bollo fatture elettroniche: 3° trimestre 2026",
+    "descrizione": "Versamento del bollo da 2 euro sulle fatture elettroniche senza IVA oltre 77,47 euro emesse tra luglio e settembre, dall'area Fatture e corrispettivi o con F24. Se il bollo del 1° e 2° trimestre insieme non ha superato 5.000 euro, oggi si versa anche quello.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "guida-partita-iva-forfettaria/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/documents/20143/3394067/Guida_Bollo_sulle_fatture_elettroniche2024.pdf"
+  },
+  {
+    "data": "2026-12-16",
+    "titolo": "IMU: saldo 2026",
+    "descrizione": "Seconda rata dell'IMU 2026 su seconde case, immobili affittati (anche ad affitti brevi) e abitazioni principali di lusso, a conguaglio con le aliquote deliberate dal Comune per il 2026. Si paga con F24 o PagoPA.",
+    "per": [
+      "proprietari",
+      "host"
+    ],
+    "link": "calcolo-imu/",
+    "fonte": "https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Imposta-municipale-propria-IMU/disciplina-del-tributo/versamenti/"
+  },
+  {
+    "data": "2027-02-16",
+    "titolo": "Rata fissa INPS artigiani e commercianti (4ª rata 2026)",
+    "descrizione": "Ultima delle quattro rate dei contributi fissi sul minimale 2026, con F24 dal Cassetto previdenziale INPS.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf"
+  },
+  {
+    "data": "2027-03-01",
+    "titolo": "Imposta di bollo fatture elettroniche: 4° trimestre 2026",
+    "descrizione": "Versamento del bollo sulle fatture elettroniche emesse tra ottobre e dicembre 2026, dall'area Fatture e corrispettivi o con F24 (codice 2524). Il termine del 28 febbraio cade di domenica e slitta a lunedì 1° marzo.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "guida-partita-iva-forfettaria/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/documents/20143/3394067/Guida_Bollo_sulle_fatture_elettroniche2024.pdf"
+  },
+  {
+    "data": "2027-03-01",
+    "titolo": "Riduzione contributiva 35% INPS per forfettari: domanda o rinuncia",
+    "descrizione": "Artigiani e commercianti forfettari che hanno iniziato l'attività nel 2026 chiedono online all'INPS la riduzione del 35% per il 2027; chi vuole rinunciarvi invia l'istanza entro lo stesso termine. Il termine del 28 febbraio cade di domenica e slitta al 1° marzo: data prevista dalla norma, verifica eventuali proroghe e la circolare INPS 2027.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "guida-partita-iva-forfettaria/",
+    "fonte": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf"
+  },
+  {
+    "data": "2027-03-16",
+    "titolo": "Certificazione Unica 2027: consegna ai percipienti",
+    "descrizione": "Datori di lavoro, committenti con ritenuta d'acconto e portali di affitti brevi consegnano la CU con i redditi 2026 e le ritenute subite. Controlla di averla ricevuta: serve per il 730 o il modello Redditi. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "dipendenti",
+      "occasionali",
+      "host"
+    ],
+    "link": "calcolo-ritenuta-acconto/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/certificazione-unica-2026/che-cos-enti"
+  },
+  {
+    "data": "2027-04-30",
+    "titolo": "Dichiarazione precompilata 2027 disponibile",
+    "descrizione": "L'Agenzia delle Entrate pubblica nell'area riservata (SPID, CIE o CNS) il 730 precompilato con i redditi 2026; l'invio si apre di solito a metà maggio. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "dipendenti",
+      "proprietari",
+      "host",
+      "occasionali"
+    ],
+    "link": "calcolo-stipendio-netto/",
+    "fonte": "https://infoprecompilata.agenziaentrate.gov.it/portale/scadenze"
+  },
+  {
+    "data": "2027-05-17",
+    "titolo": "Rata fissa INPS artigiani e commercianti (1ª rata 2027)",
+    "descrizione": "Prima rata dei contributi fissi sul minimale 2027, con gli importi aggiornati dalla circolare INPS di inizio anno. Il 16 maggio cade di domenica e slitta a lunedì 17. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf"
+  },
+  {
+    "data": "2027-05-31",
+    "titolo": "Imposta di bollo fatture elettroniche: 1° trimestre 2027",
+    "descrizione": "Versamento del bollo sulle fatture elettroniche di gennaio-marzo solo se supera 5.000 euro; altrimenti si può versare entro il 30 settembre insieme al 2° trimestre.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "guida-partita-iva-forfettaria/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/documents/20143/3394067/Guida_Bollo_sulle_fatture_elettroniche2024.pdf"
+  },
+  {
+    "data": "2027-06-16",
+    "titolo": "IMU: acconto 2027",
+    "descrizione": "Prima rata dell'IMU 2027 (metà dell'imposta annua, calcolata con le aliquote dell'anno precedente), oppure versamento in un'unica soluzione. Si paga con F24 o PagoPA.",
+    "per": [
+      "proprietari",
+      "host"
+    ],
+    "link": "calcolo-imu/",
+    "fonte": "https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Imposta-municipale-propria-IMU/disciplina-del-tributo/versamenti/"
+  },
+  {
+    "data": "2027-06-30",
+    "titolo": "Saldo 2026 e primo acconto 2027 forfettari",
+    "descrizione": "Versamento con F24 del saldo 2026 e del primo acconto 2027 dell'imposta sostitutiva e dei contributi INPS (Gestione Separata o quota eccedente il minimale; per le ditte anche il diritto camerale). Si può rateizzare in rate mensili, con l'ultima entro il 16 dicembre. Data prevista dalla norma, verifica eventuali proroghe. Nel 2025 e nel 2026 i forfettari e i soggetti ISA hanno avuto un rinvio a luglio (nel 2026 al 20 luglio, DL 89/2026).",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/come-si-paga-l-irpef6"
+  },
+  {
+    "data": "2027-06-30",
+    "titolo": "Saldo 2026 e primo acconto 2027 cedolare secca e IRPEF",
+    "descrizione": "Chi presenta il modello Redditi o ha scelto il pagamento con F24 versa il saldo 2026 e il primo acconto 2027 di IRPEF e cedolare secca (anche sugli affitti brevi: la ritenuta del 21% del portale è solo un acconto). Rateizzazione possibile fino al 16 dicembre. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "host",
+      "proprietari",
+      "occasionali"
+    ],
+    "link": "calcolo-affitti-brevi/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/cedolare-secca/cedolare-secca-come-si-paga"
+  },
+  {
+    "data": "2027-06-30",
+    "titolo": "Dichiarazione annuale imposta di soggiorno 2026",
+    "descrizione": "Gestori e host di affitti brevi che hanno incassato l'imposta di soggiorno nel 2026 presentano la dichiarazione annuale solo online, con il modello ministeriale, tramite i servizi dell'Agenzia delle Entrate. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "host"
+    ],
+    "link": "calcolo-tassa-di-soggiorno/",
+    "fonte": "https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/TARI-Imposta-di-soggiorno-e-altri-tributi-comunali/imposta-di-soggiorno/dichiarazione-telematica-imposta-di-soggiorno/"
+  },
+  {
+    "data": "2027-06-30",
+    "titolo": "Dichiarazione IMU per le variazioni del 2026",
+    "descrizione": "Va presentata solo se nel 2026 hai acquistato o venduto immobili o ci sono state variazioni che il Comune non conosce (ad esempio agevolazioni o riduzioni). Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "proprietari",
+      "host"
+    ],
+    "link": "calcolo-imu/",
+    "fonte": "https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Imposta-municipale-propria-IMU/disciplina-del-tributo/dichiarazione/"
+  },
+  {
+    "data": "2027-07-30",
+    "titolo": "Saldo e primo acconto con maggiorazione dello 0,40%",
+    "descrizione": "Ultimo giorno per versare saldo 2026 e primo acconto 2027 (imposta sostitutiva, IRPEF, cedolare secca, contributi INPS) con la maggiorazione dello 0,40% a titolo di interesse. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "forfettari",
+      "host",
+      "proprietari",
+      "occasionali"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/come-si-paga-l-irpef6"
+  },
+  {
+    "data": "2027-08-20",
+    "titolo": "Rata fissa INPS artigiani e commercianti (2ª rata 2027)",
+    "descrizione": "Seconda rata dei contributi fissi sul minimale 2027, con F24 dal Cassetto previdenziale INPS. Il termine è al 20 agosto per la sospensione estiva dei versamenti. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf"
+  },
+  {
+    "data": "2027-09-30",
+    "titolo": "Ultimo giorno per inviare il 730/2027",
+    "descrizione": "Termine per presentare il 730 con i redditi 2026, in autonomia dal sito dell'Agenzia delle Entrate o tramite CAF, professionista o sostituto d'imposta. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "dipendenti",
+      "proprietari",
+      "host",
+      "occasionali"
+    ],
+    "link": "calcolo-stipendio-netto/",
+    "fonte": "https://infoprecompilata.agenziaentrate.gov.it/portale/scadenze"
+  },
+  {
+    "data": "2027-09-30",
+    "titolo": "Imposta di bollo fatture elettroniche: 2° trimestre 2027",
+    "descrizione": "Versamento del bollo sulle fatture elettroniche di aprile-giugno e di quello del 1° trimestre se rinviato. Se il bollo del 1° e 2° trimestre insieme non supera 5.000 euro, si può versare entro il 30 novembre.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "guida-partita-iva-forfettaria/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/documents/20143/3394067/Guida_Bollo_sulle_fatture_elettroniche2024.pdf"
+  },
+  {
+    "data": "2027-10-25",
+    "titolo": "730 integrativo",
+    "descrizione": "Termine per correggere con un 730 integrativo, tramite CAF o professionista, un 730 già presentato, solo se la correzione aumenta il rimborso o riduce l'imposta. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "dipendenti"
+    ],
+    "link": "calcolo-stipendio-netto/",
+    "fonte": "https://infoprecompilata.agenziaentrate.gov.it/portale/scadenze"
+  },
+  {
+    "data": "2027-11-02",
+    "titolo": "Dichiarazione Redditi PF 2027 (redditi 2026): invio online",
+    "descrizione": "Ultimo giorno per trasmettere il modello Redditi Persone fisiche 2027, obbligatorio per i forfettari. Il termine del 31 ottobre cade di domenica e il 1° novembre è festivo, quindi slitta a martedì 2 novembre. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "forfettari",
+      "occasionali",
+      "host",
+      "proprietari",
+      "dipendenti"
+    ],
+    "link": "confronto/commercialisti-online/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/modello-redditi-persone-fisiche-2026/quando-e-come-presentare-il-modello-redditi-persone-fisiche"
+  },
+  {
+    "data": "2027-11-16",
+    "titolo": "Rata fissa INPS artigiani e commercianti (3ª rata 2027)",
+    "descrizione": "Terza rata dei contributi fissi sul minimale 2027, con F24 dal Cassetto previdenziale INPS. L'ultima rata scade a febbraio 2028. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/02/Circolare_15162/Allegati/16561_Circolare-numero-14-del-09-02-2026.pdf"
+  },
+  {
+    "data": "2027-11-30",
+    "titolo": "Secondo acconto 2027 imposta sostitutiva e contributi forfettari",
+    "descrizione": "Versamento con F24 del secondo acconto 2027 dell'imposta sostitutiva (50% dell'acconto) e dei contributi INPS: Gestione Separata o quota eccedente il minimale. Non è rateizzabile. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "calcolo-tasse-forfettario/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/come-si-paga-l-irpef6"
+  },
+  {
+    "data": "2027-11-30",
+    "titolo": "Secondo acconto 2027 cedolare secca e IRPEF",
+    "descrizione": "Versamento con F24 del secondo acconto 2027 della cedolare secca (60% dell'acconto) e dell'IRPEF per chi non ha il conguaglio in busta paga. Data prevista dalla norma, verifica eventuali proroghe.",
+    "per": [
+      "host",
+      "proprietari"
+    ],
+    "link": "calcolo-affitti-brevi/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/cedolare-secca/cedolare-secca-come-si-paga"
+  },
+  {
+    "data": "2027-11-30",
+    "titolo": "Imposta di bollo fatture elettroniche: 3° trimestre 2027",
+    "descrizione": "Versamento del bollo sulle fatture elettroniche di luglio-settembre e, se rinviato perché sotto i 5.000 euro, anche di quello del 1° e 2° trimestre.",
+    "per": [
+      "forfettari"
+    ],
+    "link": "guida-partita-iva-forfettaria/",
+    "fonte": "https://www.agenziaentrate.gov.it/portale/documents/20143/3394067/Guida_Bollo_sulle_fatture_elettroniche2024.pdf"
+  },
+  {
+    "data": "2027-12-16",
+    "titolo": "IMU: saldo 2027",
+    "descrizione": "Seconda rata dell'IMU 2027 a conguaglio con le aliquote deliberate dal Comune per il 2027, con F24 o PagoPA.",
+    "per": [
+      "proprietari",
+      "host"
+    ],
+    "link": "calcolo-imu/",
+    "fonte": "https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Imposta-municipale-propria-IMU/disciplina-del-tributo/versamenti/"
+  }
+]

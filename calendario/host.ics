@@ -1,0 +1,312 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Conti Facili//Scadenze fiscali//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Scadenze fiscali – Host di affitti brevi
+X-WR-TIMEZONE:Europe/Rome
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:20261102-dichiarazione-redditi-pf-2026-redditi-2025-invio-online@conti-
+ facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261103
+SUMMARY:Dichiarazione Redditi PF 2026 (redditi 2025): invio online
+DESCRIPTION:Ultimo giorno per trasmettere il modello Redditi Persone fisich
+ e 2026\, da soli con SPID/CIE o tramite intermediario. Il termine del 31 o
+ ttobre cade di sabato e il 1° novembre è festivo\, quindi slitta a luned
+ ì 2 novembre.\nDettagli: https://m-0ne-million.github.io/conti-facili/con
+ fronto/commercialisti-online/\nFonte: https://www.agenziaentrate.gov.it/po
+ rtale/modello-redditi-persone-fisiche-2026/quando-e-come-presentare-il-mod
+ ello-redditi-persone-fisiche
+URL:https://m-0ne-million.github.io/conti-facili/confronto/commercialisti-o
+ nline/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Dichiarazione Redditi PF 2026 (redditi 2025): invio online
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261116-imposta-di-soggiorno-versamenti-al-comune@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:Imposta di soggiorno: versamenti al Comune
+DESCRIPTION:Voce ricorrente: se incassi l'imposta di soggiorno dagli ospiti
+  devi riversarla al Comune con la cadenza (mensile\, trimestrale o semestr
+ ale) e le modalità fissate dal regolamento comunale. Verifica le scadenze
+  del tuo Comune\; se l'imposta la incassa il portale\, il versamento spett
+ a al portale.\nDettagli: https://m-0ne-million.github.io/conti-facili/calc
+ olo-tassa-di-soggiorno/\nFonte: https://www.finanze.gov.it/it/fiscalita/fi
+ scalita-regionale-e-locale/TARI-Imposta-di-soggiorno-e-altri-tributi-comun
+ ali/imposta-di-soggiorno/Disciplina-del-tributo/
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-tassa-di-soggiorno
+ /
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Imposta di soggiorno: versamenti al Comune
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261130-secondo-acconto-2026-cedolare-secca-e-irpef@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:Secondo acconto 2026 cedolare secca e IRPEF
+DESCRIPTION:Chi affitta con cedolare secca (anche affitti brevi) versa con 
+ F24 il secondo acconto 2026\, pari al 60% dell'acconto dovuto (codice trib
+ uto 1841)\; lo stesso vale per l'IRPEF di chi presenta il modello Redditi.
+  Con il 730 e un sostituto d'imposta l'acconto è trattenuto in busta paga
+  o sulla pensione.\nDettagli: https://m-0ne-million.github.io/conti-facili
+ /calcolo-affitti-brevi/\nFonte: https://www.agenziaentrate.gov.it/portale/
+ schede/fabbricatiterreni/cedolare-secca/cedolare-secca-come-si-paga
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-affitti-brevi/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Secondo acconto 2026 cedolare secca e IRPEF
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261216-imu-saldo-2026@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20261216
+DTEND;VALUE=DATE:20261217
+SUMMARY:IMU: saldo 2026
+DESCRIPTION:Seconda rata dell'IMU 2026 su seconde case\, immobili affittati
+  (anche ad affitti brevi) e abitazioni principali di lusso\, a conguaglio 
+ con le aliquote deliberate dal Comune per il 2026. Si paga con F24 o PagoP
+ A.\nDettagli: https://m-0ne-million.github.io/conti-facili/calcolo-imu/\nF
+ onte: https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale
+ /Imposta-municipale-propria-IMU/disciplina-del-tributo/versamenti/
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-imu/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:IMU: saldo 2026
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270316-certificazione-unica-2027-consegna-ai-percipienti@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270316
+DTEND;VALUE=DATE:20270317
+SUMMARY:Certificazione Unica 2027: consegna ai percipienti
+DESCRIPTION:Datori di lavoro\, committenti con ritenuta d'acconto e portali
+  di affitti brevi consegnano la CU con i redditi 2026 e le ritenute subite
+ . Controlla di averla ricevuta: serve per il 730 o il modello Redditi. Dat
+ a prevista dalla norma\, verifica eventuali proroghe.\nDettagli: https://m
+ -0ne-million.github.io/conti-facili/calcolo-ritenuta-acconto/\nFonte: http
+ s://www.agenziaentrate.gov.it/portale/certificazione-unica-2026/che-cos-en
+ ti
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-ritenuta-acconto/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Certificazione Unica 2027: consegna ai percipienti
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270430-dichiarazione-precompilata-2027-disponibile@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+SUMMARY:Dichiarazione precompilata 2027 disponibile
+DESCRIPTION:L'Agenzia delle Entrate pubblica nell'area riservata (SPID\, CI
+ E o CNS) il 730 precompilato con i redditi 2026\; l'invio si apre di solit
+ o a metà maggio. Data prevista dalla norma\, verifica eventuali proroghe.
+ \nDettagli: https://m-0ne-million.github.io/conti-facili/calcolo-stipendio
+ -netto/\nFonte: https://infoprecompilata.agenziaentrate.gov.it/portale/sca
+ denze
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-netto/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Dichiarazione precompilata 2027 disponibile
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270616-imu-acconto-2027@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270616
+DTEND;VALUE=DATE:20270617
+SUMMARY:IMU: acconto 2027
+DESCRIPTION:Prima rata dell'IMU 2027 (metà dell'imposta annua\, calcolata 
+ con le aliquote dell'anno precedente)\, oppure versamento in un'unica solu
+ zione. Si paga con F24 o PagoPA.\nDettagli: https://m-0ne-million.github.i
+ o/conti-facili/calcolo-imu/\nFonte: https://www.finanze.gov.it/it/fiscalit
+ a/fiscalita-regionale-e-locale/Imposta-municipale-propria-IMU/disciplina-d
+ el-tributo/versamenti/
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-imu/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:IMU: acconto 2027
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270630-saldo-2026-e-primo-acconto-2027-cedolare-secca-e-irpef@conti-f
+ acili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+SUMMARY:Saldo 2026 e primo acconto 2027 cedolare secca e IRPEF
+DESCRIPTION:Chi presenta il modello Redditi o ha scelto il pagamento con F2
+ 4 versa il saldo 2026 e il primo acconto 2027 di IRPEF e cedolare secca (a
+ nche sugli affitti brevi: la ritenuta del 21% del portale è solo un accon
+ to). Rateizzazione possibile fino al 16 dicembre. Data prevista dalla norm
+ a\, verifica eventuali proroghe.\nDettagli: https://m-0ne-million.github.i
+ o/conti-facili/calcolo-affitti-brevi/\nFonte: https://www.agenziaentrate.g
+ ov.it/portale/schede/fabbricatiterreni/cedolare-secca/cedolare-secca-come-
+ si-paga
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-affitti-brevi/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Saldo 2026 e primo acconto 2027 cedolare secca e IRPEF
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270630-dichiarazione-annuale-imposta-di-soggiorno-2026@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+SUMMARY:Dichiarazione annuale imposta di soggiorno 2026
+DESCRIPTION:Gestori e host di affitti brevi che hanno incassato l'imposta d
+ i soggiorno nel 2026 presentano la dichiarazione annuale solo online\, con
+  il modello ministeriale\, tramite i servizi dell'Agenzia delle Entrate. D
+ ata prevista dalla norma\, verifica eventuali proroghe.\nDettagli: https:/
+ /m-0ne-million.github.io/conti-facili/calcolo-tassa-di-soggiorno/\nFonte: 
+ https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/TARI-
+ Imposta-di-soggiorno-e-altri-tributi-comunali/imposta-di-soggiorno/dichiar
+ azione-telematica-imposta-di-soggiorno/
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-tassa-di-soggiorno
+ /
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Dichiarazione annuale imposta di soggiorno 2026
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270630-dichiarazione-imu-per-le-variazioni-del-2026@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+SUMMARY:Dichiarazione IMU per le variazioni del 2026
+DESCRIPTION:Va presentata solo se nel 2026 hai acquistato o venduto immobil
+ i o ci sono state variazioni che il Comune non conosce (ad esempio agevola
+ zioni o riduzioni). Data prevista dalla norma\, verifica eventuali prorogh
+ e.\nDettagli: https://m-0ne-million.github.io/conti-facili/calcolo-imu/\nF
+ onte: https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale
+ /Imposta-municipale-propria-IMU/disciplina-del-tributo/dichiarazione/
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-imu/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Dichiarazione IMU per le variazioni del 2026
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270730-saldo-e-primo-acconto-con-maggiorazione-dello-0-40@conti-facil
+ i
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270730
+DTEND;VALUE=DATE:20270731
+SUMMARY:Saldo e primo acconto con maggiorazione dello 0\,40%
+DESCRIPTION:Ultimo giorno per versare saldo 2026 e primo acconto 2027 (impo
+ sta sostitutiva\, IRPEF\, cedolare secca\, contributi INPS) con la maggior
+ azione dello 0\,40% a titolo di interesse. Data prevista dalla norma\, ver
+ ifica eventuali proroghe.\nDettagli: https://m-0ne-million.github.io/conti
+ -facili/calcolo-tasse-forfettario/\nFonte: https://www.agenziaentrate.gov.
+ it/portale/come-si-paga-l-irpef6
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-tasse-forfettario/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Saldo e primo acconto con maggiorazione dello 0\,40%
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20270930-ultimo-giorno-per-inviare-il-730-2027@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20270930
+DTEND;VALUE=DATE:20271001
+SUMMARY:Ultimo giorno per inviare il 730/2027
+DESCRIPTION:Termine per presentare il 730 con i redditi 2026\, in autonomia
+  dal sito dell'Agenzia delle Entrate o tramite CAF\, professionista o sost
+ ituto d'imposta. Data prevista dalla norma\, verifica eventuali proroghe.\
+ nDettagli: https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-
+ netto/\nFonte: https://infoprecompilata.agenziaentrate.gov.it/portale/scad
+ enze
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-netto/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Ultimo giorno per inviare il 730/2027
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20271102-dichiarazione-redditi-pf-2027-redditi-2026-invio-online@conti-
+ facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20271102
+DTEND;VALUE=DATE:20271103
+SUMMARY:Dichiarazione Redditi PF 2027 (redditi 2026): invio online
+DESCRIPTION:Ultimo giorno per trasmettere il modello Redditi Persone fisich
+ e 2027\, obbligatorio per i forfettari. Il termine del 31 ottobre cade di 
+ domenica e il 1° novembre è festivo\, quindi slitta a martedì 2 novembr
+ e. Data prevista dalla norma\, verifica eventuali proroghe.\nDettagli: htt
+ ps://m-0ne-million.github.io/conti-facili/confronto/commercialisti-online/
+ \nFonte: https://www.agenziaentrate.gov.it/portale/modello-redditi-persone
+ -fisiche-2026/quando-e-come-presentare-il-modello-redditi-persone-fisiche
+URL:https://m-0ne-million.github.io/conti-facili/confronto/commercialisti-o
+ nline/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Dichiarazione Redditi PF 2027 (redditi 2026): invio online
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20271130-secondo-acconto-2027-cedolare-secca-e-irpef@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20271130
+DTEND;VALUE=DATE:20271201
+SUMMARY:Secondo acconto 2027 cedolare secca e IRPEF
+DESCRIPTION:Versamento con F24 del secondo acconto 2027 della cedolare secc
+ a (60% dell'acconto) e dell'IRPEF per chi non ha il conguaglio in busta pa
+ ga. Data prevista dalla norma\, verifica eventuali proroghe.\nDettagli: ht
+ tps://m-0ne-million.github.io/conti-facili/calcolo-affitti-brevi/\nFonte: 
+ https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/cedolar
+ e-secca/cedolare-secca-come-si-paga
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-affitti-brevi/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:Secondo acconto 2027 cedolare secca e IRPEF
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20271216-imu-saldo-2027@conti-facili
+DTSTAMP:20261007T000000Z
+DTSTART;VALUE=DATE:20271216
+DTEND;VALUE=DATE:20271217
+SUMMARY:IMU: saldo 2027
+DESCRIPTION:Seconda rata dell'IMU 2027 a conguaglio con le aliquote deliber
+ ate dal Comune per il 2027\, con F24 o PagoPA.\nDettagli: https://m-0ne-mi
+ llion.github.io/conti-facili/calcolo-imu/\nFonte: https://www.finanze.gov.
+ it/it/fiscalita/fiscalita-regionale-e-locale/Imposta-municipale-propria-IM
+ U/disciplina-del-tributo/versamenti/
+URL:https://m-0ne-million.github.io/conti-facili/calcolo-imu/
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P3D
+DESCRIPTION:IMU: saldo 2027
+END:VALARM
+END:VEVENT
+END:VCALENDAR

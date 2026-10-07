@@ -1,0 +1,445 @@
+[
+  {
+    "slug": "commercialisti-online",
+    "titolo": "Commercialisti online per la partita IVA forfettaria",
+    "intro": "Ti serve se apri o gestisci una partita IVA in regime forfettario e vuoi un commercialista che lavora online. Trovi prezzi, servizi inclusi e limiti dei principali servizi attivi in Italia.",
+    "criteri": [
+      "Controlla se il prezzo è IVA inclusa o esclusa: tra i servizi cambia, e per un forfettario l'IVA è un costo.",
+      "Verifica che siano inclusi dichiarazione dei redditi, modelli F24 e software di fatturazione elettronica.",
+      "Guarda se il prezzo cambia tra liberi professionisti e artigiani o commercianti iscritti alla Camera di Commercio.",
+      "Leggi la durata del contratto e se il rinnovo è automatico.",
+      "Controlla i costi extra più comuni, come variazioni, ravvedimenti o dichiarazioni degli anni precedenti.",
+      "Chiedi come funziona l'assistenza: commercialista dedicato, chat, telefono o videochiamate."
+    ],
+    "faq": [
+      {
+        "d": "Un commercialista online costa meno di uno tradizionale?",
+        "r": "Spesso sì per i forfettari, perché il servizio è standardizzato. Confronta però cosa è incluso: alcuni servizi fanno pagare a parte variazioni, ravvedimenti o dichiarazioni arretrate."
+      },
+      {
+        "d": "L'apertura della partita IVA è inclusa?",
+        "r": "Per i liberi professionisti è spesso inclusa nell'abbonamento. Per artigiani e commercianti possono esserci costi amministrativi in più, ad esempio per Camera di Commercio e INPS."
+      },
+      {
+        "d": "Posso cambiare commercialista online in corso d'anno?",
+        "r": "Sì, ma controlla prima la durata del contratto: alcuni servizi prevedono un impegno di 12 mesi anche con pagamento mensile."
+      }
+    ],
+    "servizi": [
+      {
+        "chiave": "fiscozen",
+        "nome": "Fiscozen",
+        "sito": "https://www.fiscozen.it/prezzi/",
+        "prezzo": "da 49,90 € al mese IVA inclusa (liberi professionisti), contratto di 12 mesi",
+        "adatto_a": "chi vuole un commercialista dedicato e un'app per fatture e scadenze.",
+        "punti_forti": [
+          "Il piano include commercialista dedicato, app per le fatture, dichiarazione dei redditi e F24.",
+          "L'apertura della partita IVA è inclusa nell'abbonamento.",
+          "Il prezzo per i forfettari è indicato IVA inclusa."
+        ],
+        "limiti": [
+          "Il contratto dura 12 mesi; per artigiani e commercianti il prezzo sale a 59,90 € al mese.",
+          "Alcuni servizi si pagano a parte, ad esempio 150 € per la dichiarazione dell'anno precedente."
+        ],
+        "fonte_prezzo": "https://www.fiscozen.it/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "flextax",
+        "nome": "FlexTax",
+        "sito": "https://flextax.it/prezzi/",
+        "prezzo": "da 366 € l'anno IVA inclusa (liberi professionisti), anche in 6 rate",
+        "adatto_a": "chi vuole un prezzo annuale contenuto e provare prima l'assistenza gratuita.",
+        "punti_forti": [
+          "Esiste un accesso gratuito con assistenza fiscale e simulazione delle tasse.",
+          "Il piano a pagamento include contabilità, dichiarazione dei redditi, F24 e software di fatturazione elettronica.",
+          "Puoi pagare in 6 rate."
+        ],
+        "limiti": [
+          "Per artigiani e commercianti il prezzo va da 399 € a 560 € l'anno IVA inclusa, secondo se apri o cambi commercialista."
+        ],
+        "fonte_prezzo": "https://flextax.it/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "quickfisco",
+        "nome": "Quickfisco",
+        "sito": "https://quickfisco.it/prezzi/",
+        "prezzo": "da 365 € l'anno IVA inclusa (piano Standard), oppure 36,50 € al mese",
+        "adatto_a": "chi cerca una piattaforma semplice con fatturazione illimitata e consulenza fiscale.",
+        "punti_forti": [
+          "Il piano Standard include dichiarazione dei redditi, F24, fatture elettroniche illimitate e consulenza continua.",
+          "Non c'è rinnovo automatico.",
+          "L'apertura è gratuita per i liberi professionisti."
+        ],
+        "limiti": [
+          "Per artigiani e commercianti ci sono 285 € di costi amministrativi una tantum.",
+          "Videochiamate con il consulente e pratiche di variazione sono incluse solo nel piano Premium da 475 € l'anno."
+        ],
+        "fonte_prezzo": "https://quickfisco.it/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "fidocommercialista",
+        "nome": "FidoCommercialista",
+        "sito": "https://fidocommercialista.it/",
+        "prezzo": "264 € l'anno + IVA (regime forfettario)",
+        "adatto_a": "chi vuole il canone annuo più basso tra quelli confrontati e accetta l'IVA in aggiunta.",
+        "punti_forti": [
+          "Include apertura della partita IVA, commercialista dedicato, dichiarazione dei redditi e F24.",
+          "Fatture elettroniche illimitate e firma digitale sono comprese.",
+          "Puoi pagare anche a rate."
+        ],
+        "limiti": [
+          "Il prezzo è IVA esclusa: per un forfettario il costo reale è più alto.",
+          "Alcune pratiche si pagano a parte, ad esempio 200 € per la dichiarazione dell'anno precedente."
+        ],
+        "fonte_prezzo": "https://fidocommercialista.it/apertura-partita-iva-online",
+        "verificato": "2026-10-07"
+      }
+    ]
+  },
+  {
+    "slug": "software-host",
+    "titolo": "Software e channel manager per host di affitti brevi",
+    "intro": "Ti serve se gestisci uno o pochi alloggi su Airbnb e Booking.com e vuoi sincronizzare calendari e prenotazioni. Trovi prezzi di partenza, funzioni utili in Italia e limiti di ciascun software.",
+    "criteri": [
+      "Calcola il prezzo per il tuo numero di alloggi: molti software fanno pagare per unità o per camera.",
+      "Controlla se ci sono commissioni sulle prenotazioni oltre al canone.",
+      "Verifica se l'invio delle schedine ad Alloggiati Web e dei dati ISTAT è incluso o richiede un servizio esterno.",
+      "Guarda se il collegamento con Airbnb e Booking.com è diretto o solo tramite calendario iCal.",
+      "Valuta se ti serve un sito per le prenotazioni dirette o ti basta il channel manager.",
+      "Usa la prova gratuita per controllare l'assistenza in italiano prima di pagare."
+    ],
+    "faq": [
+      {
+        "d": "Mi serve un channel manager se ho un solo appartamento?",
+        "r": "Se lo pubblichi su un solo portale, di solito no. Se lo pubblichi su due o più portali, un channel manager riduce il rischio di doppie prenotazioni."
+      },
+      {
+        "d": "Il channel manager invia anche le schedine alla Questura?",
+        "r": "Dipende dal software e dal piano. Alcuni lo fanno direttamente, altri tramite integrazioni esterne come Chekin, che possono avere un costo a parte."
+      }
+    ],
+    "servizi": [
+      {
+        "chiave": "smoobu",
+        "nome": "Smoobu",
+        "sito": "https://www.smoobu.com/it/prezzi/",
+        "prezzo": "da 29 € al mese + IVA per 1 alloggio, più 0,9% sulle prenotazioni; 35 € al mese + IVA senza commissioni",
+        "adatto_a": "chi gestisce pochi alloggi e vuole channel manager, sito e check-in online in un solo strumento.",
+        "punti_forti": [
+          "Tutti i piani includono channel manager, sito web, check-in online e gestionale delle prenotazioni.",
+          "Prova gratuita di 14 giorni senza carta di credito.",
+          "Con pagamento annuale o biennale hai uno sconto del 10% o del 20%."
+        ],
+        "limiti": [
+          "L'invio ad Alloggiati Web passa da un'integrazione esterna (Chekin).",
+          "Il prezzo cresce con il numero di alloggi."
+        ],
+        "fonte_prezzo": "https://www.smoobu.com/it/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "lodgify",
+        "nome": "Lodgify",
+        "sito": "https://www.lodgify.com/it/prezzi/",
+        "prezzo": "da 13 € al mese + IVA con pagamento annuale (16 € con pagamento mensile), piano Basic per 1 alloggio",
+        "adatto_a": "chi vuole collegare i portali e, in seguito, aprire un sito per le prenotazioni dirette.",
+        "punti_forti": [
+          "Calendario unico per Airbnb, Vrbo e Booking.com e nessuna commissione sulle prenotazioni.",
+          "Nessuna quota di attivazione e prova gratuita di 7 giorni senza carta.",
+          "Il piano Ultimate include l'invio automatico delle schedine alloggiati e dei dati ISTAT."
+        ],
+        "limiti": [
+          "Il sito per le prenotazioni dirette parte dal piano Starter (23 € al mese + IVA con pagamento annuale).",
+          "L'invio automatico di schedine e dati ISTAT è nel piano Ultimate, da 56 € al mese + IVA."
+        ],
+        "fonte_prezzo": "https://www.lodgify.com/it/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "beds24",
+        "nome": "Beds24",
+        "sito": "https://beds24.com/pricing.html",
+        "prezzo": "da 15,50 € al mese + 0,55 € al mese per ogni collegamento a un portale (IVA esclusa)",
+        "adatto_a": "chi vuole pagare solo le funzioni che usa, senza contratto.",
+        "punti_forti": [
+          "Paghi a consumo: nessun contratto, nessuna durata minima e nessun costo di attivazione.",
+          "Nessuna commissione sulle prenotazioni.",
+          "Gestionale, motore di prenotazione e casella unica per Airbnb e Booking.com sono inclusi."
+        ],
+        "limiti": [
+          "Il costo dipende da unità e collegamenti: per una stima usa il calcolatore sul sito.",
+          "Paghi in anticipo ricaricando il credito: sotto i 50 € di ricarica c'è una piccola commissione."
+        ],
+        "fonte_prezzo": "https://beds24.com/pricing.html",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "octorate",
+        "nome": "Octorate",
+        "sito": "https://www.octorate.com/it/",
+        "prezzo": "da 8 € a camera al mese (piano Basic); IVA non indicata; piani Pro e Ultimate su richiesta",
+        "adatto_a": "chi vuole channel manager e motore di prenotazione con assistenza 24 ore su 24.",
+        "punti_forti": [
+          "Il piano Basic include channel manager, motore di prenotazione e assistenza 24/7.",
+          "Prova gratuita di 14 giorni."
+        ],
+        "limiti": [
+          "Il gestionale (PMS) e il sito web sono nei piani Pro e Ultimate, con prezzo su richiesta.",
+          "La pagina prezzi non dice se gli importi sono IVA inclusa."
+        ],
+        "fonte_prezzo": "https://www.octorate.com/it/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "krossbooking",
+        "nome": "Kross Booking",
+        "sito": "https://www.krossbooking.com/",
+        "prezzo": "6 € al mese + IVA per camera o appartamento (piano Premium con channel manager), minimo 3 unità",
+        "adatto_a": "chi gestisce almeno 3 unità e vuole un software italiano con invio automatico ad Alloggiati Web.",
+        "punti_forti": [
+          "Invia automaticamente le schedine alloggiati al portale della Polizia di Stato.",
+          "Prepara il file con i dati ISTAT da inviare all'ufficio competente.",
+          "Nessun costo di attivazione e demo gratuita di 30 giorni."
+        ],
+        "limiti": [
+          "Il minimo è di 3 unità: anche con un solo alloggio paghi almeno 18 € al mese + IVA.",
+          "La pagina prezzi non sembra aggiornata di recente: conferma il prezzo con il commerciale."
+        ],
+        "fonte_prezzo": "https://www.krossbooking.com/prezzo",
+        "verificato": "2026-10-07"
+      }
+    ]
+  },
+  {
+    "slug": "conti-partita-iva",
+    "titolo": "Conti correnti per partita IVA e freelance",
+    "intro": "Ti serve se hai una partita IVA, anche forfettaria, e vuoi un conto separato da quello personale. Trovi canoni, servizi inclusi e limiti dei conti business più usati dai freelance in Italia.",
+    "criteri": [
+      "Controlla il canone mensile e se il prezzo indicato vale solo con pagamento annuale.",
+      "Verifica quanti bonifici sono inclusi e quanto costano quelli in più.",
+      "Controlla se puoi pagare gli F24 direttamente dal conto.",
+      "Preferisci un IBAN italiano se clienti o fornitori ti chiedono coordinate italiane.",
+      "Guarda se carta fisica e carte virtuali sono comprese o si pagano a parte.",
+      "Valuta gli strumenti extra, come fatturazione elettronica o stima delle tasse, solo se ti servono davvero."
+    ],
+    "faq": [
+      {
+        "d": "Un forfettario deve avere un conto business?",
+        "r": "Per le ditte individuali e i liberi professionisti non c'è un obbligo generale di conto dedicato. Tenere separati i movimenti dell'attività rende però più semplici contabilità e controlli."
+      },
+      {
+        "d": "Posso usare un conto gratuito per la partita IVA?",
+        "r": "Sì, alcuni conti business hanno un piano a 0 € al mese. Di solito includono pochi bonifici e poche carte: controlla i costi oltre la soglia."
+      }
+    ],
+    "servizi": [
+      {
+        "chiave": "qonto",
+        "nome": "Qonto",
+        "sito": "https://qonto.com/it/pricing",
+        "prezzo": "Starter gratis; Basic 9 € al mese + IVA con pagamento annuale (108 € l'anno)",
+        "adatto_a": "chi vuole un conto business con IBAN italiano e fatturazione elettronica nello stesso strumento.",
+        "punti_forti": [
+          "IBAN italiano su tutti i piani.",
+          "Anche il piano gratuito Starter include la fatturazione elettronica.",
+          "Prova gratuita di 1 mese sui piani a pagamento."
+        ],
+        "limiti": [
+          "Il piano Starter include solo 5 bonifici al mese e una carta virtuale; ogni bonifico in più costa 0,20 €.",
+          "I prezzi indicati sono equivalenti mensili di un piano annuale."
+        ],
+        "fonte_prezzo": "https://qonto.com/it/pricing",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "finom",
+        "nome": "Finom",
+        "sito": "https://finom.co/it-it/pricing/",
+        "prezzo": "Solo gratis; Basic 17 € al mese con pagamento annuale",
+        "adatto_a": "chi lavora da solo e cerca un conto business con piano gratuito.",
+        "punti_forti": [
+          "Il piano Solo costa 0 € al mese e include una carta virtuale.",
+          "I piani Basic e Smart prevedono un cashback dell'1% e del 3%.",
+          "Prova gratuita di 30 giorni sui piani a pagamento."
+        ],
+        "limiti": [
+          "Il piano Solo non include carte fisiche gratuite ed è per un solo utente.",
+          "Finom è una società dei Paesi Bassi: verifica le coordinate del conto prima di aprirlo."
+        ],
+        "fonte_prezzo": "https://finom.co/it-it/pricing/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "revolut-business",
+        "nome": "Revolut Business",
+        "sito": "https://www.revolut.com/it-IT/business/business-account-plans/",
+        "prezzo": "10 € al mese (piano Basic)",
+        "adatto_a": "chi lavora con clienti esteri e incassa o paga in più valute.",
+        "punti_forti": [
+          "Conti multivaluta per inviare e ricevere oltre 30 valute.",
+          "Il piano Basic include 10 bonifici nazionali gratuiti al mese e 1.000 € di cambio al tasso interbancario.",
+          "Fatture, link di pagamento e pagamenti con Tap to Pay su iPhone sono inclusi."
+        ],
+        "limiti": [
+          "Oltre i 10 bonifici nazionali paghi 0,20 € ciascuno.",
+          "La banca ha sede in Lituania (Revolut Bank UAB)."
+        ],
+        "fonte_prezzo": "https://www.revolut.com/it-IT/business/business-account-plans/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "hype-business",
+        "nome": "HYPE Business",
+        "sito": "https://www.hype.it/business/costi-e-condizioni",
+        "prezzo": "2,90 € al mese",
+        "adatto_a": "liberi professionisti e ditte individuali che vogliono un conto italiano a canone basso.",
+        "punti_forti": [
+          "IBAN italiano, F24 semplificati e Tax Manager per stimare le tasse.",
+          "Bonifici ordinari e istantanei e prelievi gratuiti.",
+          "Cashback dell'1% sugli acquisti con la carta."
+        ],
+        "limiti": [
+          "È pensato solo per ditte individuali e liberi professionisti, non per le società.",
+          "L'assistenza indicata è via email e WhatsApp."
+        ],
+        "fonte_prezzo": "https://www.hype.it/business/costi-e-condizioni",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "fineco-small-business",
+        "nome": "Fineco Small Business",
+        "sito": "https://it.finecobank.com/",
+        "prezzo": "5,95 € al mese",
+        "adatto_a": "chi usa già Fineco o preferisce un conto di una banca italiana tradizionale online.",
+        "punti_forti": [
+          "Conto corrente pensato per liberi professionisti e ditte individuali.",
+          "Canone fisso mensile, senza piani a livelli."
+        ],
+        "limiti": [
+          "Non comprende tutti i servizi banking e di credito del conto Fineco per privati.",
+          "Non è disponibile per le società di capitali."
+        ],
+        "fonte_prezzo": "https://help.finecobank.com/it/il-conto-fineco/conto-corrente.html",
+        "verificato": "2026-10-07"
+      }
+    ]
+  },
+  {
+    "slug": "fatturazione-elettronica",
+    "titolo": "Software per la fattura elettronica nel regime forfettario",
+    "intro": "Ti serve se sei forfettario e devi emettere fatture elettroniche tramite il Sistema di Interscambio (SdI). Trovi l'opzione gratuita dell'Agenzia delle Entrate e i software a pagamento più diffusi, con prezzi e limiti.",
+    "criteri": [
+      "Controlla il prezzo del primo anno e quello del rinnovo: spesso sono diversi.",
+      "Verifica se c'è un limite al numero di documenti emessi e ricevuti.",
+      "Controlla se la conservazione a norma è inclusa o se devi attivare quella gratuita dell'Agenzia delle Entrate.",
+      "Guarda se il software gestisce la marca da bollo da 2 € sulle fatture sopra 77,47 €.",
+      "Valuta l'app per smartphone se fatturi spesso fuori ufficio.",
+      "Controlla se il rinnovo è automatico e come disdire."
+    ],
+    "faq": [
+      {
+        "d": "I forfettari devono emettere la fattura elettronica?",
+        "r": "Sì, dal 1° gennaio 2024 l'obbligo vale per tutti i forfettari. Restano escluse alcune fatture, come quelle verso privati inviate al Sistema Tessera Sanitaria."
+      },
+      {
+        "d": "Posso fare la fattura elettronica gratis?",
+        "r": "Sì, con i servizi dell'Agenzia delle Entrate: procedura web, app FatturAE o software da installare. Sono gratuiti ma meno comodi di un software a pagamento."
+      },
+      {
+        "d": "Devo pagare la conservazione delle fatture?",
+        "r": "No, se aderisci al servizio gratuito di conservazione dell'Agenzia delle Entrate nel portale Fatture e Corrispettivi. Alcuni software includono una propria conservazione nel prezzo."
+      }
+    ],
+    "servizi": [
+      {
+        "chiave": "fatture-e-corrispettivi",
+        "nome": "Fatture e Corrispettivi (Agenzia delle Entrate)",
+        "sito": "https://www.agenziaentrate.gov.it/portale/aree-tematiche/fatturazione-elettronica/fatturazione-elettronica-site-area/servizi-consultazione-e-conservaz-fatture-elettroniche",
+        "prezzo": "gratis",
+        "adatto_a": "chi emette poche fatture e non vuole pagare un abbonamento.",
+        "punti_forti": [
+          "Puoi creare e inviare le fatture con la procedura web, con l'app FatturAE o con un software da installare sul PC.",
+          "Offre gratis la conservazione a norma di tutte le fatture emesse e ricevute."
+        ],
+        "limiti": [
+          "L'interfaccia è meno pratica di un software commerciale: niente solleciti, preventivi o report.",
+          "La conservazione gratuita va attivata aderendo al servizio nell'area riservata."
+        ],
+        "fonte_prezzo": "https://www.agenziaentrate.gov.it/portale/aree-tematiche/fatturazione-elettronica/fatturazione-elettronica-site-area/servizi-consultazione-e-conservaz-fatture-elettroniche",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "fatture-in-cloud",
+        "nome": "Fatture in Cloud",
+        "sito": "https://www.fattureincloud.it/costo/",
+        "prezzo": "48 € + IVA il primo anno (piano Forfettari), poi 96 € l'anno + IVA",
+        "adatto_a": "forfettari che emettono poche fatture e vogliono un software completo con app.",
+        "punti_forti": [
+          "Invio, ricezione, firma e conservazione sostitutiva delle fatture elettroniche sono inclusi.",
+          "Monitora il limite dei ricavi e calcola le tasse del forfettario.",
+          "Prova gratuita di 31 giorni."
+        ],
+        "limiti": [
+          "Il piano Forfettari ha un limite di 100 documenti l'anno, tra emessi e ricevuti.",
+          "Il rinnovo è automatico e c'è un costo di gestione di 1 € + IVA per pagamento."
+        ],
+        "fonte_prezzo": "https://www.fattureincloud.it/costo/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "aruba-fatturazione",
+        "nome": "Fatturazione Elettronica Aruba",
+        "sito": "https://www.pec.it/fatturazione-elettronica-regime-forfettario.aspx",
+        "prezzo": "1 € + IVA per i primi 3 mesi, poi da 29,90 € l'anno + IVA",
+        "adatto_a": "chi cerca un canone annuo basso e senza limite di fatture.",
+        "punti_forti": [
+          "Non c'è un limite al numero di fatture: include 1 GB di spazio.",
+          "Invio, ricezione e conservazione a norma sono inclusi.",
+          "App gratuita e demo per provare il servizio."
+        ],
+        "limiti": [
+          "Preventivi, incassi e altre funzioni sono moduli aggiuntivi a pagamento."
+        ],
+        "fonte_prezzo": "https://www.pec.it/acquista-fatturazione-elettronica.aspx",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "fattura24",
+        "nome": "Fattura24",
+        "sito": "https://www.fattura24.com/prezzi/",
+        "prezzo": "48 € + IVA il primo anno (piano Professional), poi 120 € l'anno + IVA",
+        "adatto_a": "chi vuole preventivi, ordini e report oltre alle fatture.",
+        "punti_forti": [
+          "Il piano Professional include fino a 3.000 fatture e l'invio dei dati al Sistema Tessera Sanitaria.",
+          "Il rinnovo non è automatico.",
+          "Importano gratis le fatture degli anni precedenti se arrivi da un altro software."
+        ],
+        "limiti": [
+          "Dal secondo anno il prezzo passa da 48 € a 120 € + IVA.",
+          "Per la conservazione a norma rimanda al servizio gratuito dell'Agenzia delle Entrate."
+        ],
+        "fonte_prezzo": "https://www.fattura24.com/prezzi/",
+        "verificato": "2026-10-07"
+      },
+      {
+        "chiave": "fiscozen-fatturazione",
+        "nome": "Fiscozen (fatturazione inclusa)",
+        "sito": "https://www.fiscozen.it/prezzi/",
+        "prezzo": "inclusa nell'abbonamento da 49,90 € al mese IVA inclusa",
+        "adatto_a": "chi vuole fatture, tasse e commercialista in un unico servizio.",
+        "punti_forti": [
+          "L'app per le fatture è inclusa insieme a commercialista dedicato, dichiarazione dei redditi e F24.",
+          "Non devi gestire separatamente software di fatturazione e commercialista."
+        ],
+        "limiti": [
+          "Non è un software di sola fatturazione: paghi l'intero servizio di commercialista, con contratto di 12 mesi."
+        ],
+        "fonte_prezzo": "https://www.fiscozen.it/prezzi/",
+        "verificato": "2026-10-07"
+      }
+    ]
+  }
+]

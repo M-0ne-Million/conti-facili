@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcolo rata mutuo con piano di ammortamento</title>
+<meta name="description" content="Calcola la rata mensile del mutuo, gli interessi totali e il piano di ammortamento alla francese anno per anno. Gratis e immediato.">
+<link rel="canonical" href="https://m-0ne-million.github.io/conti-facili/calcolo-rata-mutuo/">
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#edf0f7">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Conti Facili">
+<meta property="og:title" content="Calcolo rata mutuo con piano di ammortamento">
+<meta property="og:description" content="Calcola la rata mensile del mutuo, gli interessi totali e il piano di ammortamento alla francese anno per anno. Gratis e immediato.">
+<meta property="og:url" content="https://m-0ne-million.github.io/conti-facili/calcolo-rata-mutuo/">
+<link rel="preload" href="../font/titillium-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../font/titillium-900.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calcolo rata mutuo con piano di ammortamento", "url": "https://m-0ne-million.github.io/conti-facili/calcolo-rata-mutuo/", "description": "Calcola la rata mensile del mutuo, gli interessi totali e il piano di ammortamento alla francese anno per anno. Gratis e immediato.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "it", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script>
+<meta name="google-site-verification" content="mYpD_GNiX8-CuIm7IoCFDpJmgcL2ufV5ZjtpCCkXyWE">
+<style>
+@font-face { font-family: "Titillium Web"; font-weight: 400; font-display: swap; src: url("../font/titillium-400.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 600; font-display: swap; src: url("../font/titillium-600.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 700; font-display: swap; src: url("../font/titillium-700.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 900; font-display: swap; src: url("../font/titillium-900.woff2") format("woff2"); }
+:root {
+  --scrivania: #edf0f7;   /* il piano su cui stanno i fogli */
+  --carta: #fff;
+  --carbone: #2b36a0;     /* blu della carta carbone */
+  --inchiostro: #1c2233;
+  --rigatura: #cfe3d8;    /* righe verdi del registro */
+  --margine: #2f7a5b;     /* linea di margine della carta uso bollo */
+  --timbro: #c8302a;      /* solo per la marca da bollo */
+  --evidenziatore: #fff07a;
+  --grigio: #5a6178;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+.salta { position: absolute; left: -999px; }
+.salta:focus { left: 1rem; top: 1rem; z-index: 1; background: var(--carta); padding: .5rem 1rem; }
+h1, h2 { text-wrap: balance; }
+h2[id] { scroll-margin-top: 1rem; }
+body { margin: 0; font: 400 1.125rem/1.55 "Titillium Web", system-ui, sans-serif; color: var(--inchiostro); background: var(--scrivania); }
+.contenuto { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+main { padding-bottom: 3rem; }
+main > p, main > ul, main > h2, main > details, main > .box { max-width: 42rem; }
+a { color: var(--carbone); text-underline-offset: .15em; }
+:focus-visible { outline: 3px solid var(--carbone); outline-offset: 2px; }
+
+/* Tipografia */
+h1 { font-weight: 900; font-size: clamp(2.2rem, 5.5vw, 3.75rem); line-height: 1; letter-spacing: -.015em; color: var(--carbone); margin: 2rem 0 1rem; max-width: 22ch; }
+h2 { font-weight: 700; font-size: 1.6rem; line-height: 1.15; margin: 2.75rem 0 .75rem; }
+.introduzione { font-size: 1.25rem; color: var(--grigio); max-width: 38rem; margin: 0 0 2rem; }
+
+/* Testata e piè di pagina */
+.testata { padding: 1rem 0 0; }
+.marchio { font-weight: 900; font-size: 1.35rem; color: var(--carbone); text-decoration: none; letter-spacing: -.01em; }
+footer { background: var(--carbone); color: #fff; padding: 2rem 0; font-size: 1rem; }
+footer a { color: #fff; }
+footer ul { padding-left: 1.2rem; columns: 2 14rem; margin: .5rem 0 1rem; }
+footer p { max-width: 42rem; }
+
+/* Strumento: modulo a sinistra, scontrino a destra */
+.strumento { display: grid; gap: 2rem; align-items: start; margin: 1rem 0 2rem; }
+@media (min-width: 56rem) { .strumento { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } .strumento > .scontrino-wrap { position: sticky; top: 1rem; } }
+
+/* Il modulo è un foglio di carta uso bollo: bianco con la linea di margine */
+.modulo { background: var(--carta) linear-gradient(to right, transparent 1.75rem, var(--margine) 1.75rem, var(--margine) 1.85rem, transparent 1.85rem);
+  border-radius: 3px; padding: 1.25rem 1.25rem 1.5rem 2.75rem; box-shadow: 0 1px 0 #cdd3e0, 0 12px 28px -18px rgba(43, 54, 160, .45); display: grid; gap: 1.25rem; margin: 0; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 1rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+fieldset + fieldset { border-top: 1px solid var(--rigatura); padding-top: 1.25rem; }
+legend { font-weight: 700; font-size: 1.15rem; color: var(--carbone); padding: 0; grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: .15rem; font-size: .95rem; font-weight: 600; color: var(--grigio); }
+label.spunta { flex-direction: row; align-items: center; gap: .5rem; font-weight: 400; color: var(--inchiostro); grid-column: 1 / -1; }
+input, select, textarea { font: inherit; font-size: 1.15rem; color: var(--inchiostro); background: transparent; border: 0; border-bottom: 2px solid #8c94b8;
+  border-radius: 0; padding: .35rem .15rem; min-height: 2.75rem; width: 100%; }
+textarea { min-height: 4.5rem; resize: vertical; }
+label.spunta input { width: 1.4rem; min-height: 1.4rem; accent-color: var(--carbone); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-bottom-color: var(--carbone); background: #fffbd6; }
+
+/* Lo scontrino: bordo strappato sopra e sotto, righe del registro, netto evidenziato */
+.scontrino-wrap { filter: drop-shadow(0 14px 20px rgba(43, 54, 160, .22)); }
+.scontrino { position: relative; background: var(--carta); padding: 1.75rem 1.25rem; font-variant-numeric: tabular-nums;
+  --dente: 14px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x; }
+.scontrino h2, .scontrino .titolo { font-size: 1.15rem; font-weight: 700; margin: 0 0 .75rem; color: var(--carbone); }
+.scontrino table { width: 100%; border-collapse: collapse; }
+.scontrino td { padding: .45rem 0; border-bottom: 1px solid var(--rigatura); }
+.scontrino td:last-child { text-align: right; white-space: nowrap; }
+.scontrino .totale td { border-bottom: 0; padding-top: .9rem; font-weight: 700; }
+.scontrino .totale td:last-child { font-size: 1.9rem; font-weight: 900; color: var(--carbone);
+  background: linear-gradient(transparent 58%, var(--evidenziatore) 58%, var(--evidenziatore) 92%, transparent 92%); }
+.scontrino .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+.sotto-scontrino { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* La marca da bollo: compare (timbrata) quando l'importo supera 77,47 € */
+.marca { position: absolute; top: 1.1rem; right: 1rem; width: 5.6rem; padding: 5px; transform: rotate(7deg);
+  background: radial-gradient(circle, var(--carta) 2.4px, #f3c9c5 2.9px) -4px -4px / 9px 9px; }
+.marca > span { display: block; background: #fdeeec; border: 1.5px solid var(--timbro); color: var(--timbro); text-align: center; padding: .35rem .2rem; line-height: 1.05; }
+.marca b { display: block; font-size: 1.35rem; font-weight: 900; }
+.marca small { font-size: .7rem; font-weight: 600; }
+.marca:not([hidden]) { animation: timbra .32s cubic-bezier(.2, .9, .3, 1.35); }
+@keyframes timbra { from { transform: scale(1.7) rotate(-6deg); opacity: 0; } to { transform: scale(1) rotate(7deg); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .marca:not([hidden]) { animation: none; } }
+
+/* Pulsanti */
+.bottone, button { font: inherit; font-weight: 700; font-size: 1.1rem; background: var(--carbone); color: #fff; border: 0; border-radius: 4px;
+  padding: .7rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.bottone:hover, button:hover { background: #1f2878; }
+.bottone.secondario:hover { background: var(--carta); }
+.bottone:active, button:active { transform: translateY(1px); }
+.bottone.secondario { background: transparent; color: var(--carbone); box-shadow: inset 0 0 0 2px var(--carbone); }
+
+/* Home: apertura con lo scontrino di esempio */
+.apertura { display: grid; gap: 2.5rem; align-items: center; padding: 1rem 0 1.5rem; }
+@media (min-width: 56rem) { .apertura { grid-template-columns: 1.2fr 1fr; } }
+.apertura .scontrino-wrap { transform: rotate(-1.5deg); max-width: 24rem; justify-self: center; width: 100%; }
+
+/* Indice degli strumenti come un registro: nome, puntini di guida, descrizione */
+.registro { list-style: none; padding: 0; margin: 0; max-width: none; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.registro a { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--inchiostro); border-bottom: 1px solid var(--rigatura); }
+.registro li:last-child a { border-bottom: 0; }
+.registro strong { font-size: 1.25rem; color: var(--carbone); }
+.registro span { grid-column: 1 / -1; color: var(--grigio); }
+@media (min-width: 48rem) {
+  .registro a { grid-template-columns: auto 1fr auto; align-items: baseline; }
+  .registro a::after { content: ""; order: 0; border-bottom: 2px dotted #9aa3c4; transform: translateY(-.3em); }
+  .registro strong { order: -1; }
+  .registro span { grid-column: auto; order: 1; }
+}
+.registro a:hover strong, .registro a:focus-visible strong { background: linear-gradient(transparent 60%, var(--evidenziatore) 60%); }
+
+/* Riquadri: il modello Excel come un buono da ritagliare, i partner come nota a margine */
+.box { margin: 2rem 0; padding: 1.25rem; background: var(--carta); position: relative; }
+.box p { margin: .25rem 0 1rem; }
+.box.prodotto { border: 2px dashed var(--carbone); border-radius: 6px; }
+.box.prodotto::before { content: "✂"; position: absolute; top: -.85rem; left: 1rem; background: var(--scrivania); color: var(--carbone); padding: 0 .3rem; font-size: 1.1rem; }
+.box.partner { border-left: 4px solid var(--margine); }
+.box .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+
+/* Domande frequenti come righe del registro */
+details { border-bottom: 1px solid #c3cad9; padding: .9rem 0; }
+summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 900; color: var(--carbone); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { margin: .5rem 0 0; }
+
+/* Tabelle di dati (piano di ammortamento) */
+.scorri { overflow-x: auto; }
+table.dati { width: 100%; border-collapse: collapse; background: var(--carta); font-variant-numeric: tabular-nums; }
+table.dati th, table.dati td { padding: .5rem .6rem; border-bottom: 1px solid var(--rigatura); text-align: right; white-space: nowrap; }
+table.dati th:first-child, table.dati td:first-child { text-align: left; }
+table.dati th { font-weight: 700; font-size: .95rem; color: var(--grigio); }
+.barra { display: inline-block; width: 8rem; height: .7rem; vertical-align: middle;
+  background: linear-gradient(to right, var(--carbone) var(--q), #e9a19b var(--q)); }
+.legenda { font-size: .95rem; color: var(--grigio); }
+.legenda i { display: inline-block; width: .8rem; height: .8rem; vertical-align: -.05rem; margin: 0 .25rem 0 .5rem; }
+
+/* Stampa: solo la ricevuta, senza decorazioni */
+@media print {
+  body { background: #fff; }
+  body * { visibility: hidden; }
+  #ricevuta, #ricevuta * { visibility: visible; }
+  #ricevuta { position: absolute; inset: 0; -webkit-mask: none; mask: none; padding: 0; font-size: 11pt; }
+  .scontrino-wrap { filter: none; }
+  .marca { display: none; }
+  .scontrino .totale td:last-child { background: none; }
+  @page { size: A4; margin: 2cm; }
+}
+.grande-codice { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 900; color: var(--carbone); letter-spacing: .06em; margin: .25rem 0; overflow-wrap: anywhere; }
+/* Pagina "incorpora" e versione incorporata nei siti di altri */
+main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; background: var(--carta); border: 1px solid #c3cad9; padding: .6rem; margin-bottom: .5rem; max-width: 42rem; display: block; }
+.incorporato { background: var(--carta); }
+.incorporato .testata, .incorporato footer, .incorporato main > :not(.strumento, .firma-widget, script) { display: none; }
+.incorporato .strumento { margin: .5rem 0; }
+.firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }
+.briciole { font-size: .95rem; color: var(--grigio); margin: 1.5rem 0 -1rem; }
+table.dati.regole td, table.dati.regole th { white-space: normal; text-align: left; }
+/* Calendario delle scadenze */
+.iscrizioni { display: grid; gap: 1rem; margin-bottom: 1rem; max-width: 42rem; }
+.iscrizioni > div { background: var(--carta); padding: 1rem; border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.iscrizioni p { margin: 0 0 .5rem; }
+.iscrizioni .bottone { margin: .25rem .25rem 0 0; font-size: 1rem; min-height: 2.5rem; padding: .45rem .9rem; }
+.scadenze { list-style: none; padding: 0; margin: 0 0 1rem; max-width: 42rem; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.scadenze li { padding: .9rem 1.25rem; border-bottom: 1px solid var(--rigatura); }
+.scadenze li:last-child { border-bottom: 0; }
+.scadenze .giorno { display: block; font-weight: 900; color: var(--carbone); }
+.scadenze .per { font-size: .9rem; color: var(--grigio); }
+
+</style>
+</head>
+<body class="">
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header class="testata"><div class="contenuto"><a class="marchio" href="../" translate="no">Conti Facili</a></div></header>
+<main class="contenuto" id="contenuto">
+<h1>Rata del mutuo e piano di ammortamento</h1>
+<p class="introduzione">Importo, tasso e durata: vedi la rata mensile, quanto paghi di interessi e come scende il debito anno per anno.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" autocomplete="off" onsubmit="return false">
+    <fieldset>
+      <label>Importo del mutuo in euro<input name="capitale" inputmode="decimal" value="150.000"></label>
+      <label>Tasso annuo (TAN) in %<input name="tan" inputmode="decimal" value="3"></label>
+      <label>Durata
+        <select name="anni"><option value="10">10 anni</option><option value="15">15 anni</option><option value="20" selected>20 anni</option><option value="25">25 anni</option><option value="30">30 anni</option></select>
+      </label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto</p>
+      <table>
+        <tr><td>Totale interessi</td><td id="interessi"></td></tr>
+        <tr><td>Totale rimborsato</td><td id="totale"></td></tr>
+        <tr class="totale"><td>Rata al mese</td><td id="rata"></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<h2>Il piano anno per anno</h2>
+<p class="legenda">Ogni barra è un anno di rate:<i style="background:var(--carbone)"></i>capitale restituito<i style="background:#e9a19b"></i>interessi</p>
+<div class="scorri"><table class="dati"><thead><tr><th>Anno</th><th>Rate dell'anno</th><th>Capitale</th><th>Interessi</th><th>Debito residuo</th></tr></thead><tbody id="piano"></tbody></table></div>
+
+
+
+<h2>Come si calcola la rata del mutuo</h2>
+<p>In Italia quasi tutti i mutui usano l'<strong>ammortamento alla francese</strong>: la rata è sempre uguale, ma all'inizio è fatta
+   soprattutto di interessi e alla fine soprattutto di capitale. La formula è:</p>
+<p><strong>rata = C × i ÷ (1 − (1 + i)<sup>−n</sup>)</strong>, dove C è l'importo, i il tasso mensile (TAN ÷ 12) e n il numero di rate.</p>
+<p>Esempio: 150.000 € al 3% per 20 anni danno una rata di circa 832 € al mese e circa 49.700 € di interessi totali.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Che differenza c'è tra TAN e TAEG?</summary><p>Il TAN è il tasso puro degli interessi e serve a calcolare la rata. Il TAEG include anche spese di istruttoria, perizia e assicurazioni obbligatorie: è il numero da usare per confrontare offerte diverse.</p></details>
+<details><summary>Quanto posso chiedere di mutuo?</summary><p>Molte banche chiedono che la rata non superi circa un terzo del reddito netto mensile e finanziano di solito fino all'80% del valore dell'immobile.</p></details>
+<details><summary>Il calcolo vale per i mutui a tasso variabile?</summary><p>Vale per il tasso di partenza: con il variabile la rata cambia quando cambia l'indice di riferimento.</p></details>
+
+<script type="module">
+import * as c from '../calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+function aggiorna() {
+  const cap = c.numero(f.capitale.value), tan = c.numero(f.tan.value), anni = Number(f.anni.value);
+  if (!(cap > 0) || !(tan >= 0)) return;
+  const rata = c.rataMutuo(cap, tan, anni), tot = rata * anni * 12;
+  q('rata').textContent = e(rata);
+  q('interessi').textContent = e(tot - cap);
+  q('totale').textContent = e(tot);
+  q('piano').innerHTML = '';
+  for (const r of c.ammortamento(cap, tan, anni)) {
+    const tr = q('piano').insertRow();
+    tr.insertCell().textContent = r.anno;
+    const barra = tr.insertCell().appendChild(document.createElement('span'));
+    barra.className = 'barra';
+    barra.style.setProperty('--q', (r.quota / (r.quota + r.interessi) * 100).toFixed(1) + '%');
+    for (const v of [e(r.quota), e(r.interessi), e(r.residuo)]) tr.insertCell().textContent = v;
+  }
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>
+
+
+</main>
+<footer>
+  <div class="contenuto">
+    <p><strong>Tutti gli strumenti, gratis</strong></p>
+    <ul><li><a href="../ricevuta-prestazione-occasionale/">Ricevuta prestazione occasionale</a></li><li><a href="../calcolo-ritenuta-acconto/">Calcolo ritenuta d&#x27;acconto 20%</a></li><li><a href="../scorporo-iva/">Scorporo IVA online</a></li><li><a href="../calcolo-rata-mutuo/">Calcolo rata mutuo con piano di ammortamento</a></li><li><a href="../calcolo-stipendio-netto/">Calcolo stipendio netto 2026</a></li><li><a href="../calcolo-tasse-forfettario/">Calcolo tasse regime forfettario 2026</a></li><li><a href="../calcolo-affitti-brevi/">Affitti brevi 2026</a></li><li><a href="../calcolo-tassa-di-soggiorno/">Calcolo tassa di soggiorno per affitti brevi</a></li><li><a href="../calcolo-codice-fiscale/">Calcolo codice fiscale online e verifica</a></li><li><a href="../verifica-iban/">Verifica IBAN online</a></li><li><a href="../calcolo-imu/">Calcolo IMU</a></li><li><a href="../calcolo-interesse-composto/">Calcolo interesse composto e PAC</a></li><li><a href="../calcolo-sconto-percentuale/">Calcolo sconto e percentuali online</a></li><li><a href="../guida-prestazione-occasionale/">Prestazione occasionale 2026</a></li><li><a href="../guida-partita-iva-forfettaria/">Partita IVA forfettaria 2026</a></li><li><a href="../guida-affitti-brevi-2026/">Affitti brevi 2026</a></li></ul>
+    <p>I calcoli sono indicativi e non sostituiscono un commercialista.
+       Quello che scrivi resta sul tuo dispositivo: non viene inviato a nessuno.</p>
+    <p><a href="../calendario-scadenze-fiscali/">Calendario delle scadenze fiscali</a></p>
+    <p><a href="../incorpora/">Metti i calcolatori sul tuo sito</a></p>
+    <p><a href="../privacy/">Privacy</a></p>
+    <p>© 2026 Conti Facili</p>
+  </div>
+</footer>
+</body>
+</html>

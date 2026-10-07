@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Affitti brevi 2026: tasse, cedolare secca e obblighi</title>
+<meta name="description" content="Cedolare secca al 21% o 26%, ritenuta dei portali, CIN, Alloggiati Web e tassa di soggiorno: le regole 2026 degli affitti brevi, con un esempio.">
+<link rel="canonical" href="https://m-0ne-million.github.io/conti-facili/guida-affitti-brevi-2026/">
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#edf0f7">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Conti Facili">
+<meta property="og:title" content="Affitti brevi 2026: tasse, cedolare secca e obblighi">
+<meta property="og:description" content="Cedolare secca al 21% o 26%, ritenuta dei portali, CIN, Alloggiati Web e tassa di soggiorno: le regole 2026 degli affitti brevi, con un esempio.">
+<meta property="og:url" content="https://m-0ne-million.github.io/conti-facili/guida-affitti-brevi-2026/">
+<link rel="preload" href="../font/titillium-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../font/titillium-900.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Affitti brevi 2026: tasse, cedolare secca e obblighi", "description": "Cedolare secca al 21% o 26%, ritenuta dei portali, CIN, Alloggiati Web e tassa di soggiorno: le regole 2026 degli affitti brevi, con un esempio.", "url": "https://m-0ne-million.github.io/conti-facili/guida-affitti-brevi-2026/", "inLanguage": "it", "dateModified": "2026-10-07", "publisher": {"@type": "Organization", "name": "Conti Facili"}}</script>
+<meta name="google-site-verification" content="mYpD_GNiX8-CuIm7IoCFDpJmgcL2ufV5ZjtpCCkXyWE">
+<style>
+@font-face { font-family: "Titillium Web"; font-weight: 400; font-display: swap; src: url("../font/titillium-400.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 600; font-display: swap; src: url("../font/titillium-600.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 700; font-display: swap; src: url("../font/titillium-700.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 900; font-display: swap; src: url("../font/titillium-900.woff2") format("woff2"); }
+:root {
+  --scrivania: #edf0f7;   /* il piano su cui stanno i fogli */
+  --carta: #fff;
+  --carbone: #2b36a0;     /* blu della carta carbone */
+  --inchiostro: #1c2233;
+  --rigatura: #cfe3d8;    /* righe verdi del registro */
+  --margine: #2f7a5b;     /* linea di margine della carta uso bollo */
+  --timbro: #c8302a;      /* solo per la marca da bollo */
+  --evidenziatore: #fff07a;
+  --grigio: #5a6178;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+.salta { position: absolute; left: -999px; }
+.salta:focus { left: 1rem; top: 1rem; z-index: 1; background: var(--carta); padding: .5rem 1rem; }
+h1, h2 { text-wrap: balance; }
+h2[id] { scroll-margin-top: 1rem; }
+body { margin: 0; font: 400 1.125rem/1.55 "Titillium Web", system-ui, sans-serif; color: var(--inchiostro); background: var(--scrivania); }
+.contenuto { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+main { padding-bottom: 3rem; }
+main > p, main > ul, main > h2, main > details, main > .box { max-width: 42rem; }
+a { color: var(--carbone); text-underline-offset: .15em; }
+:focus-visible { outline: 3px solid var(--carbone); outline-offset: 2px; }
+
+/* Tipografia */
+h1 { font-weight: 900; font-size: clamp(2.2rem, 5.5vw, 3.75rem); line-height: 1; letter-spacing: -.015em; color: var(--carbone); margin: 2rem 0 1rem; max-width: 22ch; }
+h2 { font-weight: 700; font-size: 1.6rem; line-height: 1.15; margin: 2.75rem 0 .75rem; }
+.introduzione { font-size: 1.25rem; color: var(--grigio); max-width: 38rem; margin: 0 0 2rem; }
+
+/* Testata e piè di pagina */
+.testata { padding: 1rem 0 0; }
+.marchio { font-weight: 900; font-size: 1.35rem; color: var(--carbone); text-decoration: none; letter-spacing: -.01em; }
+footer { background: var(--carbone); color: #fff; padding: 2rem 0; font-size: 1rem; }
+footer a { color: #fff; }
+footer ul { padding-left: 1.2rem; columns: 2 14rem; margin: .5rem 0 1rem; }
+footer p { max-width: 42rem; }
+
+/* Strumento: modulo a sinistra, scontrino a destra */
+.strumento { display: grid; gap: 2rem; align-items: start; margin: 1rem 0 2rem; }
+@media (min-width: 56rem) { .strumento { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } .strumento > .scontrino-wrap { position: sticky; top: 1rem; } }
+
+/* Il modulo è un foglio di carta uso bollo: bianco con la linea di margine */
+.modulo { background: var(--carta) linear-gradient(to right, transparent 1.75rem, var(--margine) 1.75rem, var(--margine) 1.85rem, transparent 1.85rem);
+  border-radius: 3px; padding: 1.25rem 1.25rem 1.5rem 2.75rem; box-shadow: 0 1px 0 #cdd3e0, 0 12px 28px -18px rgba(43, 54, 160, .45); display: grid; gap: 1.25rem; margin: 0; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 1rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+fieldset + fieldset { border-top: 1px solid var(--rigatura); padding-top: 1.25rem; }
+legend { font-weight: 700; font-size: 1.15rem; color: var(--carbone); padding: 0; grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: .15rem; font-size: .95rem; font-weight: 600; color: var(--grigio); }
+label.spunta { flex-direction: row; align-items: center; gap: .5rem; font-weight: 400; color: var(--inchiostro); grid-column: 1 / -1; }
+input, select, textarea { font: inherit; font-size: 1.15rem; color: var(--inchiostro); background: transparent; border: 0; border-bottom: 2px solid #8c94b8;
+  border-radius: 0; padding: .35rem .15rem; min-height: 2.75rem; width: 100%; }
+textarea { min-height: 4.5rem; resize: vertical; }
+label.spunta input { width: 1.4rem; min-height: 1.4rem; accent-color: var(--carbone); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-bottom-color: var(--carbone); background: #fffbd6; }
+
+/* Lo scontrino: bordo strappato sopra e sotto, righe del registro, netto evidenziato */
+.scontrino-wrap { filter: drop-shadow(0 14px 20px rgba(43, 54, 160, .22)); }
+.scontrino { position: relative; background: var(--carta); padding: 1.75rem 1.25rem; font-variant-numeric: tabular-nums;
+  --dente: 14px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x; }
+.scontrino h2, .scontrino .titolo { font-size: 1.15rem; font-weight: 700; margin: 0 0 .75rem; color: var(--carbone); }
+.scontrino table { width: 100%; border-collapse: collapse; }
+.scontrino td { padding: .45rem 0; border-bottom: 1px solid var(--rigatura); }
+.scontrino td:last-child { text-align: right; white-space: nowrap; }
+.scontrino .totale td { border-bottom: 0; padding-top: .9rem; font-weight: 700; }
+.scontrino .totale td:last-child { font-size: 1.9rem; font-weight: 900; color: var(--carbone);
+  background: linear-gradient(transparent 58%, var(--evidenziatore) 58%, var(--evidenziatore) 92%, transparent 92%); }
+.scontrino .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+.sotto-scontrino { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* La marca da bollo: compare (timbrata) quando l'importo supera 77,47 € */
+.marca { position: absolute; top: 1.1rem; right: 1rem; width: 5.6rem; padding: 5px; transform: rotate(7deg);
+  background: radial-gradient(circle, var(--carta) 2.4px, #f3c9c5 2.9px) -4px -4px / 9px 9px; }
+.marca > span { display: block; background: #fdeeec; border: 1.5px solid var(--timbro); color: var(--timbro); text-align: center; padding: .35rem .2rem; line-height: 1.05; }
+.marca b { display: block; font-size: 1.35rem; font-weight: 900; }
+.marca small { font-size: .7rem; font-weight: 600; }
+.marca:not([hidden]) { animation: timbra .32s cubic-bezier(.2, .9, .3, 1.35); }
+@keyframes timbra { from { transform: scale(1.7) rotate(-6deg); opacity: 0; } to { transform: scale(1) rotate(7deg); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .marca:not([hidden]) { animation: none; } }
+
+/* Pulsanti */
+.bottone, button { font: inherit; font-weight: 700; font-size: 1.1rem; background: var(--carbone); color: #fff; border: 0; border-radius: 4px;
+  padding: .7rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.bottone:hover, button:hover { background: #1f2878; }
+.bottone.secondario:hover { background: var(--carta); }
+.bottone:active, button:active { transform: translateY(1px); }
+.bottone.secondario { background: transparent; color: var(--carbone); box-shadow: inset 0 0 0 2px var(--carbone); }
+
+/* Home: apertura con lo scontrino di esempio */
+.apertura { display: grid; gap: 2.5rem; align-items: center; padding: 1rem 0 1.5rem; }
+@media (min-width: 56rem) { .apertura { grid-template-columns: 1.2fr 1fr; } }
+.apertura .scontrino-wrap { transform: rotate(-1.5deg); max-width: 24rem; justify-self: center; width: 100%; }
+
+/* Indice degli strumenti come un registro: nome, puntini di guida, descrizione */
+.registro { list-style: none; padding: 0; margin: 0; max-width: none; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.registro a { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--inchiostro); border-bottom: 1px solid var(--rigatura); }
+.registro li:last-child a { border-bottom: 0; }
+.registro strong { font-size: 1.25rem; color: var(--carbone); }
+.registro span { grid-column: 1 / -1; color: var(--grigio); }
+@media (min-width: 48rem) {
+  .registro a { grid-template-columns: auto 1fr auto; align-items: baseline; }
+  .registro a::after { content: ""; order: 0; border-bottom: 2px dotted #9aa3c4; transform: translateY(-.3em); }
+  .registro strong { order: -1; }
+  .registro span { grid-column: auto; order: 1; }
+}
+.registro a:hover strong, .registro a:focus-visible strong { background: linear-gradient(transparent 60%, var(--evidenziatore) 60%); }
+
+/* Riquadri: il modello Excel come un buono da ritagliare, i partner come nota a margine */
+.box { margin: 2rem 0; padding: 1.25rem; background: var(--carta); position: relative; }
+.box p { margin: .25rem 0 1rem; }
+.box.prodotto { border: 2px dashed var(--carbone); border-radius: 6px; }
+.box.prodotto::before { content: "✂"; position: absolute; top: -.85rem; left: 1rem; background: var(--scrivania); color: var(--carbone); padding: 0 .3rem; font-size: 1.1rem; }
+.box.partner { border-left: 4px solid var(--margine); }
+.box .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+
+/* Domande frequenti come righe del registro */
+details { border-bottom: 1px solid #c3cad9; padding: .9rem 0; }
+summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 900; color: var(--carbone); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { margin: .5rem 0 0; }
+
+/* Tabelle di dati (piano di ammortamento) */
+.scorri { overflow-x: auto; }
+table.dati { width: 100%; border-collapse: collapse; background: var(--carta); font-variant-numeric: tabular-nums; }
+table.dati th, table.dati td { padding: .5rem .6rem; border-bottom: 1px solid var(--rigatura); text-align: right; white-space: nowrap; }
+table.dati th:first-child, table.dati td:first-child { text-align: left; }
+table.dati th { font-weight: 700; font-size: .95rem; color: var(--grigio); }
+.barra { display: inline-block; width: 8rem; height: .7rem; vertical-align: middle;
+  background: linear-gradient(to right, var(--carbone) var(--q), #e9a19b var(--q)); }
+.legenda { font-size: .95rem; color: var(--grigio); }
+.legenda i { display: inline-block; width: .8rem; height: .8rem; vertical-align: -.05rem; margin: 0 .25rem 0 .5rem; }
+
+/* Stampa: solo la ricevuta, senza decorazioni */
+@media print {
+  body { background: #fff; }
+  body * { visibility: hidden; }
+  #ricevuta, #ricevuta * { visibility: visible; }
+  #ricevuta { position: absolute; inset: 0; -webkit-mask: none; mask: none; padding: 0; font-size: 11pt; }
+  .scontrino-wrap { filter: none; }
+  .marca { display: none; }
+  .scontrino .totale td:last-child { background: none; }
+  @page { size: A4; margin: 2cm; }
+}
+.grande-codice { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 900; color: var(--carbone); letter-spacing: .06em; margin: .25rem 0; overflow-wrap: anywhere; }
+/* Pagina "incorpora" e versione incorporata nei siti di altri */
+main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; background: var(--carta); border: 1px solid #c3cad9; padding: .6rem; margin-bottom: .5rem; max-width: 42rem; display: block; }
+.incorporato { background: var(--carta); }
+.incorporato .testata, .incorporato footer, .incorporato main > :not(.strumento, .firma-widget, script) { display: none; }
+.incorporato .strumento { margin: .5rem 0; }
+.firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }
+.briciole { font-size: .95rem; color: var(--grigio); margin: 1.5rem 0 -1rem; }
+table.dati.regole td, table.dati.regole th { white-space: normal; text-align: left; }
+/* Calendario delle scadenze */
+.iscrizioni { display: grid; gap: 1rem; margin-bottom: 1rem; max-width: 42rem; }
+.iscrizioni > div { background: var(--carta); padding: 1rem; border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.iscrizioni p { margin: 0 0 .5rem; }
+.iscrizioni .bottone { margin: .25rem .25rem 0 0; font-size: 1rem; min-height: 2.5rem; padding: .45rem .9rem; }
+.scadenze { list-style: none; padding: 0; margin: 0 0 1rem; max-width: 42rem; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.scadenze li { padding: .9rem 1.25rem; border-bottom: 1px solid var(--rigatura); }
+.scadenze li:last-child { border-bottom: 0; }
+.scadenze .giorno { display: block; font-weight: 900; color: var(--carbone); }
+.scadenze .per { font-size: .9rem; color: var(--grigio); }
+
+</style>
+</head>
+<body class="">
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header class="testata"><div class="contenuto"><a class="marchio" href="../" translate="no">Conti Facili</a></div></header>
+<main class="contenuto" id="contenuto">
+<h1>Affitti brevi 2026: tasse, cedolare secca e obblighi</h1>
+<p class="introduzione">Quanto si paga di tasse su un affitto breve, cosa trattengono i portali, cosa cambia dal 2026 con più di due appartamenti e quali obblighi hai verso il Comune e la Questura.</p>
+
+<nav aria-label="In questa guida">
+<ul>
+  <li><a href="#cos-e">Cos'è una locazione breve</a></li>
+  <li><a href="#cedolare">Cedolare secca: 21% o 26%</a></li>
+  <li><a href="#base-imponibile">Su quale importo si pagano le tasse</a></li>
+  <li><a href="#ritenuta">La ritenuta del 21% dei portali</a></li>
+  <li><a href="#novita-2026">Novità 2026: dal terzo appartamento è impresa</a></li>
+  <li><a href="#cin">CIN, sicurezza e sanzioni</a></li>
+  <li><a href="#alloggiati">La comunicazione degli ospiti alla Questura</a></li>
+  <li><a href="#soggiorno">L'imposta di soggiorno</a></li>
+  <li><a href="#esempio">Esempio: i conti di una prenotazione</a></li>
+  <li><a href="#dichiarazione">Come si dichiarano gli affitti brevi</a></li>
+  <li><a href="#checklist">Checklist per iniziare</a></li>
+  <li><a href="#domande">Domande frequenti</a></li>
+</ul>
+</nav>
+
+<h2 id="cos-e">Cos'è una locazione breve</h2>
+<p>Per il fisco una "locazione breve" (art. 4 del DL 50/2017) è un contratto con queste caratteristiche:</p>
+<ul>
+  <li>dura <strong>al massimo 30 giorni</strong>;</li>
+  <li>riguarda un immobile a uso abitativo in Italia, o anche solo una stanza;</li>
+  <li>sia chi affitta sia chi soggiorna sono <strong>persone fisiche</strong> che non agiscono come impresa;</li>
+  <li>può includere servizi legati all'alloggio: pulizie, biancheria, wi-fi, utenze.</li>
+</ul>
+<p>Non è più una locazione breve se offri servizi in più come la colazione, i pasti, il noleggio di auto o le visite guidate. In quel caso, per l'Agenzia delle Entrate, l'attività è d'impresa anche se occasionale.</p>
+<p>Le stesse regole valgono anche se non sei il proprietario ma subaffitti l'immobile (se il contratto lo consente) o lo hai in comodato. Non importa se trovi gli ospiti da solo o tramite un portale come Airbnb o Booking.</p>
+
+<h2 id="cedolare">Cedolare secca: 21% o 26%</h2>
+<p>Sui redditi da locazione breve puoi scegliere la <strong>cedolare secca</strong>: un'imposta fissa che sostituisce IRPEF e addizionali. Le aliquote del 2026 sono le stesse del 2025. Le proposte di portarla al 26% per tutti, discusse durante la manovra, non sono entrate nella legge di bilancio.</p>
+<div class="scorri">
+<table class="dati">
+  <thead><tr><th>Quanti appartamenti affitti</th><th>Tassazione nel 2026</th></tr></thead>
+  <tbody>
+    <tr><td>Uno</td><td>cedolare al 21%</td></tr>
+    <tr><td>Due</td><td>21% sul primo, 26% sul secondo</td></tr>
+    <tr><td>Tre o più</td><td>attività d'impresa, niente cedolare</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Il 21% vale per <strong>un solo immobile a tua scelta</strong>: lo indichi nella dichiarazione dei redditi. Di solito conviene sceglierlo per quello che incassa di più.</p>
+<p>In alternativa alla cedolare puoi usare la tassazione IRPEF ordinaria. Con le aliquote IRPEF del 2026 (23%, 33% e 43%, più le addizionali) la cedolare al 21% conviene quasi sempre. Sul secondo appartamento, al 26%, chi ha un reddito basso potrebbe pagare meno con l'IRPEF: fai il confronto con un commercialista.</p>
+
+<h2 id="base-imponibile">Su quale importo si pagano le tasse</h2>
+<p>La cedolare si calcola sul <strong>canone lordo</strong>: tutto quello che l'ospite paga per il soggiorno, comprese le spese di pulizia e biancheria che gli addebiti. Non puoi togliere niente:</p>
+<ul>
+  <li>né la commissione del portale;</li>
+  <li>né il costo reale delle pulizie;</li>
+  <li>né bollette, manutenzione o arredi.</li>
+</ul>
+<p>Non si applica neanche lo sconto forfettario del 5% previsto per gli affitti tassati con l'IRPEF ordinaria. Le spese per servizi non entrano nella base solo se le paga direttamente l'ospite o se gliele riaddebiti al costo effettivo, per esempio sui consumi reali.</p>
+<p>L'<strong>imposta di soggiorno</strong> invece non fa parte del canone: la riscuoti per conto del Comune e non è un tuo guadagno.</p>
+
+<h2 id="ritenuta">La ritenuta del 21% dei portali</h2>
+<p>Se un portale o un'agenzia <strong>incassa il pagamento</strong> dell'ospite per tuo conto, quando ti gira i soldi deve trattenere il <strong>21%</strong> e versarlo allo Stato. La ritenuta si calcola sull'intero importo pagato dall'ospite, compresa la commissione che il portale trattiene a te.</p>
+<p>Dal 2024 la ritenuta è sempre <strong>a titolo d'acconto</strong>, qualunque sia il tuo regime. Vuol dire che in dichiarazione fai il conto finale:</p>
+<ul>
+  <li>sul primo appartamento (21%) di solito la ritenuta copre tutta l'imposta;</li>
+  <li>sul secondo appartamento (26%) paghi la differenza del 5%;</li>
+  <li>se nessuno ha trattenuto niente, per esempio perché l'ospite ti ha pagato con un bonifico, versi tutta l'imposta tu.</li>
+</ul>
+<p>Il portale ti rilascia la <strong>Certificazione Unica</strong> con il totale delle ritenute dell'anno e comunica i dati dei contratti all'Agenzia delle Entrate. Le banche e i servizi di pagamento con carta, invece, non applicano ritenute.</p>
+
+<h2 id="novita-2026">Novità 2026: dal terzo appartamento è impresa</h2>
+<p>La legge di bilancio 2026 (legge 199/2025, comma 17) ha abbassato il limite. Fino al 2025 l'attività si considerava d'impresa con più di quattro appartamenti. <strong>Dal 2026 basta averne più di due</strong>: se nello stesso anno destini a locazione breve tre appartamenti o più, l'attività si presume imprenditoriale.</p>
+<p>Cosa comporta in pratica:</p>
+<ul>
+  <li>non puoi più usare la cedolare secca su quei redditi;</li>
+  <li>devi aprire la <strong>partita IVA</strong>, con il regime forfettario se hai i requisiti o con quello ordinario;</li>
+  <li>possono servire l'iscrizione al Registro delle imprese e all'INPS, oltre agli adempimenti richiesti dalla tua Regione.</li>
+</ul>
+<p>Se hai tre o più alloggi, parlane con un commercialista prima possibile: il limite si applica dal periodo d'imposta 2026, quindi riguarda i redditi di quest'anno. Per capire costi e passaggi leggi la <a href="../guida-partita-iva-forfettaria/">guida alla partita IVA forfettaria</a>.</p>
+
+<h2 id="cin">CIN, sicurezza e sanzioni</h2>
+<p>Dal 1° gennaio 2025 ogni immobile affittato per brevi periodi o per turismo deve avere il <strong>CIN</strong>, il codice identificativo nazionale (art. 13-ter del DL 145/2023). Lo chiedi gratis online sulla <a href="https://bdsr.ministeroturismo.gov.it/" rel="noopener">banca dati del Ministero del Turismo</a>, con SPID o CIE.</p>
+<ul>
+  <li>Il CIN va <strong>esposto all'esterno</strong> dell'edificio.</li>
+  <li>Va indicato in <strong>ogni annuncio</strong>, online e non.</li>
+  <li>I portali lo comunicano anche all'Agenzia delle Entrate insieme ai dati dei contratti.</li>
+</ul>
+<p>Per avere il CIN l'alloggio deve rispettare alcuni requisiti di sicurezza: rilevatori di gas combustibili e di monossido di carbonio funzionanti (se ci sono impianti a gas) ed estintori portatili, almeno uno per piano.</p>
+<div class="scorri">
+<table class="dati">
+  <thead><tr><th>Violazione</th><th>Sanzione</th></tr></thead>
+  <tbody>
+    <tr><td>Immobile senza CIN</td><td>da 800 a 8.000 €</td></tr>
+    <tr><td>CIN non esposto o non indicato</td><td>da 500 a 5.000 €</td></tr>
+    <tr><td>Senza rilevatori o estintori</td><td>da 600 a 6.000 €</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Molte Regioni chiedono anche una comunicazione al Comune prima di iniziare e l'invio dei dati statistici sulle presenze. Le regole cambiano da Regione a Regione: controlla sul sito del tuo Comune.</p>
+
+<h2 id="alloggiati">La comunicazione degli ospiti alla Questura</h2>
+<p>Per ogni ospite devi comunicare i dati del documento d'identità alla Polizia di Stato tramite il portale <a href="https://alloggiatiweb.poliziadistato.it/" rel="noopener">Alloggiati Web</a> (art. 109 del Testo unico delle leggi di pubblica sicurezza). Le credenziali le chiedi alla Questura della tua provincia.</p>
+<ul>
+  <li>La comunicazione va fatta <strong>entro 24 ore dall'arrivo</strong>.</li>
+  <li>Se il soggiorno dura meno di 24 ore, va fatta <strong>entro 6 ore dall'arrivo</strong>.</li>
+  <li>L'obbligo vale anche per una sola notte e anche per una sola stanza.</li>
+  <li>Se non la fai rischi sanzioni penali.</li>
+</ul>
+<p>C'è anche il tema del riconoscimento degli ospiti. Tra il 2024 e il 2025 una circolare del Ministero dell'Interno e alcune sentenze dei giudici amministrativi si sono occupate del self check-in con cassetta delle chiavi: la linea più prudente è verificare che chi arriva sia davvero chi compare nel documento, di persona oppure con una videochiamata in tempo reale, e non limitarsi a ricevere la foto del documento. Le indicazioni possono cambiare: controlla quelle aggiornate della Questura della tua zona e, se usi un sistema di check-in automatico, che preveda questo controllo.</p>
+
+<h2 id="soggiorno">L'imposta di soggiorno</h2>
+<p>L'imposta (o tassa) di soggiorno è un'imposta <strong>comunale</strong>: c'è solo nei Comuni che l'hanno introdotta. Si paga <strong>per persona e per notte</strong>, e ogni Comune decide con un regolamento:</p>
+<ul>
+  <li>la tariffa, che può cambiare per tipo di struttura, zona e stagione;</li>
+  <li>le esenzioni, di solito per i bambini sotto una certa età (spesso tra 10 e 14 anni);</li>
+  <li>il numero massimo di notti tassate, di solito tra 5 e 14 notti consecutive.</li>
+</ul>
+<p>La paga l'ospite, ma il <strong>responsabile del versamento</strong> è chi incassa il canone: tu, se l'ospite ti paga direttamente; il portale o l'agenzia, se incassano per tuo conto. Chi è responsabile deve anche presentare al Comune la dichiarazione annuale, entro il 30 giugno dell'anno dopo. Non tutti i portali gestiscono l'imposta in tutti i Comuni: controlla come funziona nel tuo caso, nel regolamento comunale e nelle impostazioni del portale.</p>
+<p>Il limite di legge è di 5 € a notte (10 € a Roma e nelle città con moltissimi turisti), con aumenti permessi ad alcuni Comuni anche nel 2026. Per fare il conto per una prenotazione usa il <a href="../calcolo-tassa-di-soggiorno/">calcolo della tassa di soggiorno</a>, con le tariffe indicative di alcune grandi città.</p>
+
+<h2 id="esempio">Esempio: i conti di una prenotazione</h2>
+<p>Due ospiti prenotano il tuo unico appartamento su un portale che incassa per tuo conto: 3 notti a 110 €, più 60 € di pulizie. Ipotesi: commissione del portale del 15%, costo reale delle pulizie 45 €, imposta di soggiorno di 4 € a persona per notte.</p>
+<div class="scorri">
+<table class="dati">
+  <thead><tr><th>Voce</th><th>Importo</th></tr></thead>
+  <tbody>
+    <tr><td>Pagato dall'ospite (3 × 110 € + 60 €)</td><td>390,00 €</td></tr>
+    <tr><td>Commissione del portale (15%)</td><td>− 58,50 €</td></tr>
+    <tr><td>Ritenuta del portale (21% di 390 €)</td><td>− 81,90 €</td></tr>
+    <tr><td>Bonifico che ricevi dal portale</td><td>249,60 €</td></tr>
+    <tr><td>Costo reale delle pulizie</td><td>− 45,00 €</td></tr>
+    <tr><td>Ti resta (primo appartamento, 21%)</td><td>204,60 €</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Con la cedolare al 21% l'imposta dovuta è 81,90 €: la ritenuta l'ha già pagata tutta. Se fosse il tuo secondo appartamento, la cedolare al 26% sarebbe 101,40 € e in dichiarazione pagheresti altri 19,50 €.</p>
+<p>L'imposta di soggiorno è a parte: 2 ospiti × 3 notti × 4 € = 24 €. La pagano gli ospiti e va al Comune, non entra nei tuoi incassi né nella cedolare.</p>
+<p>Puoi rifare questo conto con i tuoi numeri nel <a href="../calcolo-affitti-brevi/">calcolo degli affitti brevi</a>: commissioni, pulizie e cedolare al 21% o al 26%.</p>
+
+
+
+<h2 id="dichiarazione">Come si dichiarano gli affitti brevi</h2>
+<p>I redditi dell'anno vanno nella dichiarazione dell'anno dopo:</p>
+<ul>
+  <li>nel <strong>quadro B del modello 730</strong>, oppure nel <strong>quadro RB del modello Redditi PF</strong>, se sei il proprietario;</li>
+  <li>tra i "redditi diversi" se subaffitti o hai l'immobile in comodato.</li>
+</ul>
+<p>È in dichiarazione che scegli la cedolare secca, indichi quale immobile ha il 21%, scali le ritenute che trovi nelle CU dei portali e paghi l'eventuale saldo. Conserva l'elenco delle prenotazioni e degli incassi diretti: ti servono per controllare che i conti tornino.</p>
+
+<h2 id="checklist">Checklist per iniziare</h2>
+<ul>
+  <li>Verifica che il regolamento del condominio e, se sei in affitto, il tuo contratto permettano gli affitti brevi.</li>
+  <li>Controlla le regole della tua Regione e del tuo Comune: comunicazione di inizio attività, dati statistici, imposta di soggiorno.</li>
+  <li>Installa rilevatori di gas e monossido (se c'è il gas) ed estintori.</li>
+  <li>Chiedi il <strong>CIN</strong>, esponilo fuori dall'edificio e inseriscilo in ogni annuncio.</li>
+  <li>Chiedi alla Questura le credenziali di <strong>Alloggiati Web</strong>.</li>
+  <li>Organizza il riconoscimento degli ospiti, di persona o in video.</li>
+  <li>Registrati al servizio del Comune per l'imposta di soggiorno, se sei tu a versarla.</li>
+  <li>Conta gli appartamenti: dal terzo serve la partita IVA.</li>
+  <li>Tieni un registro di prenotazioni, incassi, ritenute e tasse di soggiorno.</li>
+  <li>Metti da parte la cedolare sugli incassi diretti e la differenza al 26% sul secondo appartamento.</li>
+</ul>
+
+<h2 id="domande">Domande frequenti</h2>
+<details><summary>Con un solo appartamento devo aprire la partita IVA?</summary><p>No. Con uno o due appartamenti, senza servizi come colazione o pasti, resti una persona fisica e puoi usare la cedolare secca. Dal terzo appartamento l'attività si presume d'impresa.</p></details>
+<details><summary>Posso togliere la commissione di Airbnb o Booking dalle tasse?</summary><p>No. Con la cedolare secca si paga sull'importo lordo pagato dall'ospite, senza dedurre commissioni o spese.</p></details>
+<details><summary>Il portale mi ha già trattenuto il 21%: devo pagare altro?</summary><p>Sul primo appartamento, di solito no. Sul secondo, al 26%, paghi la differenza in dichiarazione. Gli incassi ricevuti direttamente dagli ospiti vanno tassati per intero.</p></details>
+<details><summary>Affitto una stanza di casa mia: valgono le stesse regole?</summary><p>Sì. Anche l'affitto di una stanza per massimo 30 giorni è una locazione breve: valgono cedolare, CIN e comunicazione degli ospiti alla Questura.</p></details>
+<details><summary>Devo fare un contratto scritto?</summary><p>Non è obbligatorio un modello particolare e i contratti fino a 30 giorni non vanno registrati. La conferma della prenotazione del portale, o un accordo scritto per le prenotazioni dirette, aiuta comunque a documentare il soggiorno.</p></details>
+<details><summary>I bambini pagano l'imposta di soggiorno?</summary><p>Dipende dal Comune. Molti esentano i minori fino a 10, 12 o 14 anni: controlla il regolamento del tuo Comune.</p></details>
+
+<p>Fonti ufficiali: <a href="https://www.agenziaentrate.gov.it/portale/documents/d/guest/locazioni_brevi_disciplina_fiscale_e_regole_per_intermediari_aprile-2026" rel="noopener">Agenzia delle Entrate, guida "Locazioni brevi" (aprile 2026)</a>; <a href="https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/cedolare-secca/scheda-informativa-cedolare-secca-intermediari" rel="noopener">scheda sulla cedolare secca per gli intermediari</a>.</p>
+<p>Per gestire calendari e portali: <a href="../confronto/software-host/">i software per host a confronto</a>.</p>
+<p>Non perdere le date: <a href="../calendario-scadenze-fiscali/">calendario delle scadenze fiscali</a>.</p>
+
+<p class="nota">Aggiornata a ottobre 2026. Indicazioni generali, non consulenza fiscale.</p>
+
+
+</main>
+<footer>
+  <div class="contenuto">
+    <p><strong>Tutti gli strumenti, gratis</strong></p>
+    <ul><li><a href="../ricevuta-prestazione-occasionale/">Ricevuta prestazione occasionale</a></li><li><a href="../calcolo-ritenuta-acconto/">Calcolo ritenuta d&#x27;acconto 20%</a></li><li><a href="../scorporo-iva/">Scorporo IVA online</a></li><li><a href="../calcolo-rata-mutuo/">Calcolo rata mutuo con piano di ammortamento</a></li><li><a href="../calcolo-stipendio-netto/">Calcolo stipendio netto 2026</a></li><li><a href="../calcolo-tasse-forfettario/">Calcolo tasse regime forfettario 2026</a></li><li><a href="../calcolo-affitti-brevi/">Affitti brevi 2026</a></li><li><a href="../calcolo-tassa-di-soggiorno/">Calcolo tassa di soggiorno per affitti brevi</a></li><li><a href="../calcolo-codice-fiscale/">Calcolo codice fiscale online e verifica</a></li><li><a href="../verifica-iban/">Verifica IBAN online</a></li><li><a href="../calcolo-imu/">Calcolo IMU</a></li><li><a href="../calcolo-interesse-composto/">Calcolo interesse composto e PAC</a></li><li><a href="../calcolo-sconto-percentuale/">Calcolo sconto e percentuali online</a></li><li><a href="../guida-prestazione-occasionale/">Prestazione occasionale 2026</a></li><li><a href="../guida-partita-iva-forfettaria/">Partita IVA forfettaria 2026</a></li><li><a href="../guida-affitti-brevi-2026/">Affitti brevi 2026</a></li></ul>
+    <p>I calcoli sono indicativi e non sostituiscono un commercialista.
+       Quello che scrivi resta sul tuo dispositivo: non viene inviato a nessuno.</p>
+    <p><a href="../calendario-scadenze-fiscali/">Calendario delle scadenze fiscali</a></p>
+    <p><a href="../incorpora/">Metti i calcolatori sul tuo sito</a></p>
+    <p><a href="../privacy/">Privacy</a></p>
+    <p>© 2026 Conti Facili</p>
+  </div>
+</footer>
+</body>
+</html>

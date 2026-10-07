@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcolo stipendio netto 2026: dalla RAL al netto mensile</title>
+<meta name="description" content="Calcola lo stipendio netto 2026 dalla RAL: IRPEF con il nuovo scaglione al 33%, contributi INPS, taglio del cuneo fiscale e netto al mese su 13 o 14 mensilità.">
+<link rel="canonical" href="https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-netto/">
+<link rel="icon" href="data:,">
+<meta name="theme-color" content="#edf0f7">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Conti Facili">
+<meta property="og:title" content="Calcolo stipendio netto 2026: dalla RAL al netto mensile">
+<meta property="og:description" content="Calcola lo stipendio netto 2026 dalla RAL: IRPEF con il nuovo scaglione al 33%, contributi INPS, taglio del cuneo fiscale e netto al mese su 13 o 14 mensilità.">
+<meta property="og:url" content="https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-netto/">
+<link rel="preload" href="../../font/titillium-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../font/titillium-900.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calcolo stipendio netto 2026: dalla RAL al netto mensile", "url": "https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-netto/", "description": "Calcola lo stipendio netto 2026 dalla RAL: IRPEF con il nuovo scaglione al 33%, contributi INPS, taglio del cuneo fiscale e netto al mese su 13 o 14 mensilità.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "it", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script>
+<meta name="google-site-verification" content="mYpD_GNiX8-CuIm7IoCFDpJmgcL2ufV5ZjtpCCkXyWE">
+<style>
+@font-face { font-family: "Titillium Web"; font-weight: 400; font-display: swap; src: url("../../font/titillium-400.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 600; font-display: swap; src: url("../../font/titillium-600.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 700; font-display: swap; src: url("../../font/titillium-700.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-weight: 900; font-display: swap; src: url("../../font/titillium-900.woff2") format("woff2"); }
+:root {
+  --scrivania: #edf0f7;   /* il piano su cui stanno i fogli */
+  --carta: #fff;
+  --carbone: #2b36a0;     /* blu della carta carbone */
+  --inchiostro: #1c2233;
+  --rigatura: #cfe3d8;    /* righe verdi del registro */
+  --margine: #2f7a5b;     /* linea di margine della carta uso bollo */
+  --timbro: #c8302a;      /* solo per la marca da bollo */
+  --evidenziatore: #fff07a;
+  --grigio: #5a6178;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }
+.salta { position: absolute; left: -999px; }
+.salta:focus { left: 1rem; top: 1rem; z-index: 1; background: var(--carta); padding: .5rem 1rem; }
+h1, h2 { text-wrap: balance; }
+h2[id] { scroll-margin-top: 1rem; }
+body { margin: 0; font: 400 1.125rem/1.55 "Titillium Web", system-ui, sans-serif; color: var(--inchiostro); background: var(--scrivania); }
+.contenuto { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+main { padding-bottom: 3rem; }
+main > p, main > ul, main > h2, main > details, main > .box { max-width: 42rem; }
+a { color: var(--carbone); text-underline-offset: .15em; }
+:focus-visible { outline: 3px solid var(--carbone); outline-offset: 2px; }
+
+/* Tipografia */
+h1 { font-weight: 900; font-size: clamp(2.2rem, 5.5vw, 3.75rem); line-height: 1; letter-spacing: -.015em; color: var(--carbone); margin: 2rem 0 1rem; max-width: 22ch; }
+h2 { font-weight: 700; font-size: 1.6rem; line-height: 1.15; margin: 2.75rem 0 .75rem; }
+.introduzione { font-size: 1.25rem; color: var(--grigio); max-width: 38rem; margin: 0 0 2rem; }
+
+/* Testata e piè di pagina */
+.testata { padding: 1rem 0 0; }
+.marchio { font-weight: 900; font-size: 1.35rem; color: var(--carbone); text-decoration: none; letter-spacing: -.01em; }
+footer { background: var(--carbone); color: #fff; padding: 2rem 0; font-size: 1rem; }
+footer a { color: #fff; }
+footer ul { padding-left: 1.2rem; columns: 2 14rem; margin: .5rem 0 1rem; }
+footer p { max-width: 42rem; }
+
+/* Strumento: modulo a sinistra, scontrino a destra */
+.strumento { display: grid; gap: 2rem; align-items: start; margin: 1rem 0 2rem; }
+@media (min-width: 56rem) { .strumento { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } .strumento > .scontrino-wrap { position: sticky; top: 1rem; } }
+
+/* Il modulo è un foglio di carta uso bollo: bianco con la linea di margine */
+.modulo { background: var(--carta) linear-gradient(to right, transparent 1.75rem, var(--margine) 1.75rem, var(--margine) 1.85rem, transparent 1.85rem);
+  border-radius: 3px; padding: 1.25rem 1.25rem 1.5rem 2.75rem; box-shadow: 0 1px 0 #cdd3e0, 0 12px 28px -18px rgba(43, 54, 160, .45); display: grid; gap: 1.25rem; margin: 0; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 1rem 1.25rem; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+fieldset + fieldset { border-top: 1px solid var(--rigatura); padding-top: 1.25rem; }
+legend { font-weight: 700; font-size: 1.15rem; color: var(--carbone); padding: 0; grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: .15rem; font-size: .95rem; font-weight: 600; color: var(--grigio); }
+label.spunta { flex-direction: row; align-items: center; gap: .5rem; font-weight: 400; color: var(--inchiostro); grid-column: 1 / -1; }
+input, select, textarea { font: inherit; font-size: 1.15rem; color: var(--inchiostro); background: transparent; border: 0; border-bottom: 2px solid #8c94b8;
+  border-radius: 0; padding: .35rem .15rem; min-height: 2.75rem; width: 100%; }
+textarea { min-height: 4.5rem; resize: vertical; }
+label.spunta input { width: 1.4rem; min-height: 1.4rem; accent-color: var(--carbone); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-bottom-color: var(--carbone); background: #fffbd6; }
+
+/* Lo scontrino: bordo strappato sopra e sotto, righe del registro, netto evidenziato */
+.scontrino-wrap { filter: drop-shadow(0 14px 20px rgba(43, 54, 160, .22)); }
+.scontrino { position: relative; background: var(--carta); padding: 1.75rem 1.25rem; font-variant-numeric: tabular-nums;
+  --dente: 14px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--dente) 51% repeat-x,
+                conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--dente) 51% repeat-x; }
+.scontrino h2, .scontrino .titolo { font-size: 1.15rem; font-weight: 700; margin: 0 0 .75rem; color: var(--carbone); }
+.scontrino table { width: 100%; border-collapse: collapse; }
+.scontrino td { padding: .45rem 0; border-bottom: 1px solid var(--rigatura); }
+.scontrino td:last-child { text-align: right; white-space: nowrap; }
+.scontrino .totale td { border-bottom: 0; padding-top: .9rem; font-weight: 700; }
+.scontrino .totale td:last-child { font-size: 1.9rem; font-weight: 900; color: var(--carbone);
+  background: linear-gradient(transparent 58%, var(--evidenziatore) 58%, var(--evidenziatore) 92%, transparent 92%); }
+.scontrino .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+.sotto-scontrino { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* La marca da bollo: compare (timbrata) quando l'importo supera 77,47 € */
+.marca { position: absolute; top: 1.1rem; right: 1rem; width: 5.6rem; padding: 5px; transform: rotate(7deg);
+  background: radial-gradient(circle, var(--carta) 2.4px, #f3c9c5 2.9px) -4px -4px / 9px 9px; }
+.marca > span { display: block; background: #fdeeec; border: 1.5px solid var(--timbro); color: var(--timbro); text-align: center; padding: .35rem .2rem; line-height: 1.05; }
+.marca b { display: block; font-size: 1.35rem; font-weight: 900; }
+.marca small { font-size: .7rem; font-weight: 600; }
+.marca:not([hidden]) { animation: timbra .32s cubic-bezier(.2, .9, .3, 1.35); }
+@keyframes timbra { from { transform: scale(1.7) rotate(-6deg); opacity: 0; } to { transform: scale(1) rotate(7deg); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .marca:not([hidden]) { animation: none; } }
+
+/* Pulsanti */
+.bottone, button { font: inherit; font-weight: 700; font-size: 1.1rem; background: var(--carbone); color: #fff; border: 0; border-radius: 4px;
+  padding: .7rem 1.3rem; min-height: 3rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.bottone:hover, button:hover { background: #1f2878; }
+.bottone.secondario:hover { background: var(--carta); }
+.bottone:active, button:active { transform: translateY(1px); }
+.bottone.secondario { background: transparent; color: var(--carbone); box-shadow: inset 0 0 0 2px var(--carbone); }
+
+/* Home: apertura con lo scontrino di esempio */
+.apertura { display: grid; gap: 2.5rem; align-items: center; padding: 1rem 0 1.5rem; }
+@media (min-width: 56rem) { .apertura { grid-template-columns: 1.2fr 1fr; } }
+.apertura .scontrino-wrap { transform: rotate(-1.5deg); max-width: 24rem; justify-self: center; width: 100%; }
+
+/* Indice degli strumenti come un registro: nome, puntini di guida, descrizione */
+.registro { list-style: none; padding: 0; margin: 0; max-width: none; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.registro a { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--inchiostro); border-bottom: 1px solid var(--rigatura); }
+.registro li:last-child a { border-bottom: 0; }
+.registro strong { font-size: 1.25rem; color: var(--carbone); }
+.registro span { grid-column: 1 / -1; color: var(--grigio); }
+@media (min-width: 48rem) {
+  .registro a { grid-template-columns: auto 1fr auto; align-items: baseline; }
+  .registro a::after { content: ""; order: 0; border-bottom: 2px dotted #9aa3c4; transform: translateY(-.3em); }
+  .registro strong { order: -1; }
+  .registro span { grid-column: auto; order: 1; }
+}
+.registro a:hover strong, .registro a:focus-visible strong { background: linear-gradient(transparent 60%, var(--evidenziatore) 60%); }
+
+/* Riquadri: il modello Excel come un buono da ritagliare, i partner come nota a margine */
+.box { margin: 2rem 0; padding: 1.25rem; background: var(--carta); position: relative; }
+.box p { margin: .25rem 0 1rem; }
+.box.prodotto { border: 2px dashed var(--carbone); border-radius: 6px; }
+.box.prodotto::before { content: "✂"; position: absolute; top: -.85rem; left: 1rem; background: var(--scrivania); color: var(--carbone); padding: 0 .3rem; font-size: 1.1rem; }
+.box.partner { border-left: 4px solid var(--margine); }
+.box .nota { font-size: .85rem; color: var(--grigio); margin: .75rem 0 0; }
+
+/* Domande frequenti come righe del registro */
+details { border-bottom: 1px solid #c3cad9; padding: .9rem 0; }
+summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 900; color: var(--carbone); font-size: 1.3rem; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { margin: .5rem 0 0; }
+
+/* Tabelle di dati (piano di ammortamento) */
+.scorri { overflow-x: auto; }
+table.dati { width: 100%; border-collapse: collapse; background: var(--carta); font-variant-numeric: tabular-nums; }
+table.dati th, table.dati td { padding: .5rem .6rem; border-bottom: 1px solid var(--rigatura); text-align: right; white-space: nowrap; }
+table.dati th:first-child, table.dati td:first-child { text-align: left; }
+table.dati th { font-weight: 700; font-size: .95rem; color: var(--grigio); }
+.barra { display: inline-block; width: 8rem; height: .7rem; vertical-align: middle;
+  background: linear-gradient(to right, var(--carbone) var(--q), #e9a19b var(--q)); }
+.legenda { font-size: .95rem; color: var(--grigio); }
+.legenda i { display: inline-block; width: .8rem; height: .8rem; vertical-align: -.05rem; margin: 0 .25rem 0 .5rem; }
+
+/* Stampa: solo la ricevuta, senza decorazioni */
+@media print {
+  body { background: #fff; }
+  body * { visibility: hidden; }
+  #ricevuta, #ricevuta * { visibility: visible; }
+  #ricevuta { position: absolute; inset: 0; -webkit-mask: none; mask: none; padding: 0; font-size: 11pt; }
+  .scontrino-wrap { filter: none; }
+  .marca { display: none; }
+  .scontrino .totale td:last-child { background: none; }
+  @page { size: A4; margin: 2cm; }
+}
+.grande-codice { font-size: clamp(1.4rem, 5vw, 1.9rem); font-weight: 900; color: var(--carbone); letter-spacing: .06em; margin: .25rem 0; overflow-wrap: anywhere; }
+/* Pagina "incorpora" e versione incorporata nei siti di altri */
+main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; background: var(--carta); border: 1px solid #c3cad9; padding: .6rem; margin-bottom: .5rem; max-width: 42rem; display: block; }
+.incorporato { background: var(--carta); }
+.incorporato .testata, .incorporato footer, .incorporato main > :not(.strumento, .firma-widget, script) { display: none; }
+.incorporato .strumento { margin: .5rem 0; }
+.firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }
+.briciole { font-size: .95rem; color: var(--grigio); margin: 1.5rem 0 -1rem; }
+table.dati.regole td, table.dati.regole th { white-space: normal; text-align: left; }
+/* Calendario delle scadenze */
+.iscrizioni { display: grid; gap: 1rem; margin-bottom: 1rem; max-width: 42rem; }
+.iscrizioni > div { background: var(--carta); padding: 1rem; border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.iscrizioni p { margin: 0 0 .5rem; }
+.iscrizioni .bottone { margin: .25rem .25rem 0 0; font-size: 1rem; min-height: 2.5rem; padding: .45rem .9rem; }
+.scadenze { list-style: none; padding: 0; margin: 0 0 1rem; max-width: 42rem; background: var(--carta); border-radius: 3px; box-shadow: 0 1px 0 #cdd3e0; }
+.scadenze li { padding: .9rem 1.25rem; border-bottom: 1px solid var(--rigatura); }
+.scadenze li:last-child { border-bottom: 0; }
+.scadenze .giorno { display: block; font-weight: 900; color: var(--carbone); }
+.scadenze .per { font-size: .9rem; color: var(--grigio); }
+
+</style>
+</head>
+<body class="incorporato">
+<a class="salta" href="#contenuto">Vai al contenuto</a>
+<header class="testata"><div class="contenuto"><a class="marchio" href="../../" translate="no">Conti Facili</a></div></header>
+<main class="contenuto" id="contenuto">
+<h1>Stipendio netto 2026: dal lordo (RAL) al netto in busta paga</h1>
+<p class="introduzione">Scrivi la retribuzione annua lorda: vedi il netto all'anno e al mese con le regole 2026, compreso il nuovo
+   secondo scaglione IRPEF al 33% e il taglio del cuneo fiscale.</p>
+
+<div class="strumento">
+  <form id="f" class="modulo" autocomplete="off" onsubmit="return false">
+    <fieldset>
+      <label>Retribuzione annua lorda (RAL) in euro<input name="ral" inputmode="decimal" value="30.000"></label>
+      <label>Mensilità
+        <select name="mesi"><option value="13">13 (tredicesima)</option><option value="14">14 (anche quattordicesima)</option></select>
+      </label>
+      <label>Addizionali regionale + comunale in %<input name="addiz" inputmode="decimal" value="2,53"></label>
+    </fieldset>
+  </form>
+  <div class="scontrino-wrap">
+    <div class="scontrino" aria-live="polite">
+      <p class="titolo">Il conto del <span id="anno"></span></p>
+      <table>
+        <tr><td>Contributi INPS</td><td id="inps"></td></tr>
+        <tr><td>IRPEF</td><td id="irpef"></td></tr>
+        <tr><td>Addizionali</td><td id="addiz"></td></tr>
+        <tr id="riga_esente"><td>Bonus cuneo fiscale</td><td id="esente"></td></tr>
+        <tr id="riga_integr"><td>Trattamento integrativo</td><td id="integr"></td></tr>
+        <tr><td>Netto all'anno</td><td id="annuo"></td></tr>
+        <tr class="totale"><td>Netto al mese</td><td id="mese"></td></tr>
+      </table>
+      <p class="nota">Dipendente privato a tempo indeterminato, anno intero, senza familiari a carico.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<h2>Come si calcola il netto nel 2026</h2>
+<ul>
+  <li><strong>Contributi INPS</strong>: il 9,19% della RAL, più l'1% sulla parte oltre 56.224 €.</li>
+  <li><strong>IRPEF</strong> sul resto: 23% fino a 28.000 €, <strong>33%</strong> da 28.000 a 50.000 € (era 35% fino al 2025), 43% oltre.</li>
+  <li><strong>Detrazioni</strong>: quella per lavoro dipendente e, tra 20.000 e 40.000 € di reddito, l'ulteriore detrazione fino a 1.000 € del taglio del cuneo fiscale.</li>
+  <li><strong>Sotto 20.000 €</strong> di reddito il taglio del cuneo arriva invece come somma esentasse in busta paga (7,1%, 5,3% o 4,8%), e fino a 15.000 € spetta il trattamento integrativo di 1.200 € l'anno.</li>
+  <li><strong>Addizionali</strong>: le decidono Regione e Comune; 2,53% è un valore tipico, puoi cambiarlo.</li>
+</ul>
+<p>Il netto al mese è il netto annuo diviso per le mensilità: in busta paga la tredicesima e la quattordicesima sono di solito un po' più basse
+   e gli altri mesi un po' più alti.</p>
+
+<h2>Domande frequenti</h2>
+<details><summary>Perché il mio netto in busta paga è diverso?</summary><p>Contano i familiari a carico, gli straordinari, i premi, il contratto (alcuni settori hanno contributi diversi) e le addizionali del tuo Comune, che in busta paga si pagano l'anno dopo. Il calcolo è indicativo.</p></details>
+<details><summary>Cosa cambia nel 2026?</summary><p>Il secondo scaglione IRPEF scende dal 35% al 33%: chi ha un reddito sopra 28.000 € paga meno tasse, fino a 440 € l'anno in meno.</p></details>
+<details><summary>Che cos'è la RAL?</summary><p>La retribuzione annua lorda: tutto quello che ti paga l'azienda in un anno, prima di contributi e tasse. La trovi nel contratto o nella lettera di assunzione.</p></details>
+
+<script type="module">
+import * as c from '../../calcoli.js';
+const f = document.getElementById('f'), q = (id) => document.getElementById(id);
+const e = (x) => c.euro(Math.round(x * 100));
+q('anno').textContent = c.FISCO.anno;
+function aggiorna() {
+  const ral = c.numero(f.ral.value), add = c.numero(f.addiz.value);
+  if (!(ral > 0)) return;
+  const s = c.stipendioNetto(ral, add >= 0 ? add : 0);
+  q('inps').textContent = '− ' + e(s.inps);
+  q('irpef').textContent = '− ' + e(s.irpef);
+  q('addiz').textContent = '− ' + e(s.addizionali);
+  q('esente').textContent = '+ ' + e(s.sommaEsente);
+  q('integr').textContent = '+ ' + e(s.integrativo);
+  q('riga_esente').hidden = !s.sommaEsente;
+  q('riga_integr').hidden = !s.integrativo;
+  q('annuo').textContent = e(s.netto);
+  q('mese').textContent = e(s.netto / Number(f.mesi.value));
+}
+f.addEventListener('input', aggiorna);
+aggiorna();
+</script>
+
+<p class="firma-widget">Calcolatore gratuito di <a href="https://m-0ne-million.github.io/conti-facili/calcolo-stipendio-netto/" target="_blank" rel="noopener">Conti Facili</a></p>
+</main>
+<footer>
+  <div class="contenuto">
+    <p><strong>Tutti gli strumenti, gratis</strong></p>
+    <ul><li><a href="../../ricevuta-prestazione-occasionale/">Ricevuta prestazione occasionale</a></li><li><a href="../../calcolo-ritenuta-acconto/">Calcolo ritenuta d&#x27;acconto 20%</a></li><li><a href="../../scorporo-iva/">Scorporo IVA online</a></li><li><a href="../../calcolo-rata-mutuo/">Calcolo rata mutuo con piano di ammortamento</a></li><li><a href="../../calcolo-stipendio-netto/">Calcolo stipendio netto 2026</a></li><li><a href="../../calcolo-tasse-forfettario/">Calcolo tasse regime forfettario 2026</a></li><li><a href="../../calcolo-affitti-brevi/">Affitti brevi 2026</a></li><li><a href="../../calcolo-tassa-di-soggiorno/">Calcolo tassa di soggiorno per affitti brevi</a></li><li><a href="../../calcolo-codice-fiscale/">Calcolo codice fiscale online e verifica</a></li><li><a href="../../verifica-iban/">Verifica IBAN online</a></li><li><a href="../../calcolo-imu/">Calcolo IMU</a></li><li><a href="../../calcolo-interesse-composto/">Calcolo interesse composto e PAC</a></li><li><a href="../../calcolo-sconto-percentuale/">Calcolo sconto e percentuali online</a></li><li><a href="../../guida-prestazione-occasionale/">Prestazione occasionale 2026</a></li><li><a href="../../guida-partita-iva-forfettaria/">Partita IVA forfettaria 2026</a></li><li><a href="../../guida-affitti-brevi-2026/">Affitti brevi 2026</a></li></ul>
+    <p>I calcoli sono indicativi e non sostituiscono un commercialista.
+       Quello che scrivi resta sul tuo dispositivo: non viene inviato a nessuno.</p>
+    <p><a href="../../calendario-scadenze-fiscali/">Calendario delle scadenze fiscali</a></p>
+    <p><a href="../../incorpora/">Metti i calcolatori sul tuo sito</a></p>
+    <p><a href="../../privacy/">Privacy</a></p>
+    <p>© 2026 Conti Facili</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://m-0ne-million.github.io/conti-facili/sitemap.xml
