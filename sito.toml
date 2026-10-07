@@ -30,3 +30,30 @@ nome_host = ""
 # Codice AdSense (es. "ca-pub-1234567890123456"). Vuoto = niente pubblicità.
 # Prima di attivarlo accendi il messaggio di consenso cookie di Google in AdSense (Privacy e messaggi).
 adsense = ""
+
+[affiliati]
+# Link affiliati dei servizi nelle pagine di confronto. Vuoto = link al sito ufficiale.
+# Quando incolli un link affiliato, il sito lo usa da solo e lo segna come sponsorizzato.
+# Commercialisti online per la partita IVA forfettaria
+fiscozen = ""   # Ambassador, buono Amazon: https://www.fiscozen.it/ambassador/
+flextax = ""   # Ambassador, credito FlexCoin: https://flextax.it/il-passaparola-dei-nostri-utenti-e-ambassador/
+quickfisco = ""   # solo per clienti attivi: https://quickfisco.it/porta-amico/
+fidocommercialista = ""   # partner, compenso non pubblico: http://fidocommercialista.it/partner
+# Software e channel manager per host di affitti brevi
+smoobu = ""   # Ambassador (vietata la pubblicità a pagamento): https://www.smoobu.com/it/ambasciatore/
+lodgify = ""   # programma affiliazione: https://www.lodgify.com/affiliates/
+beds24 = ""   # programma di affiliazione non trovato
+octorate = ""   # programma di affiliazione non trovato
+krossbooking = ""   # programma di affiliazione non trovato
+# Conti correnti per partita IVA e freelance
+qonto = ""   # affiliazione tramite Affilae: https://qonto.com/it/affiliate
+finom = ""   # partner program: https://finom.co/it-it/partnership/
+revolut-business = ""   # tramite la rete Impact (impact.com), non pubblico per l'Italia
+hype-business = ""   # tramite reti CPA (Finance Ads, BlueAff, Sale Gains)
+fineco-small-business = ""   # affiliazione con compenso personalizzato: https://it.finecobank.com/affiliation/
+# Software per la fattura elettronica nel regime forfettario
+fatture-e-corrispettivi = ""   # programma di affiliazione non trovato
+fatture-in-cloud = ""   # programma di affiliazione non trovato
+aruba-fatturazione = ""   # CPA su TradeTracker e Sale Gains
+fattura24 = ""   # programma di affiliazione non trovato
+fiscozen-fatturazione = ""   # stesso programma Ambassador di Fiscozen

@@ -86,7 +86,7 @@ box = {
         f"{link(G['link_host'], 'Prova ' + (G['nome_host'] or 'un software per host'))}"
         '<p class="nota">Link sponsorizzato.</p></div>'),
 }
-affiliati = any([G['link_prodotto'], G['link_partita_iva'], G['link_mutuo'], G['link_host']])
+affiliati = any([G['link_prodotto'], G['link_partita_iva'], G['link_mutuo'], G['link_host'], *C.get('affiliati', {}).values()])
 adsense = G['adsense'] and (
     f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={html.escape(G["adsense"])}" crossorigin="anonymous"></script>')
 privacy_pubblicita = (
@@ -176,6 +176,42 @@ for c in CITTA:
             'altre': ' '.join(f'<a href="../{v["slug"]}/">{testo(v["nome"])}</a>' for v in vicine) or 'Nessun\'altra città della regione in elenco.'}))
 for p in STRUMENTI:
     genera(*p, incorporato=True)   # fuori dalla sitemap e con noindex: contano i link verso le pagine vere
+
+# Confronti tra servizi: link affiliato se configurato in sito.toml [affiliati], altrimenti il sito ufficiale.
+CONFRONTI = json.loads((PAGINE / 'dati' / 'confronti.json').read_text('utf-8'))
+AFFILIATI = C.get('affiliati', {})
+data_it = lambda iso: '/'.join(reversed(iso.split('-')))
+
+
+def collegamento(s, testo_link):
+    link = AFFILIATI.get(s['chiave'])
+    return (f'<a href="{html.escape(link)}" rel="sponsored noopener">' if link else
+            f'<a href="{html.escape(s["sito"])}" rel="noopener">') + testo(testo_link) + '</a>'
+
+
+for c in CONFRONTI:
+    servizi = sorted(c['servizi'], key=lambda s: s['nome'].lower())   # alfabetico: l'ordine non dipende dalle commissioni
+    elenco = lambda voci: ''.join(f'<li>{testo(v)}</li>' for v in voci)
+    indirizzi.append(genera(
+        f'confronto/{c["slug"]}', f'{c["titolo"]}: confronto 2026', c['intro'][:155], modello='confronto', extra={
+            'titolo_confronto': testo(c['titolo']), 'intro': testo(c['intro']),
+            'tabella': ''.join(f'<tr><td>{collegamento(s, s["nome"])}</td><td>{testo(s["prezzo"])}</td><td>{testo(s["adatto_a"])}</td></tr>'
+                               for s in servizi),
+            'schede': ''.join(
+                f'<h3 id="{s["chiave"]}">{testo(s["nome"])}</h3>'
+                f'<p><strong>Prezzo:</strong> {testo(s["prezzo"])} (verificato il {data_it(s["verificato"])}, '
+                f'<a href="{html.escape(s["fonte_prezzo"])}" rel="noopener">fonte</a>)</p>'
+                f'<p><strong>Adatto a:</strong> {testo(s["adatto_a"])}</p>'
+                f'<p><strong>Punti forti</strong></p><ul>{elenco(s["punti_forti"])}</ul>'
+                f'<p><strong>Limiti</strong></p><ul>{elenco(s["limiti"])}</ul>'
+                f'<p>{collegamento(s, "Vai al sito di " + s["nome"])}</p>' for s in servizi),
+            'criteri': elenco(c['criteri']),
+            'faq': ''.join(f'<details><summary>{testo(q["d"])}</summary><p>{testo(q["r"])}</p></details>' for q in c['faq']),
+            'altri': ' '.join(f'<a href="../{o["slug"]}/">{testo(o["titolo"])}</a>' for o in CONFRONTI if o is not c)}))
+indirizzi.append(genera('confronti', 'Confronti 2026: servizi per freelance, partite IVA e host',
+    'Commercialisti online, fattura elettronica, conti per partita IVA e software per host a confronto: prezzi, punti forti e limiti.',
+    extra={'elenco_confronti': ''.join(f'<li><a href="../confronto/{c["slug"]}/"><strong>{testo(c["titolo"])}</strong>'
+                                       f'<span>{testo(c["intro"])}</span></a></li>' for c in CONFRONTI)}))
 
 (OUT / 'sitemap.xml').write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

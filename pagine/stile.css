@@ -154,4 +154,4 @@ main textarea[readonly] { font: .85rem/1.4 ui-monospace, Menlo, monospace; backg
 .incorporato .strumento { margin: .5rem 0; }
 .firma-widget { font-size: .9rem; color: var(--grigio); margin: .5rem 0 1rem; }
 .briciole { font-size: .95rem; color: var(--grigio); margin: 1.5rem 0 -1rem; }
-table.dati.regole td { white-space: normal; text-align: left; }
+table.dati.regole td, table.dati.regole th { white-space: normal; text-align: left; }
